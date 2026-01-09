@@ -4,6 +4,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
 
+/* Outlined/Hollow text effect */
+.stroke-text {
+  -webkit-text-stroke: 2px hsl(222, 72%, 33%);
+  text-stroke: 2px hsl(222, 72%, 33%);
+  color: transparent;
+}
+
+@media (min-width: 768px) {
+  .stroke-text {
+    -webkit-text-stroke: 3px hsl(222, 72%, 33%);
+    text-stroke: 3px hsl(222, 72%, 33%);
+  }
+}
+
 /* Edexcel Easy Design System */
 
 @layer base {
