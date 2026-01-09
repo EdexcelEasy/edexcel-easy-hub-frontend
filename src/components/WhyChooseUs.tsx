@@ -53,7 +53,7 @@ const WhyChooseUs = () => {
         </motion.div>
 
         {/* Feature Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -61,21 +61,21 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative bg-card rounded-2xl p-6 border border-border overflow-hidden group hover:shadow-lg transition-shadow"
+              className="relative bg-card rounded-2xl p-5 border border-border overflow-hidden group hover:shadow-lg transition-shadow aspect-square flex flex-col"
             >
               {/* Background Shape */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-muted/50 rounded-bl-[100px] -z-0" />
+              <div className="absolute top-0 right-0 w-20 h-20 bg-muted/50 rounded-bl-[80px] -z-0" />
               
               {/* Icon */}
-              <div className="relative z-10 w-14 h-14 rounded-xl border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-6 bg-background">
-                <feature.icon className="w-6 h-6 text-[#1E3A8A]" />
+              <div className="relative z-10 w-12 h-12 rounded-xl border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-4 bg-background">
+                <feature.icon className="w-5 h-5 text-[#1E3A8A]" />
               </div>
               
               {/* Content */}
-              <h3 className="relative z-10 font-heading font-bold text-xl text-[#1E3A8A] mb-3">
+              <h3 className="relative z-10 font-heading font-bold text-lg text-[#1E3A8A] mb-2">
                 {feature.title}
               </h3>
-              <p className="relative z-10 text-muted-foreground">
+              <p className="relative z-10 text-muted-foreground text-sm">
                 {feature.description}
               </p>
             </motion.div>
