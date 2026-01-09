@@ -551,9 +551,9 @@ const IGCSESubjectDetail = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
-                className="bg-card rounded-xl border border-border overflow-hidden hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all"
+                className="bg-card rounded-xl border-2 border-[#1E3A8A] overflow-hidden hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all"
               >
-                <div className="bg-[#1E3A8A]/5 px-6 py-4 border-b border-border">
+                <div className="bg-[#1E3A8A]/5 px-6 py-4 border-b border-[#1E3A8A]">
                   <h2 className="font-heading font-bold text-lg text-[#1E3A8A]">
                     {unit.unit}
                   </h2>
