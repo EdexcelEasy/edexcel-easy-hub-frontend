@@ -46,6 +46,7 @@ const Navbar = () => {
             {/* Home */}
             <Link
               to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
               Home
