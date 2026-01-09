@@ -42,23 +42,26 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <a href="#subjects">
+              <a href="#subjects" className="inline-block">
                 <Button 
                   type="button"
                   size="lg" 
-                  className="group bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all cursor-pointer"
+                  className="group w-full bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all cursor-pointer"
                 >
                   Subjects available
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </a>
-              <Button 
-                size="lg" 
-                className="group bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all"
-              >
-                Past Papers
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <a href="#past-papers" className="inline-block">
+                <Button 
+                  type="button"
+                  size="lg" 
+                  className="group w-full bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all cursor-pointer"
+                >
+                  Past Papers
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </a>
             </div>
 
             {/* Stats */}
