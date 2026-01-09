@@ -43,9 +43,15 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
               <Button 
+                type="button"
                 size="lg" 
-                className="group bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all"
-                onClick={() => document.getElementById('subjects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all cursor-pointer"
+                onClick={() => {
+                  const element = document.getElementById('subjects');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
               >
                 Subjects available
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
