@@ -1,49 +1,16 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { GraduationCap, BookOpen } from "lucide-react";
 
-const subjects = [
+const levels = [
   {
-    name: "Mathematics",
-    level: "IGCSE & A-Level",
-    topics: 45,
-    image: "📐",
-    gradient: "from-blue-500 to-indigo-600",
+    icon: GraduationCap,
+    title: "IGCSE",
+    description: "International General Certificate of Secondary Education for students aged 14-16.",
   },
   {
-    name: "Physics",
-    level: "IGCSE & A-Level",
-    topics: 38,
-    image: "⚛️",
-    gradient: "from-purple-500 to-pink-600",
-  },
-  {
-    name: "Chemistry",
-    level: "IGCSE & A-Level",
-    topics: 42,
-    image: "🧪",
-    gradient: "from-green-500 to-teal-600",
-  },
-  {
-    name: "Biology",
-    level: "IGCSE & A-Level",
-    topics: 40,
-    image: "🧬",
-    gradient: "from-red-500 to-orange-600",
-  },
-  {
-    name: "English",
-    level: "IGCSE",
-    topics: 28,
-    image: "📚",
-    gradient: "from-cyan-500 to-blue-600",
-  },
-  {
-    name: "Economics",
-    level: "IGCSE & A-Level",
-    topics: 32,
-    image: "📊",
-    gradient: "from-amber-500 to-yellow-600",
+    icon: BookOpen,
+    title: "IAL",
+    description: "International Advanced Levels for students preparing for university entrance.",
   },
 ];
 
@@ -73,51 +40,35 @@ const Subjects = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {subjects.map((subject, index) => (
+        {/* Level Cards */}
+        <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
+          {levels.map((level, index) => (
             <motion.div
-              key={subject.name}
+              key={level.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-card rounded-2xl border border-border overflow-hidden card-hover cursor-pointer"
+              className="relative bg-card rounded-xl p-4 md:p-6 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer"
             >
-              {/* Gradient Header */}
-              <div className={`h-24 bg-gradient-to-r ${subject.gradient} flex items-center justify-center`}>
-                <span className="text-5xl">{subject.image}</span>
+              {/* Background Shape */}
+              <div className="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-muted/50 rounded-bl-[80px] -z-0" />
+              
+              {/* Icon */}
+              <div className="relative z-10 w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-3 md:mb-4 bg-background">
+                <level.icon className="w-5 h-5 md:w-6 md:h-6 text-[#1E3A8A]" />
               </div>
               
               {/* Content */}
-              <div className="p-6">
-                <h3 className="font-heading font-bold text-xl mb-1">{subject.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{subject.level}</p>
-                
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-primary">
-                    {subject.topics} Topics
-                  </span>
-                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                    <ArrowRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </div>
+              <h3 className="relative z-10 font-heading font-bold text-xl md:text-2xl text-[#1E3A8A] mb-2">
+                {level.title}
+              </h3>
+              <p className="relative z-10 text-muted-foreground text-sm md:text-base">
+                {level.description}
+              </p>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <Button variant="outline" size="lg">
-            View All Subjects
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
