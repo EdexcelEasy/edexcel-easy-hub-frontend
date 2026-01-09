@@ -30,9 +30,8 @@ const Subjects = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             Explore Our{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10">Subjects</span>
-              <span className="absolute bottom-2 left-0 w-full h-4 bg-accent/40 -z-0 rounded" />
+            <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">
+              Subjects
             </span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
