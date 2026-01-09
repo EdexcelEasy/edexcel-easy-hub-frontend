@@ -76,8 +76,8 @@ const Hero = () => {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-                  <Award className="w-6 h-6 text-accent" />
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Award className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-foreground">95%</p>
