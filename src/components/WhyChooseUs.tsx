@@ -61,7 +61,7 @@ const WhyChooseUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative bg-card rounded-xl p-3 md:p-4 border border-border overflow-hidden group hover:shadow-lg hover:border-[#1E3A8A] transition-all"
+              className="relative bg-card rounded-xl p-3 md:p-4 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all"
             >
               {/* Background Shape */}
               <div className="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-muted/50 rounded-bl-[60px] -z-0" />
