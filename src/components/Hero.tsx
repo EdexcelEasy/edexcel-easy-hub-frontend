@@ -42,12 +42,18 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-              <Button variant="highlight" size="lg" className="group">
-                Start Learning Free
+              <Button 
+                size="lg" 
+                className="group bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all"
+              >
+                Subjects available
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg">
-                Explore Subjects
+              <Button 
+                size="lg" 
+                className="bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all"
+              >
+                Past Papers
               </Button>
             </div>
 
