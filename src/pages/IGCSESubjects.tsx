@@ -90,28 +90,28 @@ const IGCSESubjects = () => {
           </motion.div>
 
           {/* Subjects Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-3">
             {subjects.map((subject, index) => (
               <motion.div
                 key={subject.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative bg-card rounded-xl p-4 md:p-6 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer"
+                className="relative bg-card rounded-xl p-3 md:p-4 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer"
               >
                 {/* Background Shape */}
-                <div className="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-muted/50 rounded-bl-[80px] -z-0" />
+                <div className="absolute top-0 right-0 w-12 h-12 md:w-14 md:h-14 bg-muted/50 rounded-bl-[60px] -z-0" />
                 
                 {/* Icon */}
-                <div className="relative z-10 w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-3 md:mb-4 bg-background">
-                  <subject.icon className="w-5 h-5 md:w-6 md:h-6 text-[#1E3A8A]" />
+                <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-2 md:mb-3 bg-background">
+                  <subject.icon className="w-4 h-4 md:w-5 md:h-5 text-[#1E3A8A]" />
                 </div>
                 
                 {/* Content */}
-                <h3 className="relative z-10 font-heading font-bold text-lg md:text-xl text-[#1E3A8A] mb-2">
+                <h3 className="relative z-10 font-heading font-bold text-xs md:text-sm lg:text-base text-[#1E3A8A] mb-1">
                   {subject.name}
                 </h3>
-                <p className="relative z-10 text-muted-foreground text-sm md:text-base">
+                <p className="relative z-10 text-muted-foreground text-[10px] md:text-xs leading-tight hidden sm:block">
                   {subject.description}
                 </p>
               </motion.div>
