@@ -6,10 +6,10 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(222_72%_33%_/_0.08)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(48_96%_53%_/_0.08)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(222_72%_33%_/_0.08)_0%,_transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(48_96%_53%_/_0.08)_0%,_transparent_50%)] pointer-events-none" />
       
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <motion.div
