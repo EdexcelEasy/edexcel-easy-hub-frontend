@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
   return (
@@ -42,21 +43,16 @@ const CTA = () => {
               study materials, and expert support. Start free today!
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="group bg-transparent border-2 border-[#FACC15] text-[#FACC15] hover:bg-[#FACC15] hover:text-[#1E3A8A] transition-all"
-              >
-                Get Started Free
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button 
-                size="lg" 
-                className="group bg-transparent border-2 border-[#FACC15] text-[#FACC15] hover:bg-[#FACC15] hover:text-[#1E3A8A] transition-all"
-              >
-                View Pricing
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+            <div className="flex justify-center">
+              <Link to="/pricing">
+                <Button 
+                  size="lg" 
+                  className="group bg-transparent border-2 border-[#FACC15] text-[#FACC15] hover:bg-[#FACC15] hover:text-[#1E3A8A] transition-all"
+                >
+                  View Pricing
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
           </div>
         </motion.div>
