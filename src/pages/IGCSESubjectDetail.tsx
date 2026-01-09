@@ -513,6 +513,36 @@ const IGCSESubjectDetail = () => {
             </p>
           </motion.div>
 
+          {/* Resource Cards */}
+          <div className="max-w-3xl mx-auto grid grid-cols-2 gap-4 mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-[#1E3A8A] rounded-xl p-5 cursor-pointer hover:bg-[#1E3A8A]/90 transition-colors"
+            >
+              <h4 className="font-heading font-bold text-white text-base md:text-lg">
+                Available Resources
+              </h4>
+              <p className="text-white/80 text-sm mt-1">
+                Notes, videos & worksheets
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-[#1E3A8A] rounded-xl p-5 cursor-pointer hover:bg-[#1E3A8A]/90 transition-colors"
+            >
+              <h4 className="font-heading font-bold text-white text-base md:text-lg">
+                Quick Stats
+              </h4>
+              <p className="text-white/80 text-sm mt-1">
+                {subjectData.topics.length} units • {subjectData.topics.reduce((acc, unit) => acc + unit.topics.length, 0)} topics
+              </p>
+            </motion.div>
+          </div>
+
           {/* Topics */}
           <div className="max-w-3xl mx-auto space-y-6">
             {subjectData.topics.map((unit, index) => (
@@ -520,7 +550,7 @@ const IGCSESubjectDetail = () => {
                 key={unit.unit}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
                 className="bg-card rounded-xl border border-border overflow-hidden hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all"
               >
                 <div className="bg-[#1E3A8A]/5 px-6 py-4 border-b border-border">
@@ -529,7 +559,7 @@ const IGCSESubjectDetail = () => {
                   </h2>
                 </div>
                 <div className="p-6">
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-2">
                     {unit.topics.map((topic) => (
                       <li key={topic} className="flex items-center gap-3 text-muted-foreground hover:text-[#1E3A8A] transition-colors cursor-pointer">
                         <ChevronRight className="w-4 h-4 text-[#FACC15]" />
@@ -537,26 +567,6 @@ const IGCSESubjectDetail = () => {
                       </li>
                     ))}
                   </ul>
-                  
-                  {/* Resource Cards */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-[#1E3A8A] rounded-lg p-4 cursor-pointer hover:bg-[#1E3A8A]/90 transition-colors">
-                      <h4 className="font-heading font-bold text-white text-sm md:text-base">
-                        Available Resources
-                      </h4>
-                      <p className="text-white/80 text-xs md:text-sm mt-1">
-                        Notes, videos & worksheets
-                      </p>
-                    </div>
-                    <div className="bg-[#1E3A8A] rounded-lg p-4 cursor-pointer hover:bg-[#1E3A8A]/90 transition-colors">
-                      <h4 className="font-heading font-bold text-white text-sm md:text-base">
-                        Quick Stats
-                      </h4>
-                      <p className="text-white/80 text-xs md:text-sm mt-1">
-                        {unit.topics.length} topics covered
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             ))}
