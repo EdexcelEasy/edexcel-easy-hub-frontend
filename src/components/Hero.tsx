@@ -45,6 +45,7 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="group bg-background border-2 border-primary text-primary hover:bg-[#FACC15] hover:border-[#FACC15] hover:text-primary transition-all"
+                onClick={() => document.getElementById('subjects')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Subjects available
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
