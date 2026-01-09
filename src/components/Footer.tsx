@@ -4,20 +4,6 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
-    subjects: [
-      { name: "Mathematics", href: "#" },
-      { name: "Physics", href: "#" },
-      { name: "Chemistry", href: "#" },
-      { name: "Biology", href: "#" },
-      { name: "English", href: "#" },
-    ],
-    resources: [
-      { name: "Past Papers", href: "#" },
-      { name: "Video Lessons", href: "#" },
-      { name: "Study Notes", href: "#" },
-      { name: "Practice Tests", href: "#" },
-      { name: "Blog", href: "#" },
-    ],
     company: [
       { name: "About Us", href: "#about" },
       { name: "Contact", href: "#contact" },
@@ -37,7 +23,7 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-2 mb-6">
@@ -68,40 +54,6 @@ const Footer = () => {
                 <span>London, United Kingdom</span>
               </div>
             </div>
-          </div>
-
-          {/* Subjects */}
-          <div>
-            <h4 className="font-heading font-bold mb-4">Subjects</h4>
-            <ul className="space-y-3">
-              {footerLinks.subjects.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="font-heading font-bold mb-4">Resources</h4>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-primary-foreground/70 hover:text-accent transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Company */}
