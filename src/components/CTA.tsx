@@ -43,16 +43,19 @@ const CTA = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="highlight" size="lg" className="group">
+              <Button 
+                size="lg" 
+                className="group bg-transparent border-2 border-[#FACC15] text-[#FACC15] hover:bg-[#FACC15] hover:text-[#1E3A8A] transition-all"
+              >
                 Get Started Free
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
-                variant="outline" 
                 size="lg" 
-                className="bg-transparent text-primary-foreground border-primary-foreground/30 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                className="group bg-transparent border-2 border-[#FACC15] text-[#FACC15] hover:bg-[#FACC15] hover:text-[#1E3A8A] transition-all"
               >
                 View Pricing
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
           </div>
