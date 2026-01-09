@@ -1,43 +1,16 @@
 import { motion } from "framer-motion";
-import { ArrowRight, FileText, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { GraduationCap, BookOpen } from "lucide-react";
 
-const papers = [
+const levels = [
   {
-    subject: "Mathematics",
-    year: "2024",
-    papers: 12,
-    image: "📐",
+    icon: GraduationCap,
+    title: "IGCSE",
+    description: "Past papers and mark schemes for International GCSE examinations.",
   },
   {
-    subject: "Physics",
-    year: "2024",
-    papers: 10,
-    image: "⚛️",
-  },
-  {
-    subject: "Chemistry",
-    year: "2024",
-    papers: 10,
-    image: "🧪",
-  },
-  {
-    subject: "Biology",
-    year: "2024",
-    papers: 8,
-    image: "🧬",
-  },
-  {
-    subject: "English",
-    year: "2024",
-    papers: 6,
-    image: "📚",
-  },
-  {
-    subject: "Economics",
-    year: "2024",
-    papers: 8,
-    image: "📊",
+    icon: BookOpen,
+    title: "IAL",
+    description: "Past papers and mark schemes for International Advanced Level examinations.",
   },
 ];
 
@@ -57,9 +30,8 @@ const PastPapers = () => {
           </span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
             Past{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10">Papers</span>
-              <span className="absolute bottom-2 left-0 w-full h-4 bg-accent/40 -z-0 rounded" />
+            <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">
+              Papers
             </span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -67,54 +39,35 @@ const PastPapers = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {papers.map((paper, index) => (
+        {/* Level Cards */}
+        <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
+          {levels.map((level, index) => (
             <motion.div
-              key={paper.subject}
+              key={level.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-card rounded-2xl border border-border p-6 hover:shadow-lg transition-all cursor-pointer"
+              className="relative bg-card rounded-xl p-4 md:p-6 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-4xl">{paper.image}</span>
-                  <div>
-                    <h3 className="font-heading font-bold text-lg">{paper.subject}</h3>
-                    <p className="text-sm text-muted-foreground">{paper.year} Papers</p>
-                  </div>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <FileText className="w-5 h-5 text-primary" />
-                </div>
+              {/* Background Shape */}
+              <div className="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-muted/50 rounded-bl-[80px] -z-0" />
+              
+              {/* Icon */}
+              <div className="relative z-10 w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-3 md:mb-4 bg-background">
+                <level.icon className="w-5 h-5 md:w-6 md:h-6 text-[#1E3A8A]" />
               </div>
               
-              <div className="flex items-center justify-between pt-4 border-t border-border">
-                <span className="text-sm font-medium text-primary">
-                  {paper.papers} Papers Available
-                </span>
-                <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground group-hover:text-primary transition-colors">
-                  <Download className="w-4 h-4" />
-                  <span>Download</span>
-                </div>
-              </div>
+              {/* Content */}
+              <h3 className="relative z-10 font-heading font-bold text-xl md:text-2xl text-[#1E3A8A] mb-2">
+                {level.title}
+              </h3>
+              <p className="relative z-10 text-muted-foreground text-sm md:text-base">
+                {level.description}
+              </p>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <Button variant="outline" size="lg">
-            View All Past Papers
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
