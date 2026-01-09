@@ -31,14 +31,8 @@ const Hero = () => {
               </span>
             </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6">
-              <span className="stroke-text font-heading">
-                Education is no longer restricted to a{" "}
-              </span>
-              <span className="relative inline-block">
-                <span className="relative z-10 stroke-text font-heading">classroom</span>
-                <span className="absolute bottom-1 md:bottom-2 left-0 w-full h-3 md:h-4 bg-accent -z-0 rounded-sm -rotate-1 opacity-80" />
-              </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 text-primary">
+              Education is no longer restricted to a classroom
             </h1>
 
             <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
