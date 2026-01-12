@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Youtube, ExternalLink } from "lucide-react";
 import instructorMrimmoaee from "@/assets/instructor-mrimmoaee.png";
+import instructorTabeeb from "@/assets/instructor-tabeeb.png";
 
 const instructors = [
   {
@@ -28,7 +29,7 @@ const instructors = [
     role: "Biology Teacher",
     experience: "4+ years of experience",
     youtube: null,
-    image: "/placeholder.svg",
+    image: instructorTabeeb,
   },
 ];
 
