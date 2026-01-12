@@ -11,7 +11,7 @@ const instructors = [
     experience: "8+ years of experience",
     youtube: {
       label: "Mrimmoaee Ahmed",
-      url: "https://www.youtube.com/@MrimmoaeeAhmed",
+      url: "https://www.youtube.com/@edexceleasyict",
     },
     image: instructorMrimmoaee,
   },
@@ -21,7 +21,7 @@ const instructors = [
     experience: "7+ years of experience",
     youtube: {
       label: "Edexcel Easy",
-      url: "https://www.youtube.com/@EdexcelEasy",
+      url: "https://www.youtube.com/@EdexcelEasy_MohimaAhmedSneha",
     },
     image: instructorMohima,
   },
