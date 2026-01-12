@@ -162,12 +162,12 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-            {/* About */}
+            {/* Instructors */}
             <a
-              href="#about"
+              href="#instructors"
               className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
-              About
+              Instructors
             </a>
 
             {/* Contact */}
@@ -243,11 +243,11 @@ const Navbar = () => {
               </div>
 
               <a
-                href="#about"
+                href="#instructors"
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
                 onClick={() => setIsOpen(false)}
               >
-                About
+                Instructors
               </a>
               <a
                 href="#contact"
