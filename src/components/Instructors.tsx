@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Youtube, ExternalLink } from "lucide-react";
+import instructorMrimmoaee from "@/assets/instructor-mrimmoaee.png";
 
 const instructors = [
   {
@@ -10,7 +11,7 @@ const instructors = [
       label: "Mrimmoaee Ahmed",
       url: "https://www.youtube.com/@MrimmoaeeAhmed",
     },
-    image: "/placeholder.svg",
+    image: instructorMrimmoaee,
   },
   {
     name: "Mohima Ahmed Sneha",
