@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Youtube, ExternalLink } from "lucide-react";
 import instructorMrimmoaee from "@/assets/instructor-mrimmoaee.png";
+import instructorMohima from "@/assets/instructor-mohima.png";
 import instructorTabeeb from "@/assets/instructor-tabeeb.png";
 
 const instructors = [
@@ -22,7 +23,7 @@ const instructors = [
       label: "Edexcel Easy",
       url: "https://www.youtube.com/@EdexcelEasy",
     },
-    image: "/placeholder.svg",
+    image: instructorMohima,
   },
   {
     name: "Tabeeb Hussain",
