@@ -4,6 +4,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Subjects from "@/components/Subjects";
 import PastPapers from "@/components/PastPapers";
 import Testimonials from "@/components/Testimonials";
+import Instructors from "@/components/Instructors";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <Subjects />
       <PastPapers />
       <Testimonials />
+      <Instructors />
       <Footer />
     </div>
   );
