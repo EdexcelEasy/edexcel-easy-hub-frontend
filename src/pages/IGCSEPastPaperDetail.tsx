@@ -60,6 +60,23 @@ const computerSciencePaperYears = [
   "2019 - Jun",
 ];
 
+const humanBiologyPaperYears = [
+  "2025 - Nov",
+  "2025 - June",
+  "2024 - Nov",
+  "2024 - June",
+  "2023 - Nov",
+  "2023 - June",
+  "2023 - Jan",
+  "2022 - Jun",
+  "2022 - Jan",
+  "2021 - Nov",
+  "2021 - Jun",
+  "2020 - Nov",
+  "2020 - Jan",
+  "2019 - Jun",
+];
+
 const IGCSEPastPaperDetail = () => {
   const { subject } = useParams<{ subject: string }>();
   const subjectName = subjectNames[subject || ""] || subject;
@@ -67,6 +84,7 @@ const IGCSEPastPaperDetail = () => {
   const getPaperYears = () => {
     if (subject === "ict") return ictPaperYears;
     if (subject === "computer-science") return computerSciencePaperYears;
+    if (subject === "human-biology") return humanBiologyPaperYears;
     return defaultPaperYears;
   };
   
