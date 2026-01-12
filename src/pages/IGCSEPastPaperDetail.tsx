@@ -49,10 +49,28 @@ const ictPaperYears = [
   "2019 - Jun",
 ];
 
+const computerSciencePaperYears = [
+  "2025 - June",
+  "2024 - Jun",
+  "2023 - Jun",
+  "2022 - Jun",
+  "2021 - Nov",
+  "2021 - Jun",
+  "2020 - Nov",
+  "2019 - Jun",
+];
+
 const IGCSEPastPaperDetail = () => {
   const { subject } = useParams<{ subject: string }>();
   const subjectName = subjectNames[subject || ""] || subject;
-  const paperYears = subject === "ict" ? ictPaperYears : defaultPaperYears;
+  
+  const getPaperYears = () => {
+    if (subject === "ict") return ictPaperYears;
+    if (subject === "computer-science") return computerSciencePaperYears;
+    return defaultPaperYears;
+  };
+  
+  const paperYears = getPaperYears();
 
   return (
     <div className="min-h-screen bg-background">
