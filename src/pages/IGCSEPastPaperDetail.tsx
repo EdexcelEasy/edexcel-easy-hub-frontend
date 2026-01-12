@@ -18,19 +18,21 @@ const subjectNames: Record<string, string> = {
 };
 
 const paperYears = [
-  "2019 - Jan",
-  "2019 - May",
+  "2025 - Nov",
+  "2025 - June",
+  "2024 - Nov",
+  "2024 - June",
+  "2023 - Nov",
+  "2023 - June",
+  "2023 - Jan",
+  "2022 - Jun",
+  "2022 - Jan",
+  "2021 - Nov",
+  "2021 - Jun",
+  "2021 - Jan",
+  "2020 - Nov",
   "2020 - Jan",
-  "2020 - May",
-  "2021",
-  "2021",
-  "2022",
-  "2022",
-  "2023",
-  "2023",
-  "2024",
-  "2024",
-  "2025",
+  "2019 - Jun",
 ];
 
 const IGCSEPastPaperDetail = () => {
