@@ -8,6 +8,8 @@ import IGCSESubjects from "./pages/IGCSESubjects";
 import IGCSESubjectDetail from "./pages/IGCSESubjectDetail";
 import IALSubjects from "./pages/IALSubjects";
 import IALSubjectDetail from "./pages/IALSubjectDetail";
+import IGCSEPastPapers from "./pages/IGCSEPastPapers";
+import IALPastPapers from "./pages/IALPastPapers";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
@@ -25,6 +27,8 @@ const App = () => (
           <Route path="/igcse/:subject" element={<IGCSESubjectDetail />} />
           <Route path="/ial-subjects" element={<IALSubjects />} />
           <Route path="/ial/:subject" element={<IALSubjectDetail />} />
+          <Route path="/igcse-past-papers" element={<IGCSEPastPapers />} />
+          <Route path="/ial-past-papers" element={<IALPastPapers />} />
           <Route path="/pricing" element={<Pricing />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
