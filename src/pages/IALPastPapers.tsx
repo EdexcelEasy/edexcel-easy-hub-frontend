@@ -67,31 +67,32 @@ const IALPastPapers = () => {
           {/* Subjects List */}
           <div className="max-w-2xl mx-auto space-y-3">
             {subjects.map((subject, index) => (
-              <motion.div
-                key={subject.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-              >
-                <div
-                  className="flex items-center gap-4 bg-card rounded-xl p-4 border border-border hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer group"
+              <Link key={subject.name} to={`/ial-past-papers/${subject.slug}`}>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
                 >
-                  {/* Number */}
-                  <span className="text-muted-foreground font-medium text-sm w-6">
-                    {index + 1})
-                  </span>
-                  
-                  {/* Icon */}
-                  <div className="w-10 h-10 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center bg-background group-hover:border-[#1E3A8A]/40 transition-colors">
-                    <subject.icon className="w-5 h-5 text-[#1E3A8A]" />
+                  <div
+                    className="flex items-center gap-4 bg-card rounded-xl p-4 border border-border hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer group"
+                  >
+                    {/* Number */}
+                    <span className="text-muted-foreground font-medium text-sm w-6">
+                      {index + 1})
+                    </span>
+                    
+                    {/* Icon */}
+                    <div className="w-10 h-10 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center bg-background group-hover:border-[#1E3A8A]/40 transition-colors">
+                      <subject.icon className="w-5 h-5 text-[#1E3A8A]" />
+                    </div>
+                    
+                    {/* Subject Name */}
+                    <h3 className="font-heading font-semibold text-[#1E3A8A] text-lg flex-1">
+                      {subject.name}
+                    </h3>
                   </div>
-                  
-                  {/* Subject Name */}
-                  <h3 className="font-heading font-semibold text-[#1E3A8A] text-lg flex-1">
-                    {subject.name}
-                  </h3>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
