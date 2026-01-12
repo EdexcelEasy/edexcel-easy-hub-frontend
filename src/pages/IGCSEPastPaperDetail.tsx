@@ -17,7 +17,7 @@ const subjectNames: Record<string, string> = {
   "computer-science": "Computer Science",
 };
 
-const paperYears = [
+const defaultPaperYears = [
   "2025 - Nov",
   "2025 - June",
   "2024 - Nov",
@@ -35,9 +35,24 @@ const paperYears = [
   "2019 - Jun",
 ];
 
+const ictPaperYears = [
+  "2025 - Nov",
+  "2025 - June",
+  "2024 - Jun",
+  "2024 - Nov",
+  "2023 - Nov",
+  "2023 - Jun",
+  "2022 - Jun",
+  "2021 - Nov",
+  "2021 - Jun",
+  "2020 - Nov",
+  "2019 - Jun",
+];
+
 const IGCSEPastPaperDetail = () => {
   const { subject } = useParams<{ subject: string }>();
   const subjectName = subjectNames[subject || ""] || subject;
+  const paperYears = subject === "ict" ? ictPaperYears : defaultPaperYears;
 
   return (
     <div className="min-h-screen bg-background">
