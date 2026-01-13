@@ -96,6 +96,17 @@ const biologyYears = [
   "January 2019",
 ];
 
+const itYears = [
+  "June 2025",
+  "June 2024",
+  "June 2023",
+  "June 2022",
+  "October 2021",
+  "June 2021",
+  "October 2020",
+  "June 2019",
+];
+
 const getYearsForSubject = (subject: string) => {
   if (subject === "physics") {
     return physicsYears;
@@ -105,6 +116,9 @@ const getYearsForSubject = (subject: string) => {
   }
   if (subject === "biology") {
     return biologyYears;
+  }
+  if (subject === "information-technology") {
+    return itYears;
   }
   return defaultYears;
 };
