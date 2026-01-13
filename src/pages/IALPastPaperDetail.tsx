@@ -27,6 +27,36 @@ const defaultYears = [
   "2019 - Jun",
 ];
 
+const physicsYears = [
+  "June 2025",
+  "January 2025",
+  "October 2025",
+  "January 2024",
+  "June 2024",
+  "October 2024",
+  "October 2023",
+  "June 2023",
+  "January 2023",
+  "June 2022",
+  "January 2022",
+  "October 2022",
+  "October 2021",
+  "June 2021",
+  "January 2021",
+  "October 2020",
+  "January 2020",
+  "June 2019",
+  "January 2019",
+  "October 2019",
+];
+
+const getYearsForSubject = (subject: string) => {
+  if (subject === "physics") {
+    return physicsYears;
+  }
+  return defaultYears;
+};
+
 const getUnitsForSubject = (subject: string) => {
   if (subject === "physics" || subject === "biology") {
     return [
@@ -63,6 +93,7 @@ const IALPastPaperDetail = () => {
   const { subject } = useParams<{ subject: string }>();
   const subjectName = subjectNames[subject || ""] || subject;
   const units = getUnitsForSubject(subject || "");
+  const years = getYearsForSubject(subject || "");
   const [expandedUnit, setExpandedUnit] = useState<string | null>(null);
 
   const toggleUnit = (unitId: string) => {
@@ -147,7 +178,7 @@ const IALPastPaperDetail = () => {
                         className="overflow-hidden"
                       >
                         <div className="px-4 pb-4 space-y-2">
-                          {defaultYears.map((year, yearIndex) => (
+                          {years.map((year, yearIndex) => (
                             <div
                               key={`${unit.id}-${yearIndex}`}
                               className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group"
