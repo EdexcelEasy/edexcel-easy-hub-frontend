@@ -318,10 +318,15 @@ const IALSubjectDetail = () => {
             </motion.div>
           </div>
 
-          {/* Download Specification Card - Physics only */}
-          {subject === "physics" && (
+          {/* Download Specification Card */}
+          {["physics", "mathematics", "biology", "information-technology"].includes(subject || "") && (
             <motion.a
-              href="/specs/ial-physics-specification.pdf"
+              href={
+                subject === "physics" ? "/specs/ial-physics-specification.pdf" :
+                subject === "mathematics" ? "/specs/ial-maths-specification.pdf" :
+                subject === "biology" ? "/specs/ial-biology-specification.pdf" :
+                "/specs/ial-it-specification.pdf"
+              }
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
@@ -335,7 +340,7 @@ const IALSubjectDetail = () => {
                     Download the Official Pearson Specification
                   </h4>
                   <p className="text-muted-foreground text-sm mt-1">
-                    Complete IAL Physics syllabus document (PDF)
+                    Complete IAL {subjectData?.name} syllabus document (PDF)
                   </p>
                 </div>
                 <div className="w-12 h-12 rounded-lg bg-[#FACC15]/20 flex items-center justify-center group-hover:bg-[#FACC15] transition-colors">
