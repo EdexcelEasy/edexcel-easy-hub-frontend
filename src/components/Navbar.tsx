@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, BookOpen, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const igcseSubjects = [
   "Chemistry",
@@ -33,9 +34,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-[#1E3A8A] flex items-center justify-center">
-              <BookOpen className="w-6 h-6 text-white" />
-            </div>
+            <img src={logo} alt="Edexcel Easy" className="w-12 h-12 object-contain" />
             <span className="font-heading text-xl font-bold text-[#1E3A8A]">
               Edexcel Easy
             </span>

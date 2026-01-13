@@ -1,4 +1,5 @@
-import { BookOpen, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,9 +17,7 @@ const Footer = () => {
         <div className="max-w-2xl mx-auto text-center">
           {/* Brand */}
           <a href="#" className="inline-flex items-center gap-2 mb-6">
-            <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
-              <BookOpen className="w-6 h-6 text-accent-foreground" />
-            </div>
+            <img src={logo} alt="Edexcel Easy" className="w-12 h-12 object-contain" />
             <span className="font-heading text-xl font-bold">
               Edexcel <span className="text-accent">Easy</span>
             </span>
