@@ -142,18 +142,22 @@ const IGCSEPastPaperDetail = () => {
               </h2>
               <div className="space-y-2">
                 {paperYears.map((year, index) => (
-                  <motion.div
+                  <Link
                     key={`paper1-${index}`}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.03 }}
-                    className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group"
+                    to={`/igcse/${subject}/Paper 1/${encodeURIComponent(year)}`}
                   >
-                    <span className="text-muted-foreground text-sm w-6">{index + 1}.</span>
-                    <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">
-                      {year}
-                    </span>
-                  </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.03 }}
+                      className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group"
+                    >
+                      <span className="text-muted-foreground text-sm w-6">{index + 1}.</span>
+                      <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">
+                        {year}
+                      </span>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
             </motion.div>
@@ -173,18 +177,22 @@ const IGCSEPastPaperDetail = () => {
               </h2>
               <div className="space-y-2">
                 {paperYears.map((year, index) => (
-                  <motion.div
+                  <Link
                     key={`paper2-${index}`}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.03 }}
-                    className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group"
+                    to={`/igcse/${subject}/Paper 2/${encodeURIComponent(year)}`}
                   >
-                    <span className="text-muted-foreground text-sm w-6">{index + 1}.</span>
-                    <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">
-                      {year}
-                    </span>
-                  </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.03 }}
+                      className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group"
+                    >
+                      <span className="text-muted-foreground text-sm w-6">{index + 1}.</span>
+                      <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">
+                        {year}
+                      </span>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
             </motion.div>

@@ -245,17 +245,19 @@ const IALPastPaperDetail = () => {
                       >
                         <div className="px-4 pb-4 space-y-2">
                           {years.map((year, yearIndex) => (
-                            <div
+                            <Link
                               key={`${unit.id}-${yearIndex}`}
-                              className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group"
+                              to={`/ial/${subject}/${unit.name}/${encodeURIComponent(year)}`}
                             >
-                              <span className="text-muted-foreground text-sm w-6">
-                                {yearIndex + 1}.
-                              </span>
-                              <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">
-                                {year}
-                              </span>
-                            </div>
+                              <div className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group">
+                                <span className="text-muted-foreground text-sm w-6">
+                                  {yearIndex + 1}.
+                                </span>
+                                <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">
+                                  {year}
+                                </span>
+                              </div>
+                            </Link>
                           ))}
                         </div>
                       </motion.div>
