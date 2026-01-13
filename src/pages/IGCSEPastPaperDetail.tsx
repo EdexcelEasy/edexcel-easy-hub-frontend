@@ -33,6 +33,7 @@ const defaultPaperYears = [
   "2020 - Nov",
   "2020 - Jan",
   "2019 - Jun",
+  "2019 - Jun R",
 ];
 
 const ictPaperYears = [
