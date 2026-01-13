@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronRight, Download } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -317,6 +317,33 @@ const IALSubjectDetail = () => {
               </p>
             </motion.div>
           </div>
+
+          {/* Download Specification Card - Physics only */}
+          {subject === "physics" && (
+            <motion.a
+              href="/specs/ial-physics-specification.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.35 }}
+              className="max-w-3xl mx-auto mb-8 block"
+            >
+              <div className="bg-card rounded-xl border-2 border-[#FACC15] p-5 flex items-center justify-between hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] hover:border-[#1E3A8A] transition-all cursor-pointer group">
+                <div>
+                  <h4 className="font-heading font-bold text-[#1E3A8A] text-base md:text-lg">
+                    Download the Official Pearson Specification
+                  </h4>
+                  <p className="text-muted-foreground text-sm mt-1">
+                    Complete IAL Physics syllabus document (PDF)
+                  </p>
+                </div>
+                <div className="w-12 h-12 rounded-lg bg-[#FACC15]/20 flex items-center justify-center group-hover:bg-[#FACC15] transition-colors">
+                  <Download className="w-6 h-6 text-[#1E3A8A]" />
+                </div>
+              </div>
+            </motion.a>
+          )}
 
           {/* Topics */}
           <div className="max-w-3xl mx-auto space-y-6">
