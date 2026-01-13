@@ -73,12 +73,38 @@ const mathsYears = [
   "January 2019",
 ];
 
+const biologyYears = [
+  "October 2025",
+  "June 2025",
+  "January 2025",
+  "October 2024",
+  "June 2024",
+  "January 2024",
+  "October 2023",
+  "June 2023",
+  "January 2023",
+  "October 2022",
+  "June 2022",
+  "January 2022",
+  "October 2021",
+  "June 2021",
+  "January 2021",
+  "October 2020",
+  "January 2020",
+  "October 2019",
+  "June 2019",
+  "January 2019",
+];
+
 const getYearsForSubject = (subject: string) => {
   if (subject === "physics") {
     return physicsYears;
   }
   if (subject === "mathematics") {
     return mathsYears;
+  }
+  if (subject === "biology") {
+    return biologyYears;
   }
   return defaultYears;
 };
