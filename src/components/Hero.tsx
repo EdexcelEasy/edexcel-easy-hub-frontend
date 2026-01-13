@@ -137,15 +137,6 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Floating Card */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -right-6 bg-accent text-accent-foreground rounded-2xl px-6 py-4 shadow-lg"
-              >
-                <p className="font-heading font-bold text-lg">+500</p>
-                <p className="text-sm opacity-80">Study Materials</p>
-              </motion.div>
 
               {/* Badge Card */}
               <motion.div
