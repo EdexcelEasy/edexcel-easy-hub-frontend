@@ -29,6 +29,9 @@ const getYearFolder = (year: string): string => {
   // Handle formats like "2019 - Jun", "2019 - Jun R", "June 2019", etc.
   const normalized = year.toLowerCase();
   
+  if (normalized.includes("2024") && normalized.includes("jun")) {
+    return "2024-jun";
+  }
   if (normalized.includes("2019") && normalized.includes("jun")) {
     if (normalized.includes("r")) {
       return "2019-jun-r";
@@ -52,6 +55,13 @@ const getPaperPrefix = (paper: string): string => {
   return "";
 };
 
+// External URLs for papers (when not stored locally)
+const externalPaperUrls: Record<string, { qp?: string; ms?: string }> = {
+  "igcse/ict/2024-jun/paper1": {
+    qp: "https://rb.gy/uefdwy",
+  },
+};
+
 // Check if a paper has available PDFs
 const getPaperPaths = (
   curriculum: string,
@@ -66,15 +76,23 @@ const getPaperPaths = (
     return { qp: null, ms: null };
   }
 
-  // Currently available papers
+  const key = `${curriculum}/${subject}/${yearFolder}/${paperPrefix}`;
+
+  // Check for external URLs first
+  if (externalPaperUrls[key]) {
+    return {
+      qp: externalPaperUrls[key].qp || null,
+      ms: externalPaperUrls[key].ms || null,
+    };
+  }
+
+  // Currently available local papers
   const availablePapers: Record<string, boolean> = {
     "igcse/physics/2019-jun/paper1": true,
     "igcse/physics/2019-jun/paper2": true,
     "igcse/physics/2019-jun-r/paper1": true,
     "igcse/physics/2019-jun-r/paper2": true,
   };
-
-  const key = `${curriculum}/${subject}/${yearFolder}/${paperPrefix}`;
   
   if (availablePapers[key]) {
     return {
