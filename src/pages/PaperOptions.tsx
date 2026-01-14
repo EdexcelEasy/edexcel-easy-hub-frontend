@@ -6,21 +6,21 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const igcseSubjectNames: Record<string, string> = {
-  "physics": "Physics",
-  "chemistry": "Chemistry",
+  physics: "Physics",
+  chemistry: "Chemistry",
   "mathematics-b": "Mathematics B",
   "mathematics-a": "Mathematics A",
   "further-pure-mathematics": "Further Pure Mathematics",
-  "biology": "Biology",
+  biology: "Biology",
   "human-biology": "Human Biology",
-  "ict": "ICT",
+  ict: "ICT",
   "computer-science": "Computer Science",
 };
 
 const ialSubjectNames: Record<string, string> = {
-  "physics": "Physics",
-  "mathematics": "Mathematics",
-  "biology": "Biology",
+  physics: "Physics",
+  mathematics: "Mathematics",
+  biology: "Biology",
   "information-technology": "Information Technology",
 };
 
@@ -28,7 +28,7 @@ const ialSubjectNames: Record<string, string> = {
 const getYearFolder = (year: string): string => {
   // Handle formats like "2019 - Jun", "2019 - Jun R", "June 2019", etc.
   const normalized = year.toLowerCase();
-  
+
   if (normalized.includes("2024") && normalized.includes("jun")) {
     return "2024-jun";
   }
@@ -60,6 +60,9 @@ const externalPaperUrls: Record<string, { qp?: string; ms?: string }> = {
   "igcse/ict/2024-jun/paper1": {
     qp: "https://rb.gy/uefdwy",
   },
+  "igcse/ict/2024-jun/paper1": {
+    qp: "https://rb.gy/uefdwy",
+  },
 };
 
 // Check if a paper has available PDFs
@@ -67,11 +70,11 @@ const getPaperPaths = (
   curriculum: string,
   subject: string,
   paper: string,
-  year: string
+  year: string,
 ): { qp: string | null; ms: string | null } => {
   const yearFolder = getYearFolder(year);
   const paperPrefix = getPaperPrefix(paper);
-  
+
   if (!yearFolder || !paperPrefix) {
     return { qp: null, ms: null };
   }
@@ -93,7 +96,7 @@ const getPaperPaths = (
     "igcse/physics/2019-jun-r/paper1": true,
     "igcse/physics/2019-jun-r/paper2": true,
   };
-  
+
   if (availablePapers[key]) {
     return {
       qp: `/papers/${curriculum}/${subject}/${yearFolder}/${paperPrefix}-qp.pdf`,
@@ -116,33 +119,22 @@ const PaperOptions = () => {
   const subjectName = subjectNames[subject || ""] || subject;
   const decodedYear = decodeURIComponent(year || "");
   const decodedPaper = decodeURIComponent(paper || "");
-  const backPath = curriculum === "igcse" 
-    ? `/igcse-past-papers/${subject}` 
-    : `/ial-past-papers/${subject}`;
+  const backPath = curriculum === "igcse" ? `/igcse-past-papers/${subject}` : `/ial-past-papers/${subject}`;
   const curriculumLabel = curriculum === "igcse" ? "IGCSE" : "IAL";
 
-  const paths = getPaperPaths(
-    curriculum || "",
-    subject || "",
-    decodedPaper,
-    decodedYear
-  );
+  const paths = getPaperPaths(curriculum || "", subject || "", decodedPaper, decodedYear);
 
   const options = [
     {
       title: "Question Paper",
-      description: paths.qp 
-        ? "Click to open the examination question paper" 
-        : "Question paper not yet available",
+      description: paths.qp ? "Click to open the examination question paper" : "Question paper not yet available",
       icon: FileText,
       type: "qp",
       href: paths.qp,
     },
     {
       title: "Mark Scheme",
-      description: paths.ms 
-        ? "Click to open the official mark scheme" 
-        : "Mark scheme not yet available",
+      description: paths.ms ? "Click to open the official mark scheme" : "Mark scheme not yet available",
       icon: CheckSquare,
       type: "ms",
       href: paths.ms,
@@ -175,18 +167,14 @@ const PaperOptions = () => {
             </span>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[#1E3A8A] mb-4">
               {decodedPaper}{" "}
-              <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">
-                {decodedYear}
-              </span>
+              <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">{decodedYear}</span>
             </h1>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Choose the document you want to download.
-            </p>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">Choose the document you want to download.</p>
           </motion.div>
 
           {/* Options Grid */}
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {options.map((option, index) => (
+            {options.map((option, index) =>
               option.href ? (
                 <motion.a
                   key={option.type}
@@ -202,12 +190,8 @@ const PaperOptions = () => {
                     <div className="w-16 h-16 rounded-xl bg-[#1E3A8A]/10 flex items-center justify-center mb-4 group-hover:bg-[#FACC15]/20 transition-colors">
                       <option.icon className="w-8 h-8 text-[#1E3A8A]" />
                     </div>
-                    <h3 className="font-heading font-bold text-xl text-[#1E3A8A] mb-2">
-                      {option.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-3">
-                      {option.description}
-                    </p>
+                    <h3 className="font-heading font-bold text-xl text-[#1E3A8A] mb-2">{option.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-3">{option.description}</p>
                     <div className="flex items-center gap-2 text-[#1E3A8A] text-sm font-medium">
                       <Download className="w-4 h-4" />
                       <span>Open PDF</span>
@@ -226,16 +210,12 @@ const PaperOptions = () => {
                     <div className="w-16 h-16 rounded-xl bg-muted flex items-center justify-center mb-4">
                       <option.icon className="w-8 h-8 text-muted-foreground" />
                     </div>
-                    <h3 className="font-heading font-bold text-xl text-muted-foreground mb-2">
-                      {option.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {option.description}
-                    </p>
+                    <h3 className="font-heading font-bold text-xl text-muted-foreground mb-2">{option.title}</h3>
+                    <p className="text-muted-foreground text-sm">{option.description}</p>
                   </div>
                 </motion.div>
-              )
-            ))}
+              ),
+            )}
           </div>
         </div>
       </main>
