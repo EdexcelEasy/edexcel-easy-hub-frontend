@@ -59,6 +59,7 @@ const getPaperPrefix = (paper: string): string => {
 const externalPaperUrls: Record<string, { qp?: string; ms?: string }> = {
   "igcse/ict/2024-jun/paper1": {
     qp: "https://rb.gy/uefdwy",
+    ms: "https://shorturl.at/O96Tb",
   },
   "igcse/ict/2024-jun/paper2": {
     qp: "https://drive.google.com/file/d/1YMuWTROhKMkxaKRD68Wr8ilQvMUcuHDE/view",
