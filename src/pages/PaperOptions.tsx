@@ -61,7 +61,7 @@ const externalPaperUrls: Record<string, { qp?: string; ms?: string }> = {
     qp: "https://rb.gy/uefdwy",
   },
   "igcse/ict/2024-jun/paper2": {
-    qp: "shorturl.at/zSLxT",
+    qp: "https://drive.google.com/file/d/1YMuWTROhKMkxaKRD68Wr8ilQvMUcuHDE/view",
   },
 };
 
