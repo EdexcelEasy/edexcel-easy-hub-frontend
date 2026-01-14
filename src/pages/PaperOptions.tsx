@@ -63,6 +63,9 @@ const externalPaperUrls: Record<string, { qp?: string; ms?: string }> = {
   "igcse/ict/2024-jun/paper2": {
     qp: "https://drive.google.com/file/d/1YMuWTROhKMkxaKRD68Wr8ilQvMUcuHDE/view",
   },
+  "igcse/ict/2024-jun/paper1": {
+    ms: "https://shorturl.at/O96Tb",
+  },
 };
 
 // Check if a paper has available PDFs
