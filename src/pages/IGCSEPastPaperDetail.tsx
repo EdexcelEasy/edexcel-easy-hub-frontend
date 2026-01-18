@@ -36,6 +36,19 @@ const defaultPaperYears = [
   "2019 - Jun R",
 ];
 
+// Physics-specific R-paper years
+const physicsRPaperYears = [
+  "2025 - Jun R",
+  "2024 - Jan R",
+  "2023 - Jun R",
+  "2023 - Jan R",
+  "2022 - Jun R",
+  "2022 - Jan R",
+  "2021 - Jan R",
+  "2020 - Jun R",
+  "2020 - Jan R",
+];
+
 const ictPaperYears = [
   "2025 - Nov",
   "2025 - June",
@@ -89,7 +102,13 @@ const IGCSEPastPaperDetail = () => {
     return defaultPaperYears;
   };
   
+  const getRPaperYears = () => {
+    if (subject === "physics") return physicsRPaperYears;
+    return [];
+  };
+  
   const paperYears = getPaperYears();
+  const rPaperYears = getRPaperYears();
 
   return (
     <div className="min-h-screen bg-background">
@@ -198,6 +217,97 @@ const IGCSEPastPaperDetail = () => {
               </div>
             </motion.div>
           </div>
+
+          {/* R-Papers Section for Physics */}
+          {rPaperYears.length > 0 && (
+            <>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-center mt-16 mb-8"
+              >
+                <h2 className="text-2xl md:text-3xl font-heading font-bold text-[#1E3A8A]">
+                  R-Papers
+                </h2>
+                <p className="text-muted-foreground mt-2">
+                  Additional examination papers (R-variant)
+                </p>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {/* R-Paper 1 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="bg-card rounded-xl p-6 border-2 border-[#FACC15]"
+                >
+                  <h2 className="font-heading font-bold text-2xl text-[#1E3A8A] mb-6 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-[#FACC15]/20 flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-[#1E3A8A]" />
+                    </div>
+                    Paper 1 (R)
+                  </h2>
+                  <div className="space-y-2">
+                    {rPaperYears.map((year, index) => (
+                      <Link
+                        key={`rpaper1-${index}`}
+                        to={`/igcse/${subject}/Paper 1/${encodeURIComponent(year)}`}
+                      >
+                        <motion.div
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.03 }}
+                          className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#FACC15] hover:bg-muted/30 transition-all cursor-pointer group"
+                        >
+                          <span className="text-muted-foreground text-sm w-6">{index + 1}.</span>
+                          <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">
+                            {year}
+                          </span>
+                        </motion.div>
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* R-Paper 2 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="bg-card rounded-xl p-6 border-2 border-[#FACC15]"
+                >
+                  <h2 className="font-heading font-bold text-2xl text-[#1E3A8A] mb-6 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-[#FACC15]/20 flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-[#1E3A8A]" />
+                    </div>
+                    Paper 2 (R)
+                  </h2>
+                  <div className="space-y-2">
+                    {rPaperYears.map((year, index) => (
+                      <Link
+                        key={`rpaper2-${index}`}
+                        to={`/igcse/${subject}/Paper 2/${encodeURIComponent(year)}`}
+                      >
+                        <motion.div
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: index * 0.03 }}
+                          className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#FACC15] hover:bg-muted/30 transition-all cursor-pointer group"
+                        >
+                          <span className="text-muted-foreground text-sm w-6">{index + 1}.</span>
+                          <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">
+                            {year}
+                          </span>
+                        </motion.div>
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </>
+          )}
         </div>
       </main>
 
