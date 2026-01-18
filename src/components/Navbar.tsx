@@ -5,23 +5,23 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const igcseSubjects = [
-  "Chemistry",
-  "Physics", 
-  "ICT",
-  "Computer Science",
-  "Mathematics A",
-  "Mathematics B",
-  "Further Pure Mathematics",
-  "Biology",
-  "Human Biology",
+  { name: "Chemistry", slug: "chemistry" },
+  { name: "Physics", slug: "physics" },
+  { name: "ICT", slug: "ict" },
+  { name: "Computer Science", slug: "computer-science" },
+  { name: "Mathematics A", slug: "mathematics-a" },
+  { name: "Mathematics B", slug: "mathematics-b" },
+  { name: "Further Pure Mathematics", slug: "further-pure-mathematics" },
+  { name: "Biology", slug: "biology" },
+  { name: "Human Biology", slug: "human-biology" },
 ];
 
 const ialSubjects = [
-  "Chemistry",
-  "Physics",
-  "Mathematics",
-  "Further Mathematics",
-  "Biology",
+  { name: "Chemistry", slug: "chemistry" },
+  { name: "Physics", slug: "physics" },
+  { name: "Mathematics", slug: "mathematics" },
+  { name: "Further Mathematics", slug: "further-mathematics" },
+  { name: "Biology", slug: "biology" },
 ];
 
 const Navbar = () => {
@@ -82,13 +82,13 @@ const Navbar = () => {
                         </Link>
                         <div className="pl-3 space-y-1">
                           {igcseSubjects.map((subject) => (
-                            <a
-                              key={subject}
-                              href="#"
+                            <Link
+                              key={subject.slug}
+                              to={`/igcse/${subject.slug}`}
                               className="block text-sm text-muted-foreground hover:text-[#1E3A8A] hover:underline transition-all py-1"
                             >
-                              {subject}
-                            </a>
+                              {subject.name}
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -106,13 +106,13 @@ const Navbar = () => {
                         </Link>
                         <div className="pl-3 space-y-1">
                           {ialSubjects.map((subject) => (
-                            <a
-                              key={subject}
-                              href="#"
+                            <Link
+                              key={subject.slug}
+                              to={`/ial/${subject.slug}`}
                               className="block text-sm text-muted-foreground hover:text-[#1E3A8A] hover:underline transition-all py-1"
                             >
-                              {subject}
-                            </a>
+                              {subject.name}
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -143,18 +143,18 @@ const Navbar = () => {
                     className="absolute top-full left-0 mt-2 w-48 bg-card border border-border rounded-xl shadow-lg z-50 overflow-hidden"
                   >
                     <div className="p-4 space-y-2">
-                      <a
-                        href="#"
+                      <Link
+                        to="/igcse-past-papers"
                         className="block font-heading font-bold text-[#1E3A8A] hover:underline py-1"
                       >
                         IGCSE
-                      </a>
-                      <a
-                        href="#"
+                      </Link>
+                      <Link
+                        to="/ial-past-papers"
                         className="block font-heading font-bold text-[#1E3A8A] hover:underline py-1"
                       >
                         IAL
-                      </a>
+                      </Link>
                     </div>
                   </motion.div>
                 )}
@@ -236,8 +236,8 @@ const Navbar = () => {
               <div className="py-2">
                 <span className="text-sm font-medium text-foreground/80">Past Papers</span>
                 <div className="pl-4 mt-2 space-y-2">
-                  <a href="#" className="block text-sm font-bold text-[#1E3A8A]">IGCSE</a>
-                  <a href="#" className="block text-sm font-bold text-[#1E3A8A]">IAL</a>
+                  <Link to="/igcse-past-papers" onClick={() => setIsOpen(false)} className="block text-sm font-bold text-[#1E3A8A]">IGCSE</Link>
+                  <Link to="/ial-past-papers" onClick={() => setIsOpen(false)} className="block text-sm font-bold text-[#1E3A8A]">IAL</Link>
                 </div>
               </div>
 
