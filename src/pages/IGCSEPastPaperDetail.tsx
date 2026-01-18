@@ -123,6 +123,35 @@ const mathematicsAPaperYears = [
   "2019 - Jun R",
 ];
 
+// Further Pure Mathematics has R-papers integrated into the list
+const furtherPureMathematicsPaperYears = [
+  "2025 - Nov",
+  "2025 - June",
+  "2025 - Jun R",
+  "2024 - Nov",
+  "2024 - June",
+  "2024 - Jan R",
+  "2023 - Nov",
+  "2023 - June",
+  "2023 - Jun R",
+  "2023 - Jan",
+  "2023 - Jan R",
+  "2022 - Jun",
+  "2022 - Jun R",
+  "2022 - Jan",
+  "2022 - Jan R",
+  "2021 - Nov",
+  "2021 - Jun",
+  "2021 - Jan",
+  "2021 - Jan R",
+  "2020 - Nov",
+  "2020 - Jun R",
+  "2020 - Jan",
+  "2020 - Jan R",
+  "2019 - Jun",
+  "2019 - Jun R",
+];
+
 const ictPaperYears = [
   "2025 - Nov",
   "2025 - June",
@@ -173,6 +202,7 @@ const IGCSEPastPaperDetail = () => {
     if (subject === "physics") return physicsPaperYears;
     if (subject === "mathematics-b") return mathematicsBPaperYears;
     if (subject === "mathematics-a") return mathematicsAPaperYears;
+    if (subject === "further-pure-mathematics") return furtherPureMathematicsPaperYears;
     if (subject === "ict") return ictPaperYears;
     if (subject === "computer-science") return computerSciencePaperYears;
     if (subject === "human-biology") return humanBiologyPaperYears;
