@@ -27,7 +27,14 @@ const ialSubjects = [
 // Subjects with past papers available
 const igcsePastPaperSubjects = [
   { name: "Physics", slug: "physics" },
+  { name: "Chemistry", slug: "chemistry" },
+  { name: "Mathematics B", slug: "mathematics-b" },
+  { name: "Mathematics A", slug: "mathematics-a" },
+  { name: "Further Pure Mathematics", slug: "further-pure-mathematics" },
+  { name: "Biology", slug: "biology" },
+  { name: "Human Biology", slug: "human-biology" },
   { name: "ICT", slug: "ict" },
+  { name: "Computer Science", slug: "computer-science" },
 ];
 
 const ialPastPaperSubjects = [
