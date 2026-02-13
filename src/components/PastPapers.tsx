@@ -10,6 +10,12 @@ const levels = [
     href: "/igcse-past-papers",
   },
   {
+    icon: GraduationCap,
+    title: "IGCSE Modular",
+    description: "Past papers and mark schemes for IGCSE Modular examinations.",
+    href: "/igcse-modular-past-papers",
+  },
+  {
     icon: BookOpen,
     title: "IAL",
     description: "Past papers and mark schemes for International Advanced Level examinations.",
@@ -43,7 +49,7 @@ const PastPapers = () => {
         </motion.div>
 
         {/* Level Cards */}
-        <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
+        <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto">
           {levels.map((level, index) => (
             <Link key={level.title} to={level.href} className="h-full">
               <motion.div
