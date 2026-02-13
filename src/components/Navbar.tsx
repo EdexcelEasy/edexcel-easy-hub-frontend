@@ -221,6 +221,14 @@ const Navbar = () => {
               Instructors
             </a>
 
+            {/* Blog */}
+            <Link
+              to="/blog"
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+            >
+              Blog
+            </Link>
+
             {/* Contact */}
             <a
               href="#contact"
@@ -324,6 +332,13 @@ const Navbar = () => {
               >
                 Instructors
               </a>
+              <Link
+                to="/blog"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                Blog
+              </Link>
               <a
                 href="#contact"
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
