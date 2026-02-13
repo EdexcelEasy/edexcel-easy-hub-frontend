@@ -6,14 +6,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const subjectNames: Record<string, string> = {
-  "physics": "Physics",
-  "chemistry": "Chemistry",
+  physics: "Physics",
+  chemistry: "Chemistry",
   "mathematics-b": "Mathematics B",
   "mathematics-a": "Mathematics A",
   "further-pure-mathematics": "Further Pure Mathematics",
-  "biology": "Biology",
+  biology: "Biology",
   "human-biology": "Human Biology",
-  "ict": "ICT",
+  ict: "ICT",
   "computer-science": "Computer Science",
 };
 
@@ -58,7 +58,7 @@ const physicsPaperYears = [
   "2021 - Jan",
   "2021 - Jan R",
   "2020 - Nov",
-  "2020 - Jun R",
+  "2020 - Nov R",
   "2020 - Jan",
   "2020 - Jan R",
   "2019 - Jun",
@@ -197,7 +197,7 @@ const humanBiologyPaperYears = [
 const IGCSEPastPaperDetail = () => {
   const { subject } = useParams<{ subject: string }>();
   const subjectName = subjectNames[subject || ""] || subject;
-  
+
   const getPaperYears = () => {
     if (subject === "physics") return physicsPaperYears;
     if (subject === "mathematics-b") return mathematicsBPaperYears;
@@ -208,13 +208,13 @@ const IGCSEPastPaperDetail = () => {
     if (subject === "human-biology") return humanBiologyPaperYears;
     return defaultPaperYears;
   };
-  
+
   const paperYears = getPaperYears();
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-4">
           {/* Back Button */}
@@ -236,10 +236,7 @@ const IGCSEPastPaperDetail = () => {
               IGCSE Past Papers
             </span>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[#1E3A8A] mb-4">
-              {subjectName}{" "}
-              <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">
-                Papers
-              </span>
+              {subjectName} <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">Papers</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Access past examination papers for {subjectName}.
@@ -263,10 +260,7 @@ const IGCSEPastPaperDetail = () => {
               </h2>
               <div className="space-y-2">
                 {paperYears.map((year, index) => (
-                  <Link
-                    key={`paper1-${index}`}
-                    to={`/igcse/${subject}/Paper 1/${encodeURIComponent(year)}`}
-                  >
+                  <Link key={`paper1-${index}`} to={`/igcse/${subject}/Paper 1/${encodeURIComponent(year)}`}>
                     <motion.div
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -298,10 +292,7 @@ const IGCSEPastPaperDetail = () => {
               </h2>
               <div className="space-y-2">
                 {paperYears.map((year, index) => (
-                  <Link
-                    key={`paper2-${index}`}
-                    to={`/igcse/${subject}/Paper 2/${encodeURIComponent(year)}`}
-                  >
+                  <Link key={`paper2-${index}`} to={`/igcse/${subject}/Paper 2/${encodeURIComponent(year)}`}>
                     <motion.div
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
