@@ -9,6 +9,7 @@ import IGCSESubjectDetail from "./pages/IGCSESubjectDetail";
 import IALSubjects from "./pages/IALSubjects";
 import IALSubjectDetail from "./pages/IALSubjectDetail";
 import IGCSEPastPapers from "./pages/IGCSEPastPapers";
+import IGCSEModularPastPapers from "./pages/IGCSEModularPastPapers";
 import IGCSEPastPaperDetail from "./pages/IGCSEPastPaperDetail";
 import IALPastPapers from "./pages/IALPastPapers";
 import IALPastPaperDetail from "./pages/IALPastPaperDetail";
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/ial/:subject" element={<IALSubjectDetail />} />
           <Route path="/igcse-past-papers" element={<IGCSEPastPapers />} />
           <Route path="/igcse-past-papers/:subject" element={<IGCSEPastPaperDetail />} />
+          <Route path="/igcse-modular-past-papers" element={<IGCSEModularPastPapers />} />
           <Route path="/ial-past-papers" element={<IALPastPapers />} />
           <Route path="/ial-past-papers/:subject" element={<IALPastPaperDetail />} />
           <Route path="/pricing" element={<Pricing />} />
