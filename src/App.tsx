@@ -13,6 +13,8 @@ import IGCSEPastPaperDetail from "./pages/IGCSEPastPaperDetail";
 import IALPastPapers from "./pages/IALPastPapers";
 import IALPastPaperDetail from "./pages/IALPastPaperDetail";
 import Pricing from "./pages/Pricing";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import PaperOptions from "./pages/PaperOptions";
@@ -37,6 +39,8 @@ const App = () => (
           <Route path="/ial-past-papers" element={<IALPastPapers />} />
           <Route path="/ial-past-papers/:subject" element={<IALPastPaperDetail />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/:curriculum/:subject/:paper/:year" element={<PaperOptions />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
