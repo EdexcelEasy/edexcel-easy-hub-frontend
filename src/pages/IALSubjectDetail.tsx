@@ -290,19 +290,21 @@ const IALSubjectDetail = () => {
 
           {/* Resource Cards */}
           <div className="max-w-3xl mx-auto grid grid-cols-2 gap-4 mb-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-[#1E3A8A] rounded-xl p-5 cursor-pointer hover:bg-[#1E3A8A]/90 transition-colors"
-            >
-              <h4 className="font-heading font-bold text-white text-base md:text-lg">
-                Available Resources
-              </h4>
-              <p className="text-white/80 text-sm mt-1">
-                Notes, videos, worksheets, formula booklet & cheatsheet
-              </p>
-            </motion.div>
+            <Link to={`/resources/ial/${subject}`}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-[#1E3A8A] rounded-xl p-5 cursor-pointer hover:bg-[#1E3A8A]/90 transition-colors"
+              >
+                <h4 className="font-heading font-bold text-white text-base md:text-lg">
+                  Available Resources
+                </h4>
+                <p className="text-white/80 text-sm mt-1">
+                  Notes, videos, worksheets, formula booklet & cheatsheet
+                </p>
+              </motion.div>
+            </Link>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
