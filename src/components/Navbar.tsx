@@ -44,6 +44,16 @@ const ialPastPaperSubjects = [
   { name: "IT", slug: "it" },
 ];
 
+const igcseModularPastPaperSubjects = [
+  { name: "Mathematics A", slug: "mathematics-a" },
+  { name: "Biology", slug: "biology" },
+  { name: "Chemistry", slug: "chemistry" },
+  { name: "Physics", slug: "physics" },
+  { name: "Science (Double Awards)", slug: "science-double-awards" },
+  { name: "English Language B", slug: "english-language-b" },
+  { name: "Accounting", slug: "accounting" },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -207,6 +217,30 @@ const Navbar = () => {
                           ))}
                         </div>
                       </div>
+
+                      {/* Divider */}
+                      <div className="border-t border-border my-3" />
+
+                      {/* IGCSE Modular Section */}
+                      <div>
+                        <Link
+                          to="/igcse-modular-past-papers"
+                          className="block font-heading font-bold text-[#1E3A8A] mb-2 hover:text-primary"
+                        >
+                          IGCSE Modular
+                        </Link>
+                        <div className="pl-3 space-y-1">
+                          {igcseModularPastPaperSubjects.map((subject) => (
+                            <Link
+                              key={subject.slug}
+                              to={`/igcse-modular-past-papers/${subject.slug}`}
+                              className="block text-sm text-muted-foreground hover:text-[#1E3A8A] hover:underline transition-all py-1"
+                            >
+                              {subject.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -315,6 +349,19 @@ const Navbar = () => {
                       <Link
                         key={subject.slug}
                         to={`/ial-past-papers/${subject.slug}`}
+                        onClick={() => setIsOpen(false)}
+                        className="block text-sm text-muted-foreground hover:text-[#1E3A8A]"
+                      >
+                        {subject.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <Link to="/igcse-modular-past-papers" onClick={() => setIsOpen(false)} className="block text-sm font-bold text-[#1E3A8A] mt-2">IGCSE Modular</Link>
+                  <div className="pl-3 space-y-1">
+                    {igcseModularPastPaperSubjects.map((subject) => (
+                      <Link
+                        key={subject.slug}
+                        to={`/igcse-modular-past-papers/${subject.slug}`}
                         onClick={() => setIsOpen(false)}
                         className="block text-sm text-muted-foreground hover:text-[#1E3A8A]"
                       >
