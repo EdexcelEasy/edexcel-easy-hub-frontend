@@ -170,7 +170,7 @@ const Navbar = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-72 bg-card border border-border rounded-xl shadow-lg z-50 overflow-hidden"
+                    className="absolute top-full left-0 mt-2 w-72 max-h-[70vh] bg-card border border-border rounded-xl shadow-lg z-50 overflow-y-auto"
                   >
                     <div className="p-4">
                       {/* IGCSE Section */}
