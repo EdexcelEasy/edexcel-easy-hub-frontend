@@ -300,7 +300,7 @@ const IALSubjectDetail = () => {
                 Available Resources
               </h4>
               <p className="text-white/80 text-sm mt-1">
-                Notes, videos & worksheets
+                Notes, videos, worksheets, formula booklet & cheatsheet
               </p>
             </motion.div>
             <motion.div
