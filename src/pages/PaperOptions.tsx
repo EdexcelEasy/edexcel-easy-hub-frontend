@@ -29,6 +29,9 @@ const getYearFolder = (year: string): string => {
   // Handle formats like "2019 - Jun", "2019 - Jun R", "June 2019", etc.
   const normalized = year.toLowerCase();
 
+  if (normalized.includes("2024") && normalized.includes("nov")) {
+    return "2024-nov";
+  }
   if (normalized.includes("2024") && normalized.includes("jun")) {
     return "2024-jun";
   }
