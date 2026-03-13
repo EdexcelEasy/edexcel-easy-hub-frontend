@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import PaperOptions from "./pages/PaperOptions";
 import SubjectResources from "./pages/SubjectResources";
+import Cheatsheets from "./pages/Cheatsheets";
 
 const queryClient = new QueryClient();
 
