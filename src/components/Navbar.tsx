@@ -380,6 +380,13 @@ const Navbar = () => {
                 </div>
               </div>
 
+              <Link
+                to="/cheatsheets"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                Cheatsheets
+              </Link>
               <a
                 href="#instructors"
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
