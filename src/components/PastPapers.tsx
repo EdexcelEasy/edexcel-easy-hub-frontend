@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, BookOpen } from "lucide-react";
+import { GraduationCap, BookOpen, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const levels = [
@@ -10,7 +10,7 @@ const levels = [
     href: "/igcse-past-papers",
   },
   {
-    icon: GraduationCap,
+    icon: Layers,
     title: "IGCSE Modular",
     description: "Past papers and mark schemes for IGCSE Modular examinations.",
     href: "/igcse-modular-past-papers",
