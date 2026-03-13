@@ -57,8 +57,7 @@ const Cheatsheets = () => {
                   to="/pricing"
                   className="mt-1 inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-[#FACC15] text-[#1E3A8A] font-bold text-sm hover:bg-[#FDE047] transition-colors shadow-lg"
                 >
-                  <Lock className="w-4 h-4" />
-                  View Pricing Plans
+                  View Details
                 </Link>
               </div>
             </div>
