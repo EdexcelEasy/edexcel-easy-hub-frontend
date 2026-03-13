@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import PaperOptions from "./pages/PaperOptions";
 import SubjectResources from "./pages/SubjectResources";
+import Cheatsheets from "./pages/Cheatsheets";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/igcse-modular-past-papers" element={<IGCSEModularPastPapers />} />
           <Route path="/ial-past-papers" element={<IALPastPapers />} />
           <Route path="/ial-past-papers/:subject" element={<IALPastPaperDetail />} />
+          <Route path="/cheatsheets" element={<Cheatsheets />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
