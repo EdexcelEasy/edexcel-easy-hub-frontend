@@ -73,61 +73,6 @@ const Pricing = () => {
             </motion.div>
           </motion.div>
 
-          {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {plans.map((plan, index) => (
-              <motion.div
-                key={plan.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative bg-card rounded-xl p-6 border-2 ${
-                  plan.highlighted 
-                    ? "border-[#1E3A8A] shadow-[0_8px_30px_rgba(250,204,21,0.3)]" 
-                    : "border-border"
-                } overflow-hidden`}
-              >
-                {plan.highlighted && (
-                  <div className="absolute top-0 right-0 bg-[#FACC15] text-[#1E3A8A] text-xs font-bold px-3 py-1 rounded-bl-lg">
-                    POPULAR
-                  </div>
-                )}
-                
-                <h3 className="font-heading font-bold text-xl text-[#1E3A8A] mb-2">
-                  {plan.name}
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {plan.description}
-                </p>
-                
-                <div className="mb-6">
-                  <span className="text-4xl font-heading font-bold text-[#1E3A8A]">
-                    {plan.price}
-                  </span>
-                  <span className="text-muted-foreground">{plan.period}</span>
-                </div>
-                
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Check className="w-4 h-4 text-[#FACC15]" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                
-                <Button 
-                  className={`w-full ${
-                    plan.highlighted 
-                      ? "bg-[#1E3A8A] text-white hover:bg-[#1E3A8A]/90" 
-                      : "bg-transparent border-2 border-[#1E3A8A] text-[#1E3A8A] hover:bg-[#1E3A8A] hover:text-white"
-                  } transition-all`}
-                >
-                  Get Started
-                </Button>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </main>
 
