@@ -5,53 +5,6 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const plans = [
-  {
-    name: "Basic",
-    price: "Free",
-    period: "",
-    description: "Perfect for getting started",
-    features: [
-      "Access to free resources",
-      "Limited past papers",
-      "Basic study notes",
-      "Community support",
-    ],
-    highlighted: false,
-  },
-  {
-    name: "Premium",
-    price: "$9.99",
-    period: "/month",
-    description: "Most popular for serious students",
-    features: [
-      "All IGCSE subjects",
-      "Unlimited past papers",
-      "Video lessons",
-      "Detailed mark schemes",
-      "Priority support",
-      "Progress tracking",
-    ],
-    highlighted: true,
-  },
-  {
-    name: "Ultimate",
-    price: "$19.99",
-    period: "/month",
-    description: "Complete access to everything",
-    features: [
-      "All IGCSE & IAL subjects",
-      "Unlimited past papers",
-      "All video lessons",
-      "1-on-1 tutoring sessions",
-      "Personalized study plan",
-      "24/7 priority support",
-      "Certificate of completion",
-    ],
-    highlighted: false,
-  },
-];
-
 const Pricing = () => {
   return (
     <div className="min-h-screen bg-background">
