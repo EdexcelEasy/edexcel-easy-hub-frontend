@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Youtube, ExternalLink } from "lucide-react";
-import instructorMrimmoaee from "@/assets/instructor-mrimmoaee.png";
 import instructorMohima from "@/assets/instructor-mohima.png";
 import instructorTabeeb from "@/assets/instructor-tabeeb.png";
 
