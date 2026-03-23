@@ -6,16 +6,6 @@ import instructorTabeeb from "@/assets/instructor-tabeeb.png";
 
 const instructors = [
   {
-    name: "Mrimmoaee Ahmed Shamee",
-    role: "IT / ICT Teacher",
-    experience: "8+ years of experience",
-    youtube: {
-      label: "Mrimmoaee Ahmed",
-      url: "https://www.youtube.com/@edexceleasyict",
-    },
-    image: instructorMrimmoaee,
-  },
-  {
     name: "Mohima Ahmed Sneha",
     role: "Physics & Maths Teacher",
     experience: "7+ years of experience",
