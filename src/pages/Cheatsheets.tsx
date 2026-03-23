@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { FileText, Lock, Crown } from "lucide-react";
+import { FileText, Lock, Crown, ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const cheatsheetCategories = [
   { title: "IGCSE - Edexcel (International)", slug: "igcse-edexcel" },
@@ -17,6 +18,12 @@ const Cheatsheets = () => {
       <Navbar />
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4">
+          <Link to="/">
+            <Button variant="ghost" className="mb-8 text-primary hover:text-primary/80">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Home
+            </Button>
+          </Link>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
