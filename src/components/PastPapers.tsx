@@ -16,12 +16,16 @@ const levels = [
     title: "IGCSE Modular",
     description: "Past papers and mark schemes for IGCSE Modular examinations.",
     href: "/igcse-modular-past-papers",
+    firstExam: "Jun 2025",
+    latestExam: "Nov 2025",
   },
   {
     icon: BookOpen,
     title: "IAL",
     description: "Past papers and mark schemes for International Advanced Level examinations.",
     href: "/ial-past-papers",
+    firstExam: "Jan 2019",
+    latestExam: "Jan 2026",
   },
 ];
 
