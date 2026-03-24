@@ -78,6 +78,8 @@ const Cheatsheets = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
               >
+                {category.slug === "igcse-edexcel" ? (
+                <Link to={`/cheatsheets/${category.slug}`} className="block">
                 <div className="group relative rounded-2xl border border-border bg-card p-6 text-center hover:shadow-lg hover:border-[#1E3A8A]/40 transition-all duration-300 cursor-pointer">
                   {/* Lock badge */}
                   <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-[#FACC15]/20 flex items-center justify-center">
