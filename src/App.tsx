@@ -21,6 +21,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import PaperOptions from "./pages/PaperOptions";
 import SubjectResources from "./pages/SubjectResources";
 import Cheatsheets from "./pages/Cheatsheets";
+import CheatsheetSubjects from "./pages/CheatsheetSubjects";
 
 const queryClient = new QueryClient();
 
