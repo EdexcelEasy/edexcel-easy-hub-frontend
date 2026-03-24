@@ -21,6 +21,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import PaperOptions from "./pages/PaperOptions";
 import SubjectResources from "./pages/SubjectResources";
 import Cheatsheets from "./pages/Cheatsheets";
+import CheatsheetSubjects from "./pages/CheatsheetSubjects";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/ial-past-papers" element={<IALPastPapers />} />
           <Route path="/ial-past-papers/:subject" element={<IALPastPaperDetail />} />
           <Route path="/cheatsheets" element={<Cheatsheets />} />
+          <Route path="/cheatsheets/:category" element={<CheatsheetSubjects />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

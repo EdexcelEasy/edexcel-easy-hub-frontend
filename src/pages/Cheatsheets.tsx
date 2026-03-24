@@ -71,19 +71,12 @@ const Cheatsheets = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {cheatsheetCategories.map((category, index) => (
-              <motion.div
-                key={category.slug}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-              >
+            {cheatsheetCategories.map((category, index) => {
+              const card = (
                 <div className="group relative rounded-2xl border border-border bg-card p-6 text-center hover:shadow-lg hover:border-[#1E3A8A]/40 transition-all duration-300 cursor-pointer">
-                  {/* Lock badge */}
                   <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-[#FACC15]/20 flex items-center justify-center">
                     <Lock className="w-3.5 h-3.5 text-[#FACC15]" />
                   </div>
-                  
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
                     <FileText className="w-7 h-7 text-primary" />
                   </div>
@@ -94,8 +87,21 @@ const Cheatsheets = () => {
                     Paid Only
                   </span>
                 </div>
-              </motion.div>
-            ))}
+              );
+
+              return (
+                <motion.div
+                  key={category.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                >
+                  {category.slug === "igcse-edexcel" ? (
+                    <Link to={`/cheatsheets/${category.slug}`} className="block">{card}</Link>
+                  ) : card}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
