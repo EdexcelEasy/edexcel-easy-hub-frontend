@@ -76,6 +76,12 @@ const PastPapers = () => {
                 <p className="relative z-10 text-muted-foreground text-sm md:text-base">
                   {level.description}
                 </p>
+                {level.firstExam && level.latestExam && (
+                  <div className="relative z-10 mt-3 pt-3 border-t border-border space-y-1">
+                    <p className="text-xs text-muted-foreground"><span className="font-semibold text-foreground">First Exam:</span> {level.firstExam}</p>
+                    <p className="text-xs text-muted-foreground"><span className="font-semibold text-foreground">Latest Exam:</span> {level.latestExam}</p>
+                  </div>
+                )}
               </motion.div>
             </Link>
           ))}
