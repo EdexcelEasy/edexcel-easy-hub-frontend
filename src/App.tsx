@@ -22,6 +22,7 @@ import PaperOptions from "./pages/PaperOptions";
 import SubjectResources from "./pages/SubjectResources";
 import Cheatsheets from "./pages/Cheatsheets";
 import CheatsheetSubjects from "./pages/CheatsheetSubjects";
+import WorksheetUnits from "./pages/WorksheetUnits";
 
 const queryClient = new QueryClient();
 

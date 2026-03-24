@@ -117,6 +117,8 @@ const SubjectResources = () => {
                 </div>
               );
 
+              const isWorksheetClickable = folder.name === "Worksheets" && curriculum === "igcse" && subject === "physics";
+
               return (
                 <motion.div
                   key={folder.name}
@@ -126,6 +128,8 @@ const SubjectResources = () => {
                 >
                   {folder.name === "Cheatsheet" ? (
                     <Link to="/cheatsheets">{cardContent}</Link>
+                  ) : isWorksheetClickable ? (
+                    <Link to={`/worksheets/${curriculum}/${subject}`}>{cardContent}</Link>
                   ) : cardContent}
                 </motion.div>
               );
