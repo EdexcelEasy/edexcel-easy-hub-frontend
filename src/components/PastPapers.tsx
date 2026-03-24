@@ -8,6 +8,8 @@ const levels = [
     title: "IGCSE",
     description: "Past papers and mark schemes for International GCSE examinations.",
     href: "/igcse-past-papers",
+    firstExam: "Jan 2019",
+    latestExam: "Jan 2026",
   },
   {
     icon: Layers,
