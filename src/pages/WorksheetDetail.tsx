@@ -80,53 +80,70 @@ const WorksheetDetail = () => {
           </motion.div>
 
           <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {worksheets.map((ws, index) => (
-              <motion.div
-                key={ws.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group relative bg-card rounded-xl border-2 border-[#1E3A8A] overflow-hidden hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all"
-              >
-                <div
-                  className={`h-2 bg-gradient-to-r ${
-                    ws.isFree ? "from-green-500 to-green-700" : "from-amber-500 to-amber-700"
-                  }`}
-                />
-                <div className="p-6 flex flex-col items-center text-center gap-4">
+            {worksheets.map((ws, index) => {
+              const cardContent = (
+                <motion.div
+                  key={ws.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="group relative bg-card rounded-xl border-2 border-[#1E3A8A] overflow-hidden hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer"
+                >
                   <div
-                    className={`w-14 h-14 rounded-xl flex items-center justify-center ${
-                      ws.isFree ? "bg-green-500/10" : "bg-amber-500/10"
-                    } group-hover:bg-[#1E3A8A] transition-colors`}
-                  >
-                    <FileText className="w-7 h-7 text-[#1E3A8A] group-hover:text-white transition-colors" />
-                  </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-[#1E3A8A] text-lg mb-2">
-                      {ws.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4">{ws.description}</p>
-                    <Badge
-                      className={
-                        ws.isFree
-                          ? "bg-green-500/10 text-green-700 border-green-500/30 hover:bg-green-500/20"
-                          : "bg-amber-500/10 text-amber-700 border-amber-500/30 hover:bg-amber-500/20"
-                      }
+                    className={`h-2 bg-gradient-to-r ${
+                      ws.isFree ? "from-green-500 to-green-700" : "from-amber-500 to-amber-700"
+                    }`}
+                  />
+                  <div className="p-6 flex flex-col items-center text-center gap-4">
+                    <div
+                      className={`w-14 h-14 rounded-xl flex items-center justify-center ${
+                        ws.isFree ? "bg-green-500/10" : "bg-amber-500/10"
+                      } group-hover:bg-[#1E3A8A] transition-colors`}
                     >
-                      {ws.isFree ? (
-                        <>
-                          <Unlock className="w-3 h-3 mr-1" /> Free
-                        </>
-                      ) : (
-                        <>
-                          <Lock className="w-3 h-3 mr-1" /> Paid
-                        </>
-                      )}
-                    </Badge>
+                      <FileText className="w-7 h-7 text-[#1E3A8A] group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-[#1E3A8A] text-lg mb-2">
+                        {ws.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-4">{ws.description}</p>
+                      <Badge
+                        className={
+                          ws.isFree
+                            ? "bg-green-500/10 text-green-700 border-green-500/30 hover:bg-green-500/20"
+                            : "bg-amber-500/10 text-amber-700 border-amber-500/30 hover:bg-amber-500/20"
+                        }
+                      >
+                        {ws.isFree ? (
+                          <>
+                            <Unlock className="w-3 h-3 mr-1" /> Free
+                          </>
+                        ) : (
+                          <>
+                            <Lock className="w-3 h-3 mr-1" /> Paid
+                          </>
+                        )}
+                      </Badge>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+
+              if (!ws.isFree) {
+                return (
+                  <a
+                    key={ws.title}
+                    href="https://wa.me/8801842900265?text=Hi!%20I%27m%20interested%20in%20purchasing%20paid%20worksheets."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {cardContent}
+                  </a>
+                );
+              }
+
+              return cardContent;
+            })}
           </div>
         </div>
       </main>
