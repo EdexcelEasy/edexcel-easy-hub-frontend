@@ -23,6 +23,7 @@ import SubjectResources from "./pages/SubjectResources";
 import Cheatsheets from "./pages/Cheatsheets";
 import CheatsheetSubjects from "./pages/CheatsheetSubjects";
 import WorksheetUnits from "./pages/WorksheetUnits";
+import WorksheetDetail from "./pages/WorksheetDetail";
 
 const queryClient = new QueryClient();
 
