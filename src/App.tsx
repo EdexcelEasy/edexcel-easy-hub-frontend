@@ -23,6 +23,7 @@ import SubjectResources from "./pages/SubjectResources";
 import Cheatsheets from "./pages/Cheatsheets";
 import CheatsheetSubjects from "./pages/CheatsheetSubjects";
 import WorksheetUnits from "./pages/WorksheetUnits";
+import WorksheetDetail from "./pages/WorksheetDetail";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/resources/:curriculum/:subject" element={<SubjectResources />} />
           <Route path="/worksheets/:curriculum/:subject" element={<WorksheetUnits />} />
+          <Route path="/worksheets/:curriculum/:subject/unit/:unit" element={<WorksheetDetail />} />
           <Route path="/:curriculum/:subject/:paper/:year" element={<PaperOptions />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

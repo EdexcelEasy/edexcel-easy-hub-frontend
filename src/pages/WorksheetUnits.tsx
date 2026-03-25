@@ -62,26 +62,27 @@ const WorksheetUnits = () => {
 
           <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-5">
             {data?.units.map((unit, index) => (
-              <motion.div
-                key={unit}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.07 }}
-                className="group relative bg-card rounded-xl border-2 border-[#1E3A8A] overflow-hidden hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all"
-              >
-                <div className="h-2 bg-gradient-to-r from-green-500 to-green-700" />
-                <div className="p-5 flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#1E3A8A]/10 flex items-center justify-center shrink-0 group-hover:bg-[#1E3A8A] transition-colors">
-                    <FileText className="w-6 h-6 text-[#1E3A8A] group-hover:text-white transition-colors" />
+              <Link key={unit} to={`/worksheets/${curriculum}/${subject}/unit/${index + 1}`}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.07 }}
+                  className="group relative bg-card rounded-xl border-2 border-[#1E3A8A] overflow-hidden hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer"
+                >
+                  <div className="h-2 bg-gradient-to-r from-green-500 to-green-700" />
+                  <div className="p-5 flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-[#1E3A8A]/10 flex items-center justify-center shrink-0 group-hover:bg-[#1E3A8A] transition-colors">
+                      <FileText className="w-6 h-6 text-[#1E3A8A] group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold text-[#1E3A8A] text-base">
+                        {unit}
+                      </h3>
+                      <p className="text-muted-foreground text-xs mt-1">3 Worksheets Available</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-heading font-bold text-[#1E3A8A] text-base">
-                      {unit}
-                    </h3>
-                    <p className="text-muted-foreground text-xs mt-1">Coming Soon</p>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
