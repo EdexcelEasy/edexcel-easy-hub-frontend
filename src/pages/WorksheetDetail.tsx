@@ -142,7 +142,16 @@ const WorksheetDetail = () => {
                 );
               }
 
-              return cardContent;
+              return (
+                <a
+                  key={ws.title}
+                  href="https://freeshort.info/lZMNuG"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {cardContent}
+                </a>
+              );
             })}
           </div>
         </div>
