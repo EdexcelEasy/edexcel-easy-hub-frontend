@@ -17,6 +17,22 @@ const unitNames: Record<string, string> = {
   "8": "Astrophysics",
 };
 
+// Structure: freeWorksheetLinks[curriculum][subject][unit] = link or ""
+const freeWorksheetLinks: Record<string, Record<string, Record<string, string>>> = {
+  igcse: {
+    physics: {
+      "1": "https://freeshort.info/lZMNuG",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+    },
+  },
+};
+
 const worksheets = [
   {
     title: "Worksheet 1",
@@ -129,6 +145,10 @@ const WorksheetDetail = () => {
                 </motion.div>
               );
 
+              const freeLink = curriculum && subject && unit
+                ? freeWorksheetLinks[curriculum]?.[subject]?.[unit] || ""
+                : "";
+
               if (!ws.isFree) {
                 return (
                   <a
@@ -142,16 +162,20 @@ const WorksheetDetail = () => {
                 );
               }
 
-              return (
-                <a
-                  key={ws.title}
-                  href="https://freeshort.info/lZMNuG"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {cardContent}
-                </a>
-              );
+              if (freeLink) {
+                return (
+                  <a
+                    key={ws.title}
+                    href={freeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {cardContent}
+                  </a>
+                );
+              }
+
+              return <div key={ws.title} className="opacity-60 cursor-not-allowed">{cardContent}</div>;
             })}
           </div>
         </div>
