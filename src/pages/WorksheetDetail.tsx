@@ -17,6 +17,22 @@ const unitNames: Record<string, string> = {
   "8": "Astrophysics",
 };
 
+// Structure: freeWorksheetLinks[curriculum][subject][unit] = link or ""
+const freeWorksheetLinks: Record<string, Record<string, Record<string, string>>> = {
+  igcse: {
+    physics: {
+      "1": "https://freeshort.info/lZMNuG",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+    },
+  },
+};
+
 const worksheets = [
   {
     title: "Worksheet 1",
