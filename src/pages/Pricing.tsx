@@ -61,7 +61,7 @@ const Pricing = () => {
                     For pricing details and to purchase cheatsheets or any premium content, reach out to us directly on WhatsApp.
                   </p>
                   <a
-                    href="https://wa.me/8801842900265"
+                    href="https://wa.me/message/WK334XB54YYRL1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-2 inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#25D366] text-white font-bold text-sm hover:bg-[#20BD5A] transition-colors shadow-lg"
