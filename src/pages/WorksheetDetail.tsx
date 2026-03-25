@@ -133,7 +133,7 @@ const WorksheetDetail = () => {
                 return (
                   <a
                     key={ws.title}
-                    href="https://wa.me/8801842900265?text=Hi!%20I%27m%20interested%20in%20purchasing%20paid%20worksheets."
+                    href="https://wa.me/message/WK334XB54YYRL1"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
