@@ -219,44 +219,7 @@ const subjectSpecs: Record<string, { name: string; topics: { unit: string; topic
     name: "Mathematics A",
     topics: [
       {
-        unit: "Chapter 1: Kinematics",
-        topics: [
-          "Vertical motion",
-          "Horizontal motion",
-        ],
-      },
-      {
-        unit: "Chapter 2: Arithmetic",
-        topics: [
-          "Ratio & percentage",
-          "Speed, distance, time",
-          "Unitary method",
-          "Map scale",
-        ],
-      },
-      {
-        unit: "Chapter 3: Functions",
-        topics: [
-          "Evaluation",
-          "Composite function",
-          "Inverse function",
-          "Solving equation",
-          "Mixed",
-        ],
-      },
-      {
-        unit: "Chapter 4: Vectors",
-        topics: [
-          "Addition, subtraction",
-          "Modulus, angle",
-          "Parallel vector",
-          "Equal vector",
-          "Column vector",
-          "Vector geometry",
-        ],
-      },
-      {
-        unit: "Chapter 5: Algebra",
+        unit: "Chapter 1: Algebra",
         topics: [
           "Linear equations and indices",
           "Quadratic equation",
@@ -272,6 +235,43 @@ const subjectSpecs: Record<string, { name: string; topics: { unit: string; topic
           "Sequence",
           "Recurring values",
           "Compound interest & simple interest",
+        ],
+      },
+      {
+        unit: "Chapter 2: Kinematics",
+        topics: [
+          "Vertical motion",
+          "Horizontal motion",
+        ],
+      },
+      {
+        unit: "Chapter 3: Arithmetic",
+        topics: [
+          "Ratio & percentage",
+          "Speed, distance, time",
+          "Unitary method",
+          "Map scale",
+        ],
+      },
+      {
+        unit: "Chapter 4: Functions",
+        topics: [
+          "Evaluation",
+          "Composite function",
+          "Inverse function",
+          "Solving equation",
+          "Mixed",
+        ],
+      },
+      {
+        unit: "Chapter 5: Vectors",
+        topics: [
+          "Addition, subtraction",
+          "Modulus, angle",
+          "Parallel vector",
+          "Equal vector",
+          "Column vector",
+          "Vector geometry",
         ],
       },
       {
@@ -360,44 +360,7 @@ const subjectSpecs: Record<string, { name: string; topics: { unit: string; topic
     name: "Mathematics B",
     topics: [
       {
-        unit: "Chapter 1: Kinematics",
-        topics: [
-          "Vertical motion",
-          "Horizontal motion",
-        ],
-      },
-      {
-        unit: "Chapter 2: Arithmetic",
-        topics: [
-          "Ratio & percentage",
-          "Speed, distance, time",
-          "Unitary method",
-          "Map scale",
-        ],
-      },
-      {
-        unit: "Chapter 3: Functions",
-        topics: [
-          "Evaluation",
-          "Composite function",
-          "Inverse function",
-          "Solving equation",
-          "Mixed",
-        ],
-      },
-      {
-        unit: "Chapter 4: Vectors",
-        topics: [
-          "Addition, subtraction",
-          "Modulus, angle",
-          "Parallel vector",
-          "Equal vector",
-          "Column vector",
-          "Vector geometry",
-        ],
-      },
-      {
-        unit: "Chapter 5: Algebra",
+        unit: "Chapter 1: Algebra",
         topics: [
           "Linear equations and indices",
           "Quadratic equation",
@@ -411,6 +374,43 @@ const subjectSpecs: Record<string, { name: string; topics: { unit: string; topic
           "Simplification",
           "Evaluation",
           "Sequence",
+        ],
+      },
+      {
+        unit: "Chapter 2: Kinematics",
+        topics: [
+          "Vertical motion",
+          "Horizontal motion",
+        ],
+      },
+      {
+        unit: "Chapter 3: Arithmetic",
+        topics: [
+          "Ratio & percentage",
+          "Speed, distance, time",
+          "Unitary method",
+          "Map scale",
+        ],
+      },
+      {
+        unit: "Chapter 4: Functions",
+        topics: [
+          "Evaluation",
+          "Composite function",
+          "Inverse function",
+          "Solving equation",
+          "Mixed",
+        ],
+      },
+      {
+        unit: "Chapter 5: Vectors",
+        topics: [
+          "Addition, subtraction",
+          "Modulus, angle",
+          "Parallel vector",
+          "Equal vector",
+          "Column vector",
+          "Vector geometry",
         ],
       },
       {
