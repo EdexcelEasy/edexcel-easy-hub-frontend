@@ -125,7 +125,7 @@ const WorksheetDetail = () => {
               {curriculumLabel} {subjectName}
             </span>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[#1E3A8A] mb-4">
-              Unit {unit}:{" "}
+              {subject?.startsWith("mathematics") ? "Chapter" : "Unit"} {unit}:{" "}
               <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">
                 {unitName}
               </span>
