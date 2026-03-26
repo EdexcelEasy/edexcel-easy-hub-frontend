@@ -92,10 +92,16 @@ const WorksheetDetail = () => {
     unit: string;
   }>();
 
-  const unitName = unit ? unitNames[unit] || `Unit ${unit}` : "Unknown";
+  const subjectUnitNames = subject ? unitNamesMap[subject] : null;
+  const unitName = unit && subjectUnitNames ? subjectUnitNames[unit] || `Unit ${unit}` : "Unknown";
   const curriculumLabel =
     curriculum === "ial" ? "IAL" : curriculum === "igcse" ? "IGCSE" : "IGCSE Modular";
-  const subjectName = "Physics";
+  const subjectNames: Record<string, string> = {
+    physics: "Physics",
+    "mathematics-a": "Mathematics A",
+    "mathematics-b": "Mathematics B",
+  };
+  const subjectName = subject ? subjectNames[subject] || subject : "Unknown";
 
   return (
     <div className="min-h-screen bg-background">

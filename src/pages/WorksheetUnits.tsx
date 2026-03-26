@@ -19,6 +19,42 @@ const worksheetData: Record<string, { subjectName: string; units: string[] }> = 
       "Unit 8: Astrophysics",
     ],
   },
+  "igcse-mathematics-a": {
+    subjectName: "Mathematics A",
+    units: [
+      "Chapter 1: Algebra",
+      "Chapter 2: Kinematics",
+      "Chapter 3: Arithmetic",
+      "Chapter 4: Functions",
+      "Chapter 5: Vectors",
+      "Chapter 6: Statistics",
+      "Chapter 7: Sets",
+      "Chapter 8: Probability",
+      "Chapter 9: Trigonometry",
+      "Chapter 10: Geometry",
+      "Chapter 11: Mensuration",
+      "Chapter 12: Equation Graph",
+      "Chapter 13: Matrix",
+    ],
+  },
+  "igcse-mathematics-b": {
+    subjectName: "Mathematics B",
+    units: [
+      "Chapter 1: Algebra",
+      "Chapter 2: Kinematics",
+      "Chapter 3: Arithmetic",
+      "Chapter 4: Functions",
+      "Chapter 5: Vectors",
+      "Chapter 6: Statistics",
+      "Chapter 7: Sets",
+      "Chapter 8: Probability",
+      "Chapter 9: Trigonometry",
+      "Chapter 10: Geometry",
+      "Chapter 11: Mensuration",
+      "Chapter 12: Equation Graph",
+      "Chapter 13: Matrix",
+    ],
+  },
 };
 
 const WorksheetUnits = () => {
