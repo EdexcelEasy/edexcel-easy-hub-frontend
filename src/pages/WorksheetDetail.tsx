@@ -6,15 +6,47 @@ import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const unitNames: Record<string, string> = {
-  "1": "Forces and Motion",
-  "2": "Electricity",
-  "3": "Waves",
-  "4": "Energy Resources and Energy Transfer",
-  "5": "Solids, Liquids and Gases",
-  "6": "Magnetism and Electromagnetism",
-  "7": "Radioactivity and Particles",
-  "8": "Astrophysics",
+const unitNamesMap: Record<string, Record<string, string>> = {
+  physics: {
+    "1": "Forces and Motion",
+    "2": "Electricity",
+    "3": "Waves",
+    "4": "Energy Resources and Energy Transfer",
+    "5": "Solids, Liquids and Gases",
+    "6": "Magnetism and Electromagnetism",
+    "7": "Radioactivity and Particles",
+    "8": "Astrophysics",
+  },
+  "mathematics-a": {
+    "1": "Algebra",
+    "2": "Kinematics",
+    "3": "Arithmetic",
+    "4": "Functions",
+    "5": "Vectors",
+    "6": "Statistics",
+    "7": "Sets",
+    "8": "Probability",
+    "9": "Trigonometry",
+    "10": "Geometry",
+    "11": "Mensuration",
+    "12": "Equation Graph",
+    "13": "Matrix",
+  },
+  "mathematics-b": {
+    "1": "Algebra",
+    "2": "Kinematics",
+    "3": "Arithmetic",
+    "4": "Functions",
+    "5": "Vectors",
+    "6": "Statistics",
+    "7": "Sets",
+    "8": "Probability",
+    "9": "Trigonometry",
+    "10": "Geometry",
+    "11": "Mensuration",
+    "12": "Equation Graph",
+    "13": "Matrix",
+  },
 };
 
 // Structure: freeWorksheetLinks[curriculum][subject][unit] = link or ""
