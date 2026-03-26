@@ -117,7 +117,7 @@ const SubjectResources = () => {
                 </div>
               );
 
-              const isWorksheetClickable = folder.name === "Worksheets" && curriculum === "igcse" && subject === "physics";
+              const isWorksheetClickable = folder.name === "Worksheets" && curriculum === "igcse" && (subject === "physics" || subject === "mathematics-a" || subject === "mathematics-b");
 
               return (
                 <motion.div

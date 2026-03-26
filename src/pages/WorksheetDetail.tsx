@@ -6,15 +6,47 @@ import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const unitNames: Record<string, string> = {
-  "1": "Forces and Motion",
-  "2": "Electricity",
-  "3": "Waves",
-  "4": "Energy Resources and Energy Transfer",
-  "5": "Solids, Liquids and Gases",
-  "6": "Magnetism and Electromagnetism",
-  "7": "Radioactivity and Particles",
-  "8": "Astrophysics",
+const unitNamesMap: Record<string, Record<string, string>> = {
+  physics: {
+    "1": "Forces and Motion",
+    "2": "Electricity",
+    "3": "Waves",
+    "4": "Energy Resources and Energy Transfer",
+    "5": "Solids, Liquids and Gases",
+    "6": "Magnetism and Electromagnetism",
+    "7": "Radioactivity and Particles",
+    "8": "Astrophysics",
+  },
+  "mathematics-a": {
+    "1": "Algebra",
+    "2": "Kinematics",
+    "3": "Arithmetic",
+    "4": "Functions",
+    "5": "Vectors",
+    "6": "Statistics",
+    "7": "Sets",
+    "8": "Probability",
+    "9": "Trigonometry",
+    "10": "Geometry",
+    "11": "Mensuration",
+    "12": "Equation Graph",
+    "13": "Matrix",
+  },
+  "mathematics-b": {
+    "1": "Algebra",
+    "2": "Kinematics",
+    "3": "Arithmetic",
+    "4": "Functions",
+    "5": "Vectors",
+    "6": "Statistics",
+    "7": "Sets",
+    "8": "Probability",
+    "9": "Trigonometry",
+    "10": "Geometry",
+    "11": "Mensuration",
+    "12": "Equation Graph",
+    "13": "Matrix",
+  },
 };
 
 // Structure: freeWorksheetLinks[curriculum][subject][unit] = link or ""
@@ -22,13 +54,15 @@ const freeWorksheetLinks: Record<string, Record<string, Record<string, string>>>
   igcse: {
     physics: {
       "1": "https://freeshort.info/lZMNuG",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
+      "2": "", "3": "", "4": "", "5": "", "6": "", "7": "", "8": "",
+    },
+    "mathematics-a": {
+      "1": "", "2": "", "3": "", "4": "", "5": "", "6": "", "7": "",
+      "8": "", "9": "", "10": "", "11": "", "12": "", "13": "",
+    },
+    "mathematics-b": {
+      "1": "", "2": "", "3": "", "4": "", "5": "", "6": "", "7": "",
+      "8": "", "9": "", "10": "", "11": "", "12": "", "13": "",
     },
   },
 };
@@ -58,10 +92,16 @@ const WorksheetDetail = () => {
     unit: string;
   }>();
 
-  const unitName = unit ? unitNames[unit] || `Unit ${unit}` : "Unknown";
+  const subjectUnitNames = subject ? unitNamesMap[subject] : null;
+  const unitName = unit && subjectUnitNames ? subjectUnitNames[unit] || `Unit ${unit}` : "Unknown";
   const curriculumLabel =
     curriculum === "ial" ? "IAL" : curriculum === "igcse" ? "IGCSE" : "IGCSE Modular";
-  const subjectName = "Physics";
+  const subjectNames: Record<string, string> = {
+    physics: "Physics",
+    "mathematics-a": "Mathematics A",
+    "mathematics-b": "Mathematics B",
+  };
+  const subjectName = subject ? subjectNames[subject] || subject : "Unknown";
 
   return (
     <div className="min-h-screen bg-background">
@@ -85,7 +125,7 @@ const WorksheetDetail = () => {
               {curriculumLabel} {subjectName}
             </span>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[#1E3A8A] mb-4">
-              Unit {unit}:{" "}
+              {subject?.startsWith("mathematics") ? "Chapter" : "Unit"} {unit}:{" "}
               <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">
                 {unitName}
               </span>
