@@ -77,6 +77,26 @@ const WorksheetDetail = () => {
     unit: string;
   }>();
 
+  // Fetch free worksheet link from DB
+  const { data: worksheetLinks } = useQuery({
+    queryKey: ["worksheet-links", curriculum, subject, unit],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("worksheet_links")
+        .select("worksheet_number, link")
+        .eq("curriculum", curriculum!)
+        .eq("subject", subject!)
+        .eq("unit", unit!);
+      if (error) throw error;
+      return data || [];
+    },
+    enabled: !!curriculum && !!subject && !!unit,
+  });
+
+  const getLink = (worksheetNumber: number) => {
+    return worksheetLinks?.find((w) => w.worksheet_number === worksheetNumber)?.link || "";
+  };
+
   const subjectUnitNames = subject ? unitNamesMap[subject] : null;
   const unitName = unit && subjectUnitNames ? subjectUnitNames[unit] || `Unit ${unit}` : "Unknown";
   const curriculumLabel =
