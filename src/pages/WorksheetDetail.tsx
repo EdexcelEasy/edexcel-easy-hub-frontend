@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, FileText, Lock, Unlock } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { supabase } from "@/integrations/supabase/client";
 
 const unitNamesMap: Record<string, Record<string, string>> = {
   physics: {
@@ -49,23 +51,6 @@ const unitNamesMap: Record<string, Record<string, string>> = {
   },
 };
 
-// Structure: freeWorksheetLinks[curriculum][subject][unit] = link or ""
-const freeWorksheetLinks: Record<string, Record<string, Record<string, string>>> = {
-  igcse: {
-    physics: {
-      "1": "https://freeshort.info/lZMNuG",
-      "2": "", "3": "", "4": "", "5": "", "6": "", "7": "", "8": "",
-    },
-    "mathematics-a": {
-      "1": "", "2": "", "3": "", "4": "", "5": "", "6": "", "7": "",
-      "8": "", "9": "", "10": "", "11": "", "12": "", "13": "",
-    },
-    "mathematics-b": {
-      "1": "", "2": "", "3": "", "4": "", "5": "", "6": "", "7": "",
-      "8": "", "9": "", "10": "", "11": "", "12": "", "13": "",
-    },
-  },
-};
 
 const worksheets = [
   {
@@ -91,6 +76,26 @@ const WorksheetDetail = () => {
     subject: string;
     unit: string;
   }>();
+
+  // Fetch free worksheet link from DB
+  const { data: worksheetLinks } = useQuery({
+    queryKey: ["worksheet-links", curriculum, subject, unit],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("worksheet_links")
+        .select("worksheet_number, link")
+        .eq("curriculum", curriculum!)
+        .eq("subject", subject!)
+        .eq("unit", unit!);
+      if (error) throw error;
+      return data || [];
+    },
+    enabled: !!curriculum && !!subject && !!unit,
+  });
+
+  const getLink = (worksheetNumber: number) => {
+    return worksheetLinks?.find((w) => w.worksheet_number === worksheetNumber)?.link || "";
+  };
 
   const subjectUnitNames = subject ? unitNamesMap[subject] : null;
   const unitName = unit && subjectUnitNames ? subjectUnitNames[unit] || `Unit ${unit}` : "Unknown";
@@ -185,9 +190,8 @@ const WorksheetDetail = () => {
                 </motion.div>
               );
 
-              const freeLink = curriculum && subject && unit
-                ? freeWorksheetLinks[curriculum]?.[subject]?.[unit] || ""
-                : "";
+              const worksheetNumber = index + 1;
+              const freeLink = ws.isFree ? getLink(worksheetNumber) : "";
 
               if (!ws.isFree) {
                 return (
