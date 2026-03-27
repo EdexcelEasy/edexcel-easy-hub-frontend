@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, FileText, Lock, Unlock } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { supabase } from "@/integrations/supabase/client";
 
 const unitNamesMap: Record<string, Record<string, string>> = {
   physics: {
