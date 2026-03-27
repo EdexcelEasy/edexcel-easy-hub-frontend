@@ -51,23 +51,6 @@ const unitNamesMap: Record<string, Record<string, string>> = {
   },
 };
 
-// Structure: freeWorksheetLinks[curriculum][subject][unit] = link or ""
-const freeWorksheetLinks: Record<string, Record<string, Record<string, string>>> = {
-  igcse: {
-    physics: {
-      "1": "https://freeshort.info/lZMNuG",
-      "2": "", "3": "", "4": "", "5": "", "6": "", "7": "", "8": "",
-    },
-    "mathematics-a": {
-      "1": "", "2": "", "3": "", "4": "", "5": "", "6": "", "7": "",
-      "8": "", "9": "", "10": "", "11": "", "12": "", "13": "",
-    },
-    "mathematics-b": {
-      "1": "", "2": "", "3": "", "4": "", "5": "", "6": "", "7": "",
-      "8": "", "9": "", "10": "", "11": "", "12": "", "13": "",
-    },
-  },
-};
 
 const worksheets = [
   {
