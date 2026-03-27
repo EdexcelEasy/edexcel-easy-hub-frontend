@@ -190,9 +190,8 @@ const WorksheetDetail = () => {
                 </motion.div>
               );
 
-              const freeLink = curriculum && subject && unit
-                ? freeWorksheetLinks[curriculum]?.[subject]?.[unit] || ""
-                : "";
+              const worksheetNumber = index + 1;
+              const freeLink = ws.isFree ? getLink(worksheetNumber) : "";
 
               if (!ws.isFree) {
                 return (
