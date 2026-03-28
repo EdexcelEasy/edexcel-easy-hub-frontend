@@ -182,24 +182,11 @@ const WorksheetDetail = () => {
     unit: string;
   }>();
 
-  // Fetch free worksheet link from DB
-  const { data: worksheetLinks } = useQuery({
-    queryKey: ["worksheet-links", curriculum, subject, unit],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("worksheet_links")
-        .select("worksheet_number, link")
-        .eq("curriculum", curriculum!)
-        .eq("subject", subject!)
-        .eq("unit", unit!);
-      if (error) throw error;
-      return data || [];
-    },
-    enabled: !!curriculum && !!subject && !!unit,
-  });
-
+  // Get free worksheet 1 link from the hardcoded map
   const getLink = (worksheetNumber: number) => {
-    return worksheetLinks?.find((w) => w.worksheet_number === worksheetNumber)?.link || "";
+    if (worksheetNumber !== 1) return "";
+    const key = `${curriculum}/${subject}/${unit}`;
+    return worksheetFreeLinks[key] || "";
   };
 
   const subjectUnitNames = subject ? unitNamesMap[subject] : null;
