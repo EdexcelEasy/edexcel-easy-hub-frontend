@@ -50,6 +50,113 @@ const unitNamesMap: Record<string, Record<string, string>> = {
 };
 
 
+// =====================================================================
+// FREE WORKSHEET 1 LINKS
+// Format: "curriculum/subject/unit" → URL
+// Add your links here. Leave empty string "" if not yet available.
+// =====================================================================
+const worksheetFreeLinks: Record<string, string> = {
+  // ---- IGCSE Physics (Units 1–8) ----
+  "igcse/physics/1": "https://shorturl.at/6pv5G", // Forces and Motion — PLACEHOLDER, update if needed
+  "igcse/physics/2": "", // Electricity
+  "igcse/physics/3": "", // Waves
+  "igcse/physics/4": "", // Energy Resources and Energy Transfer
+  "igcse/physics/5": "", // Solids, Liquids and Gases
+  "igcse/physics/6": "", // Magnetism and Electromagnetism
+  "igcse/physics/7": "", // Radioactivity and Particles
+  "igcse/physics/8": "", // Astrophysics
+
+  // ---- IGCSE Mathematics A (Chapters 1–13) ----
+  "igcse/mathematics-a/1": "https://shorturl.at/6pv5G", // Algebra
+  "igcse/mathematics-a/2": "", // Kinematics
+  "igcse/mathematics-a/3": "", // Arithmetic
+  "igcse/mathematics-a/4": "", // Functions
+  "igcse/mathematics-a/5": "", // Vectors
+  "igcse/mathematics-a/6": "", // Statistics
+  "igcse/mathematics-a/7": "", // Sets
+  "igcse/mathematics-a/8": "", // Probability
+  "igcse/mathematics-a/9": "", // Trigonometry
+  "igcse/mathematics-a/10": "", // Geometry
+  "igcse/mathematics-a/11": "", // Mensuration
+  "igcse/mathematics-a/12": "", // Equation Graph
+  "igcse/mathematics-a/13": "", // Matrix
+
+  // ---- IGCSE Mathematics B (Chapters 1–13) ----
+  "igcse/mathematics-b/1": "", // Algebra
+  "igcse/mathematics-b/2": "", // Kinematics
+  "igcse/mathematics-b/3": "", // Arithmetic
+  "igcse/mathematics-b/4": "", // Functions
+  "igcse/mathematics-b/5": "", // Vectors
+  "igcse/mathematics-b/6": "", // Statistics
+  "igcse/mathematics-b/7": "", // Sets
+  "igcse/mathematics-b/8": "", // Probability
+  "igcse/mathematics-b/9": "", // Trigonometry
+  "igcse/mathematics-b/10": "", // Geometry
+  "igcse/mathematics-b/11": "", // Mensuration
+  "igcse/mathematics-b/12": "", // Equation Graph
+  "igcse/mathematics-b/13": "", // Matrix
+
+  // ---- IGCSE Chemistry (Units 1–8) ----
+  "igcse/chemistry/1": "",
+  "igcse/chemistry/2": "",
+  "igcse/chemistry/3": "",
+  "igcse/chemistry/4": "",
+  "igcse/chemistry/5": "",
+  "igcse/chemistry/6": "",
+  "igcse/chemistry/7": "",
+  "igcse/chemistry/8": "",
+
+  // ---- IGCSE Biology (Units 1–8) ----
+  "igcse/biology/1": "",
+  "igcse/biology/2": "",
+  "igcse/biology/3": "",
+  "igcse/biology/4": "",
+  "igcse/biology/5": "",
+  "igcse/biology/6": "",
+  "igcse/biology/7": "",
+  "igcse/biology/8": "",
+
+  // ---- IGCSE Human Biology (Units 1–8) ----
+  "igcse/human-biology/1": "",
+  "igcse/human-biology/2": "",
+  "igcse/human-biology/3": "",
+  "igcse/human-biology/4": "",
+  "igcse/human-biology/5": "",
+  "igcse/human-biology/6": "",
+  "igcse/human-biology/7": "",
+  "igcse/human-biology/8": "",
+
+  // ---- IGCSE ICT (Units 1–8) ----
+  "igcse/ict/1": "",
+  "igcse/ict/2": "",
+  "igcse/ict/3": "",
+  "igcse/ict/4": "",
+  "igcse/ict/5": "",
+  "igcse/ict/6": "",
+  "igcse/ict/7": "",
+  "igcse/ict/8": "",
+
+  // ---- IGCSE Computer Science (Units 1–8) ----
+  "igcse/computer-science/1": "",
+  "igcse/computer-science/2": "",
+  "igcse/computer-science/3": "",
+  "igcse/computer-science/4": "",
+  "igcse/computer-science/5": "",
+  "igcse/computer-science/6": "",
+  "igcse/computer-science/7": "",
+  "igcse/computer-science/8": "",
+
+  // ---- IGCSE Further Pure Mathematics (Units 1–8) ----
+  "igcse/further-pure-mathematics/1": "",
+  "igcse/further-pure-mathematics/2": "",
+  "igcse/further-pure-mathematics/3": "",
+  "igcse/further-pure-mathematics/4": "",
+  "igcse/further-pure-mathematics/5": "",
+  "igcse/further-pure-mathematics/6": "",
+  "igcse/further-pure-mathematics/7": "",
+  "igcse/further-pure-mathematics/8": "",
+};
+
 const worksheets = [
   {
     title: "Worksheet 1",
