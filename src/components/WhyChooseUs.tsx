@@ -1,26 +1,31 @@
 import { motion } from "framer-motion";
-import { Video, FileText, Brain, Clock, CheckCircle } from "lucide-react";
+import { BookOpen, FileText, Zap, Mail, CheckCircle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
-    icon: Video,
-    title: "Video Lessons",
-    description: "Crystal-clear explanations of every concept with engaging video content.",
+    icon: BookOpen,
+    title: "Subjects",
+    description: "Get simplified specification, worksheets, notes and more.",
+    link: "#subjects",
   },
   {
     icon: FileText,
-    title: "Revision Notes",
-    description: "Comprehensive, exam-focused notes covering the complete syllabus.",
+    title: "Past Papers",
+    description: "Get all the Past Papers & Mark Schemes all in one place.",
+    link: "#past-papers",
   },
   {
-    icon: Brain,
-    title: "Practice Questions",
-    description: "Thousands of past paper questions with detailed mark scheme answers.",
+    icon: Zap,
+    title: "Cheatsheets & Important Questions",
+    description: "Get formulas, definitions, diagrams and important questions all in one place.",
+    link: "/cheatsheets",
   },
   {
-    icon: Clock,
-    title: "Quick Revision",
-    description: "Time-saving summaries perfect for last-minute exam preparation.",
+    icon: Mail,
+    title: "Inbox for Pricing",
+    description: "Get the price and fees for our classes and paid work.",
+    link: "/pricing",
   },
 ];
 
