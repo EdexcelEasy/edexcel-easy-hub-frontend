@@ -268,7 +268,7 @@ const Navbar = () => {
               to="/cheatsheets"
               className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
-              Cheatsheets & Important Questions
+              Cheatsheets
             </Link>
 
             {/* Instructors */}
