@@ -59,32 +59,33 @@ const WhyChooseUs = () => {
 
         {/* Feature Cards */}
         <div className="grid grid-cols-4 gap-3">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative bg-card rounded-xl p-3 md:p-4 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all"
-            >
-              {/* Background Shape */}
-              <div className="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-muted/50 rounded-bl-[60px] -z-0" />
-              
-              {/* Icon */}
-              <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-2 md:mb-3 bg-background">
-                <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-[#1E3A8A]" />
-              </div>
-              
-              {/* Content */}
-              <h3 className="relative z-10 font-heading font-bold text-xs md:text-sm lg:text-base text-[#1E3A8A] mb-1">
-                {feature.title}
-              </h3>
-              <p className="relative z-10 text-muted-foreground text-[10px] md:text-xs lg:text-sm leading-tight">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+          {features.map((feature, index) => {
+            const isExternal = feature.link.startsWith("#");
+            const Wrapper = isExternal ? "a" : Link;
+            const wrapperProps = isExternal ? { href: feature.link } : { to: feature.link };
+            return (
+              <Wrapper key={feature.title} {...(wrapperProps as any)}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="relative bg-card rounded-xl p-3 md:p-4 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer h-full"
+                >
+                  <div className="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-muted/50 rounded-bl-[60px] -z-0" />
+                  <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-2 md:mb-3 bg-background">
+                    <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-[#1E3A8A]" />
+                  </div>
+                  <h3 className="relative z-10 font-heading font-bold text-xs md:text-sm lg:text-base text-[#1E3A8A] mb-1">
+                    {feature.title}
+                  </h3>
+                  <p className="relative z-10 text-muted-foreground text-[10px] md:text-xs lg:text-sm leading-tight">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              </Wrapper>
+            );
+          })}
         </div>
       </div>
     </section>
