@@ -263,12 +263,12 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-            {/* Cheatsheets */}
+            {/* Cheatsheets & Important Questions */}
             <Link
               to="/cheatsheets"
               className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
-              Cheatsheets
+              Cheatsheets & Important Questions
             </Link>
 
             {/* Instructors */}
