@@ -401,7 +401,7 @@ const Navbar = () => {
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
                 onClick={() => setIsOpen(false)}
               >
-                Cheatsheets & Important Questions
+                Cheatsheets
               </Link>
               <a
                 href="#instructors"
