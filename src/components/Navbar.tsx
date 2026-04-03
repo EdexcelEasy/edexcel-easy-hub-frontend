@@ -263,12 +263,12 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
 
-            {/* Cheatsheets */}
+            {/* Cheatsheets & Important Questions */}
             <Link
               to="/cheatsheets"
               className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
-              Cheatsheets
+              Cheatsheets & Important Questions
             </Link>
 
             {/* Instructors */}
@@ -401,7 +401,7 @@ const Navbar = () => {
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
                 onClick={() => setIsOpen(false)}
               >
-                Cheatsheets
+                Cheatsheets & Important Questions
               </Link>
               <a
                 href="#instructors"
