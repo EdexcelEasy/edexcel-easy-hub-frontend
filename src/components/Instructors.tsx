@@ -1,9 +1,20 @@
 import { motion } from "framer-motion";
 import { Youtube, ExternalLink } from "lucide-react";
+import instructorMrimmoaee from "@/assets/instructor-mrimmoaee.png";
 import instructorMohima from "@/assets/instructor-mohima.png";
 import instructorTabeeb from "@/assets/instructor-tabeeb.png";
 
 const instructors = [
+  {
+    name: "Mrimmoaee Ahmed Shamee",
+    role: "IT / ICT Teacher",
+    experience: "8+ years of experience",
+    youtube: {
+      label: "Mrimmoaee Ahmed",
+      url: "https://www.youtube.com/@edexceleasyict",
+    },
+    image: instructorMrimmoaee,
+  },
   {
     name: "Mohima Ahmed Sneha",
     role: "Physics & Maths Teacher",
