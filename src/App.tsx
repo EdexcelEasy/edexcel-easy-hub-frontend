@@ -24,6 +24,7 @@ import Cheatsheets from "./pages/Cheatsheets";
 import CheatsheetSubjects from "./pages/CheatsheetSubjects";
 import WorksheetUnits from "./pages/WorksheetUnits";
 import WorksheetDetail from "./pages/WorksheetDetail";
+import FloatingChat from "./components/FloatingChat";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <FloatingChat />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
