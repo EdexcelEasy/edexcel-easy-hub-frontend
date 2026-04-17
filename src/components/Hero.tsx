@@ -25,7 +25,12 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6"
             >
-              <Star className="w-4 h-4 text-accent fill-accent" />
+              <motion.span
+                animate={{ rotate: [0, 15, -10, 15, 0] }}
+                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+              >
+                <Star className="w-4 h-4 text-accent fill-accent" />
+              </motion.span>
               <span className="text-sm font-medium text-foreground">
                 Trusted by 10,000+ Students
               </span>
