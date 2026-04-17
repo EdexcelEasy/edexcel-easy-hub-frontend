@@ -19,8 +19,9 @@ const levels = [
 
 const Subjects = () => {
   return (
-    <section id="subjects" className="py-20">
-      <div className="container mx-auto px-4">
+    <section id="subjects" className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-pattern-dots bg-pattern-fade pointer-events-none" />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
