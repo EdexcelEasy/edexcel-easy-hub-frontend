@@ -51,11 +51,12 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="relative bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-6 border border-primary-foreground/20"
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="relative bg-primary-foreground/10 backdrop-blur-sm rounded-2xl p-6 border border-primary-foreground/20 hover:border-accent/60 hover:shadow-[0_8px_30px_rgba(250,204,21,0.25)] transition-colors"
             >
               {/* Quote Icon */}
               <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center">
