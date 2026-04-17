@@ -53,20 +53,25 @@ const Instructors = () => {
           {instructors.map((instructor, index) => (
             <motion.div
               key={instructor.name}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card rounded-xl p-6 border border-border hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all text-center"
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              whileHover={{ y: -8 }}
+              className="bg-card rounded-xl p-6 border border-border hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-colors text-center"
             >
               {/* Circular Photo Frame */}
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-[#1E3A8A] overflow-hidden bg-muted">
+              <motion.div
+                whileHover={{ scale: 1.08, rotate: 3 }}
+                transition={{ type: "spring", stiffness: 200 }}
+                className="w-32 h-32 mx-auto mb-6 rounded-full border-4 border-[#1E3A8A] overflow-hidden bg-muted"
+              >
                 <img
                   src={instructor.image}
                   alt={instructor.name}
                   className="w-full h-full object-cover"
                 />
-              </div>
+              </motion.div>
 
               {/* Name */}
               <h3 className="font-heading font-bold text-xl text-[#1E3A8A] mb-2">

@@ -47,11 +47,12 @@ const Subjects = () => {
           {levels.map((level, index) => (
             <Link key={level.title} to={level.link}>
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative bg-card rounded-xl p-4 md:p-6 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer h-full"
+                whileHover={{ y: -8, scale: 1.03 }}
+                className="relative bg-card rounded-xl p-4 md:p-6 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-colors cursor-pointer h-full"
               >
                 {/* Background Shape */}
                 <div className="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-muted/50 rounded-bl-[80px] -z-0" />
