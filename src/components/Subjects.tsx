@@ -56,12 +56,16 @@ const Subjects = () => {
                 className="relative bg-card rounded-xl p-4 md:p-6 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-colors cursor-pointer h-full"
               >
                 {/* Background Shape */}
-                <div className="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-muted/50 rounded-bl-[80px] -z-0" />
+                <div className="absolute top-0 right-0 w-16 h-16 md:w-20 md:h-20 bg-muted/50 rounded-bl-[80px] -z-0 group-hover:bg-[#FACC15]/30 transition-colors" />
                 
                 {/* Icon */}
-                <div className="relative z-10 w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-3 md:mb-4 bg-background">
+                <motion.div
+                  whileHover={{ rotate: -8, scale: 1.15 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="relative z-10 w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-3 md:mb-4 bg-background group-hover:border-[#1E3A8A]"
+                >
                   <level.icon className="w-5 h-5 md:w-6 md:h-6 text-[#1E3A8A]" />
-                </div>
+                </motion.div>
                 
                 {/* Content */}
                 <h3 className="relative z-10 font-heading font-bold text-xl md:text-2xl text-[#1E3A8A] mb-2">
