@@ -25,8 +25,9 @@ const instructors = [
 
 const Instructors = () => {
   return (
-    <section id="instructors" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="instructors" className="py-20 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-pattern-dots bg-pattern-fade pointer-events-none" />
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
