@@ -71,33 +71,32 @@ const Hero = () => {
 
             {/* Stats */}
             <div className="flex flex-wrap gap-8 justify-center">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <p className="text-2xl font-bold text-foreground">10K+</p>
-                  <p className="text-sm text-muted-foreground">Students</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Award className="w-6 h-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <p className="text-2xl font-bold text-foreground">95%</p>
-                  <p className="text-sm text-muted-foreground">Pass Rate</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Star className="w-6 h-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <p className="text-2xl font-bold text-foreground">4.9/5</p>
-                  <p className="text-sm text-muted-foreground">Rating</p>
-                </div>
-              </div>
+              {[
+                { Icon: Users, value: "10K+", label: "Students" },
+                { Icon: Award, value: "95%", label: "Pass Rate" },
+                { Icon: Star, value: "4.9/5", label: "Rating" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + i * 0.15, duration: 0.5 }}
+                  whileHover={{ y: -4 }}
+                  className="flex items-center gap-3"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 6 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center"
+                  >
+                    <stat.Icon className="w-6 h-6 text-primary" />
+                  </motion.div>
+                  <div className="text-left">
+                    <p className="text-2xl font-bold text-foreground">{stat.value}</p>
+                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
