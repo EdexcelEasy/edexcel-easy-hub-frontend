@@ -66,16 +66,21 @@ const WhyChooseUs = () => {
             return (
               <Wrapper key={feature.title} {...(wrapperProps as any)}>
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative bg-card rounded-xl p-3 md:p-4 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer h-full"
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  className="relative bg-card rounded-xl p-3 md:p-4 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-colors cursor-pointer h-full"
                 >
-                  <div className="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-muted/50 rounded-bl-[60px] -z-0" />
-                  <div className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-2 md:mb-3 bg-background">
+                  <div className="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-muted/50 rounded-bl-[60px] -z-0 group-hover:bg-[#FACC15]/30 transition-colors" />
+                  <motion.div
+                    whileHover={{ rotate: -8, scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-2 md:mb-3 bg-background group-hover:border-[#1E3A8A]"
+                  >
                     <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-[#1E3A8A]" />
-                  </div>
+                  </motion.div>
                   <h3 className="relative z-10 font-heading font-bold text-xs md:text-sm lg:text-base text-[#1E3A8A] mb-1">
                     {feature.title}
                   </h3>
