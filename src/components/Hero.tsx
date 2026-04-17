@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+      {/* Decorative background pattern */}
+      <div className="absolute inset-0 bg-pattern-grid bg-pattern-fade pointer-events-none" />
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_hsl(222_72%_33%_/_0.08)_0%,_transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_hsl(48_96%_53%_/_0.08)_0%,_transparent_50%)] pointer-events-none" />
