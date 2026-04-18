@@ -186,6 +186,36 @@ const worksheetFreeLinks: Record<string, string> = {
   "igcse/further-pure-mathematics/6": "",
   "igcse/further-pure-mathematics/7": "",
   "igcse/further-pure-mathematics/8": "",
+
+  // ---- IAL Physics (Units 1–6) ----
+  "ial/physics/1": "",
+  "ial/physics/2": "",
+  "ial/physics/3": "",
+  "ial/physics/4": "",
+  "ial/physics/5": "",
+  "ial/physics/6": "",
+
+  // ---- IAL Mathematics (Units P1, P2, P3, P4, S1, M1) ----
+  "ial/mathematics/1": "",
+  "ial/mathematics/2": "",
+  "ial/mathematics/3": "",
+  "ial/mathematics/4": "",
+  "ial/mathematics/5": "",
+  "ial/mathematics/6": "",
+
+  // ---- IAL Biology (Units 1–6) ----
+  "ial/biology/1": "",
+  "ial/biology/2": "",
+  "ial/biology/3": "",
+  "ial/biology/4": "",
+  "ial/biology/5": "",
+  "ial/biology/6": "",
+
+  // ---- IAL Information Technology (Units 1–4) ----
+  "ial/information-technology/1": "",
+  "ial/information-technology/2": "",
+  "ial/information-technology/3": "",
+  "ial/information-technology/4": "",
 };
 
 const worksheets = [
@@ -220,7 +250,9 @@ const WorksheetDetail = () => {
     return worksheetFreeLinks[key] || "";
   };
 
-  const subjectUnitNames = subject ? unitNamesMap[subject] : null;
+  const unitNamesKey = `${curriculum}-${subject}`;
+  const subjectUnitNames =
+    unitNamesMap[unitNamesKey] || (subject ? unitNamesMap[subject] : null);
   const unitName = unit && subjectUnitNames ? subjectUnitNames[unit] || `Unit ${unit}` : "Unknown";
   const curriculumLabel =
     curriculum === "ial" ? "IAL" : curriculum === "igcse" ? "IGCSE" : "IGCSE Modular";
@@ -228,6 +260,9 @@ const WorksheetDetail = () => {
     physics: "Physics",
     "mathematics-a": "Mathematics A",
     "mathematics-b": "Mathematics B",
+    mathematics: "Mathematics",
+    biology: "Biology",
+    "information-technology": "Information Technology",
   };
   const subjectName = subject ? subjectNames[subject] || subject : "Unknown";
 
