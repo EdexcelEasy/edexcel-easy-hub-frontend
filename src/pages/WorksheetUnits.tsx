@@ -55,6 +55,50 @@ const worksheetData: Record<string, { subjectName: string; units: string[] }> = 
       "Chapter 13: Matrix",
     ],
   },
+
+  // ---- IAL Subjects ----
+  "ial-physics": {
+    subjectName: "Physics",
+    units: [
+      "Unit 1: Mechanics and Materials",
+      "Unit 2: Waves and Electricity",
+      "Unit 3: Practical Skills in Physics I",
+      "Unit 4: Further Mechanics, Fields and Particles",
+      "Unit 5: Thermodynamics, Radiation, Oscillations and Cosmology",
+      "Unit 6: Practical Skills in Physics II",
+    ],
+  },
+  "ial-mathematics": {
+    subjectName: "Mathematics",
+    units: [
+      "Unit P1: Pure Mathematics 1",
+      "Unit P2: Pure Mathematics 2",
+      "Unit P3: Pure Mathematics 3",
+      "Unit P4: Pure Mathematics 4",
+      "Unit S1: Statistics 1",
+      "Unit M1: Mechanics 1",
+    ],
+  },
+  "ial-biology": {
+    subjectName: "Biology",
+    units: [
+      "Unit 1: Lifestyle, Transport, Genes and Health",
+      "Unit 2: Development, Plants and Environment",
+      "Unit 3: Practical Biology and Research Skills I",
+      "Unit 4: Energy, Environment and Microbiology",
+      "Unit 5: Genetics, Evolution and Control",
+      "Unit 6: Practical Biology and Research Skills II",
+    ],
+  },
+  "ial-information-technology": {
+    subjectName: "Information Technology",
+    units: [
+      "Unit 1: The Digital World",
+      "Unit 2: Information Systems",
+      "Unit 3: Website Development",
+      "Unit 4: Software Design and Development",
+    ],
+  },
 };
 
 const WorksheetUnits = () => {
