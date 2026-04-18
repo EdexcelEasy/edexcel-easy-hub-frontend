@@ -1,17 +1,35 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ChevronRight, Download, BookOpen } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { supabase } from "@/integrations/supabase/client";
 
-type TextbookLink = {
-  book_number: number;
-  title: string | null;
-  link: string;
+// ============================================================
+// 📚 IAL TEXTBOOK LINKS — EDIT HERE
+// ------------------------------------------------------------
+// Paste the Google Drive (or any) PDF URL between the quotes.
+// Leave as "" to show "Coming soon" on the site.
+// ============================================================
+const textbookLinks: Record<string, { book1: string; book2: string }> = {
+  physics: {
+    book1: "https://drive.google.com/file/d/1F33YiFDTVeEOu2rtR8qC_SepXaXBuWCz/view?usp=share_link",
+    book2: "",
+  },
+  mathematics: {
+    book1: "",
+    book2: "",
+  },
+  biology: {
+    book1: "",
+    book2: "",
+  },
+  "information-technology": {
+    book1: "",
+    book2: "",
+  },
 };
+// ============================================================
 
 // Subject specifications data
 const subjectSpecs: Record<string, { name: string; topics: { unit: string; topics: string[] }[] }> = {
