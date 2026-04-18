@@ -374,6 +374,64 @@ const IALSubjectDetail = () => {
             </motion.a>
           )}
 
+          {/* Textbooks */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="max-w-3xl mx-auto mb-10"
+          >
+            <h3 className="font-heading font-bold text-xl text-[#1E3A8A] mb-4 text-center">
+              Textbooks
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[1, 2].map((num) => {
+                const book = textbooks.find((t) => t.book_number === num);
+                const hasLink = book && book.link && book.link.trim() !== "";
+                const title = book?.title || `Book ${num}`;
+                const content = (
+                  <div
+                    className={`bg-card rounded-xl border-2 border-[#1E3A8A] p-5 flex items-center justify-between transition-all h-full ${
+                      hasLink
+                        ? "hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] hover:border-[#FACC15] cursor-pointer group"
+                        : "opacity-60"
+                    }`}
+                  >
+                    <div>
+                      <h4 className="font-heading font-bold text-[#1E3A8A] text-base md:text-lg">
+                        {title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm mt-1">
+                        {hasLink ? "Download the official textbook (PDF)" : "Coming soon"}
+                      </p>
+                    </div>
+                    <div
+                      className={`w-12 h-12 rounded-lg flex items-center justify-center transition-colors ${
+                        hasLink
+                          ? "bg-[#FACC15]/20 group-hover:bg-[#FACC15]"
+                          : "bg-muted"
+                      }`}
+                    >
+                      <BookOpen className="w-6 h-6 text-[#1E3A8A]" />
+                    </div>
+                  </div>
+                );
+                return hasLink ? (
+                  <a
+                    key={num}
+                    href={book!.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <div key={num}>{content}</div>
+                );
+              })}
+            </div>
+          </motion.div>
+
           {/* Topics */}
           <div className="max-w-3xl mx-auto space-y-6">
             {subjectData.topics.map((unit, index) => (
