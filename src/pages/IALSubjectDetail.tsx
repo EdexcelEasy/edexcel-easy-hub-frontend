@@ -258,20 +258,7 @@ const subjectSpecs: Record<string, { name: string; topics: { unit: string; topic
 const IALSubjectDetail = () => {
   const { subject } = useParams<{ subject: string }>();
   const subjectData = subject ? subjectSpecs[subject] : null;
-  const [textbooks, setTextbooks] = useState<TextbookLink[]>([]);
-
-  useEffect(() => {
-    if (!subject) return;
-    supabase
-      .from("textbook_links")
-      .select("book_number, title, link")
-      .eq("curriculum", "ial")
-      .eq("subject", subject)
-      .order("book_number", { ascending: true })
-      .then(({ data }) => {
-        if (data) setTextbooks(data as TextbookLink[]);
-      });
-  }, [subject]);
+  const books = (subject && textbookLinks[subject]) || { book1: "", book2: "" };
 
   if (!subjectData) {
     return (
