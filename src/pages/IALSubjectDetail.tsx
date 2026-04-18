@@ -391,9 +391,9 @@ const IALSubjectDetail = () => {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[1, 2].map((num) => {
-                const book = textbooks.find((t) => t.book_number === num);
-                const hasLink = book && book.link && book.link.trim() !== "";
-                const title = book?.title || `Book ${num}`;
+                const link = num === 1 ? books.book1 : books.book2;
+                const hasLink = link.trim() !== "";
+                const title = `${subjectData.name} Book ${num}`;
                 const content = (
                   <div
                     className={`bg-card rounded-xl border-2 border-[#1E3A8A] p-5 flex items-center justify-between transition-all h-full ${
@@ -424,7 +424,7 @@ const IALSubjectDetail = () => {
                 return hasLink ? (
                   <a
                     key={num}
-                    href={book!.link}
+                    href={link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
