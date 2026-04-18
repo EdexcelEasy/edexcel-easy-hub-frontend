@@ -1,9 +1,17 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ChevronRight, Download } from "lucide-react";
+import { ArrowLeft, ChevronRight, Download, BookOpen } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { supabase } from "@/integrations/supabase/client";
+
+type TextbookLink = {
+  book_number: number;
+  title: string | null;
+  link: string;
+};
 
 // Subject specifications data
 const subjectSpecs: Record<string, { name: string; topics: { unit: string; topics: string[] }[] }> = {
