@@ -47,6 +47,37 @@ const unitNamesMap: Record<string, Record<string, string>> = {
     "12": "Equation Graph",
     "13": "Matrix",
   },
+  // ---- IAL Subjects ----
+  "ial-physics": {
+    "1": "Mechanics and Materials",
+    "2": "Waves and Electricity",
+    "3": "Practical Skills in Physics I",
+    "4": "Further Mechanics, Fields and Particles",
+    "5": "Thermodynamics, Radiation, Oscillations and Cosmology",
+    "6": "Practical Skills in Physics II",
+  },
+  "ial-mathematics": {
+    "1": "Pure Mathematics 1 (P1)",
+    "2": "Pure Mathematics 2 (P2)",
+    "3": "Pure Mathematics 3 (P3)",
+    "4": "Pure Mathematics 4 (P4)",
+    "5": "Statistics 1 (S1)",
+    "6": "Mechanics 1 (M1)",
+  },
+  "ial-biology": {
+    "1": "Lifestyle, Transport, Genes and Health",
+    "2": "Development, Plants and Environment",
+    "3": "Practical Biology and Research Skills I",
+    "4": "Energy, Environment and Microbiology",
+    "5": "Genetics, Evolution and Control",
+    "6": "Practical Biology and Research Skills II",
+  },
+  "ial-information-technology": {
+    "1": "The Digital World",
+    "2": "Information Systems",
+    "3": "Website Development",
+    "4": "Software Design and Development",
+  },
 };
 
 
