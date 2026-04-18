@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      textbook_links: {
+        Row: {
+          book_number: number
+          created_at: string
+          curriculum: string
+          id: string
+          link: string
+          subject: string
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          book_number: number
+          created_at?: string
+          curriculum: string
+          id?: string
+          link: string
+          subject: string
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          book_number?: number
+          created_at?: string
+          curriculum?: string
+          id?: string
+          link?: string
+          subject?: string
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       worksheet_links: {
         Row: {
           created_at: string
