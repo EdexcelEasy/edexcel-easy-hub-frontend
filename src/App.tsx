@@ -20,6 +20,8 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import PaperOptions from "./pages/PaperOptions";
 import SubjectResources from "./pages/SubjectResources";
+import IALResourceUnits from "./pages/IALResourceUnits";
+import IALUnitResources from "./pages/IALUnitResources";
 import Cheatsheets from "./pages/Cheatsheets";
 import CheatsheetSubjects from "./pages/CheatsheetSubjects";
 import WorksheetUnits from "./pages/WorksheetUnits";
@@ -52,6 +54,8 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/resources/:curriculum/:subject" element={<SubjectResources />} />
+          <Route path="/resources/ial/:subject/units" element={<IALResourceUnits />} />
+          <Route path="/resources/ial/:subject/unit/:unit" element={<IALUnitResources />} />
           <Route path="/worksheets/:curriculum/:subject" element={<WorksheetUnits />} />
           <Route path="/worksheets/:curriculum/:subject/unit/:unit" element={<WorksheetDetail />} />
           <Route path="/:curriculum/:subject/:paper/:year" element={<PaperOptions />} />
