@@ -1,17 +1,35 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ChevronRight, Download, BookOpen } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { supabase } from "@/integrations/supabase/client";
 
-type TextbookLink = {
-  book_number: number;
-  title: string | null;
-  link: string;
+// ============================================================
+// 📚 IAL TEXTBOOK LINKS — EDIT HERE
+// ------------------------------------------------------------
+// Paste the Google Drive (or any) PDF URL between the quotes.
+// Leave as "" to show "Coming soon" on the site.
+// ============================================================
+const textbookLinks: Record<string, { book1: string; book2: string }> = {
+  physics: {
+    book1: "https://drive.google.com/file/d/1F33YiFDTVeEOu2rtR8qC_SepXaXBuWCz/view?usp=share_link",
+    book2: "",
+  },
+  mathematics: {
+    book1: "",
+    book2: "",
+  },
+  biology: {
+    book1: "",
+    book2: "",
+  },
+  "information-technology": {
+    book1: "",
+    book2: "",
+  },
 };
+// ============================================================
 
 // Subject specifications data
 const subjectSpecs: Record<string, { name: string; topics: { unit: string; topics: string[] }[] }> = {
@@ -240,20 +258,7 @@ const subjectSpecs: Record<string, { name: string; topics: { unit: string; topic
 const IALSubjectDetail = () => {
   const { subject } = useParams<{ subject: string }>();
   const subjectData = subject ? subjectSpecs[subject] : null;
-  const [textbooks, setTextbooks] = useState<TextbookLink[]>([]);
-
-  useEffect(() => {
-    if (!subject) return;
-    supabase
-      .from("textbook_links")
-      .select("book_number, title, link")
-      .eq("curriculum", "ial")
-      .eq("subject", subject)
-      .order("book_number", { ascending: true })
-      .then(({ data }) => {
-        if (data) setTextbooks(data as TextbookLink[]);
-      });
-  }, [subject]);
+  const books = (subject && textbookLinks[subject]) || { book1: "", book2: "" };
 
   if (!subjectData) {
     return (
@@ -386,9 +391,9 @@ const IALSubjectDetail = () => {
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[1, 2].map((num) => {
-                const book = textbooks.find((t) => t.book_number === num);
-                const hasLink = book && book.link && book.link.trim() !== "";
-                const title = book?.title || `Book ${num}`;
+                const link = num === 1 ? books.book1 : books.book2;
+                const hasLink = link.trim() !== "";
+                const title = `${subjectData.name} Book ${num}`;
                 const content = (
                   <div
                     className={`bg-card rounded-xl border-2 border-[#1E3A8A] p-5 flex items-center justify-between transition-all h-full ${
@@ -419,7 +424,7 @@ const IALSubjectDetail = () => {
                 return hasLink ? (
                   <a
                     key={num}
-                    href={book!.link}
+                    href={link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
