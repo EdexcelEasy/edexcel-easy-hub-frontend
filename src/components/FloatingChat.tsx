@@ -1,20 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Mail, Phone, Send } from "lucide-react";
+import { MessageCircle, X, Phone, Send } from "lucide-react";
 
-const EMAIL = "mohimaahmed01@gmail.com";
 const WHATSAPP = "8801842900265"; // intl format without +
 
 const FloatingChat = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
-
-  const sendEmail = () => {
-    const subject = encodeURIComponent(`Message from ${name || "Website Visitor"}`);
-    const body = encodeURIComponent(message);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-  };
 
   const sendWhatsApp = () => {
     const text = encodeURIComponent(
@@ -99,35 +92,18 @@ const FloatingChat = () => {
                 className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:border-[#1E3A8A] resize-none"
               />
 
-              {/* Send buttons */}
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={sendEmail}
-                  disabled={!message.trim()}
-                  className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[#1E3A8A] text-white text-sm font-medium hover:bg-[#1E3A8A]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  <Mail className="w-4 h-4" />
-                  Email
-                </button>
-                <button
-                  onClick={sendWhatsApp}
-                  disabled={!message.trim()}
-                  className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[#25D366] text-white text-sm font-medium hover:bg-[#25D366]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  <Send className="w-4 h-4" />
-                  WhatsApp
-                </button>
-              </div>
+              {/* Send button */}
+              <button
+                onClick={sendWhatsApp}
+                disabled={!message.trim()}
+                className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[#25D366] text-white text-sm font-medium hover:bg-[#25D366]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                <Send className="w-4 h-4" />
+                Send on WhatsApp
+              </button>
 
-              {/* Direct contacts */}
-              <div className="pt-3 border-t border-border space-y-2">
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="flex items-center gap-2 text-xs text-muted-foreground hover:text-[#1E3A8A] transition-colors"
-                >
-                  <Mail className="w-3.5 h-3.5" />
-                  {EMAIL}
-                </a>
+              {/* Direct contact */}
+              <div className="pt-3 border-t border-border">
                 <a
                   href={`tel:+${WHATSAPP}`}
                   className="flex items-center gap-2 text-xs text-muted-foreground hover:text-[#1E3A8A] transition-colors"
