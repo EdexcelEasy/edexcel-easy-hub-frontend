@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Youtube, ExternalLink } from "lucide-react";
 import instructorMohima from "@/assets/instructor-mohima.png";
 import instructorTabeeb from "@/assets/instructor-tabeeb.png";
+import instructorShamee from "@/assets/instructor-shamee.png";
 
 const instructors = [
   {
@@ -26,7 +27,7 @@ const instructors = [
     role: "ICT & IT Teacher",
     experience: "5+ years of experience",
     youtube: null,
-    image: "",
+    image: instructorShamee,
   },
 ];
 
@@ -57,7 +58,7 @@ const Instructors = () => {
         </motion.div>
 
         {/* Instructors Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {instructors.map((instructor, index) => (
             <motion.div
               key={instructor.name}
