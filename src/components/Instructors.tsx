@@ -21,6 +21,13 @@ const instructors = [
     youtube: null,
     image: instructorTabeeb,
   },
+  {
+    name: "Mrimmoaee Ahmed Shamee",
+    role: "ICT & IT Teacher",
+    experience: "5+ years of experience",
+    youtube: null,
+    image: "",
+  },
 ];
 
 const Instructors = () => {
