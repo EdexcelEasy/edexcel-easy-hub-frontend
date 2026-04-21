@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Youtube, ExternalLink } from "lucide-react";
 import instructorMohima from "@/assets/instructor-mohima.png";
 import instructorTabeeb from "@/assets/instructor-tabeeb.png";
+import instructorShamee from "@/assets/instructor-shamee.png";
 
 const instructors = [
   {
@@ -26,7 +27,7 @@ const instructors = [
     role: "ICT & IT Teacher",
     experience: "5+ years of experience",
     youtube: null,
-    image: "",
+    image: instructorShamee,
   },
 ];
 
