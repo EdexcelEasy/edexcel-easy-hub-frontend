@@ -96,7 +96,7 @@ const SubjectResources = () => {
 
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {resourceFolders.map((folder, index) => {
-              const isWorksheetClickable = folder.name === "Worksheets" && curriculum === "igcse" && (subject === "physics" || subject === "mathematics-a" || subject === "mathematics-b" || subject === "further-pure-mathematics");
+              const isWorksheetClickable = folder.name === "Worksheets" && curriculum === "igcse" && (subject === "physics" || subject === "mathematics-a" || subject === "mathematics-b" || subject === "further-pure-mathematics" || subject === "biology");
 
               const isCheatsheet = folder.name === "Cheatsheet";
               const labelText = isCheatsheet
