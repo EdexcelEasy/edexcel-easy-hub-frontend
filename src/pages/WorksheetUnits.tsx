@@ -55,6 +55,23 @@ const worksheetData: Record<string, { subjectName: string; units: string[] }> = 
       "Chapter 13: Matrix",
     ],
   },
+  "igcse-further-pure-mathematics": {
+    subjectName: "Further Pure Mathematics",
+    units: [
+      "Chapter 1: Algebra",
+      "Chapter 2: Logs",
+      "Chapter 3: Calculus",
+      "Chapter 4: AP/GP",
+      "Chapter 5: Quadratic Equations",
+      "Chapter 6: Binomial Expansion",
+      "Chapter 7: Trigonometry",
+      "Chapter 8: Mensuration",
+      "Chapter 9: Coordinate Geometry",
+      "Chapter 10: Equation Graph",
+      "Chapter 11: Vector",
+      "Chapter 12: Kinematics",
+    ],
+  },
 
   // ---- IAL Subjects ----
   "ial-physics": {
