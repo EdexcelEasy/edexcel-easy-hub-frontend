@@ -72,6 +72,15 @@ const worksheetData: Record<string, { subjectName: string; units: string[] }> = 
       "Chapter 12: Kinematics",
     ],
   },
+  "igcse-biology": {
+    subjectName: "Biology",
+    units: [
+      "Chapter 1: The Nature and Variety of Living Organisms",
+      "Chapter 2: Structure and Functions in Living Organisms",
+      "Chapter 3: Reproduction and Inheritance",
+      "Chapter 4: Ecology and the Environment",
+    ],
+  },
 
   // ---- IAL Subjects ----
   "ial-physics": {
