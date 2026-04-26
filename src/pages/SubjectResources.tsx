@@ -96,27 +96,6 @@ const SubjectResources = () => {
 
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {resourceFolders.map((folder, index) => {
-              const cardContent = (
-                <div className="group relative bg-card rounded-xl border-2 border-[#1E3A8A] overflow-hidden hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer">
-                  <div className={`h-2 bg-gradient-to-r ${folder.color}`} />
-                  <div className="p-6">
-                    <div className="w-14 h-14 rounded-xl bg-[#1E3A8A]/10 flex items-center justify-center mb-4 group-hover:bg-[#1E3A8A] transition-colors">
-                      <folder.icon className="w-7 h-7 text-[#1E3A8A] group-hover:text-white transition-colors" />
-                    </div>
-                    <h3 className="font-heading font-bold text-lg text-[#1E3A8A] mb-1">
-                      {folder.name}
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      {folder.description}
-                    </p>
-                    <div className="flex items-center gap-2 text-xs text-[#FACC15] font-semibold">
-                      <Lock className="w-3.5 h-3.5" />
-                      {folder.name === "Cheatsheet" ? "Paid Only" : "Coming Soon"}
-                    </div>
-                  </div>
-                </div>
-              );
-
               const isWorksheetClickable = folder.name === "Worksheets" && curriculum === "igcse" && (subject === "physics" || subject === "mathematics-a" || subject === "mathematics-b" || subject === "further-pure-mathematics");
 
               const isCheatsheet = folder.name === "Cheatsheet";
