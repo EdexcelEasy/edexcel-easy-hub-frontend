@@ -7,6 +7,7 @@ import Booklets from "@/components/Booklets";
 import CheatsheetSection from "@/components/CheatsheetSection";
 import Testimonials from "@/components/Testimonials";
 import Instructors from "@/components/Instructors";
+import BlogSection from "@/components/BlogSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -21,6 +22,7 @@ const Index = () => {
       <CheatsheetSection />
       <Testimonials />
       <Instructors />
+      <BlogSection />
       <Footer />
     </div>
   );
