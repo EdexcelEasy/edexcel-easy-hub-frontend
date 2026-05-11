@@ -13,7 +13,7 @@ const booklets = [
 
 const Booklets = () => {
   return (
-    <section className="py-16 bg-background">
+    <section id="worksheets" className="py-16 bg-background scroll-mt-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-[#1E3A8A] mb-3">
