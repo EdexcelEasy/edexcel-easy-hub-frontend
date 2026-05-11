@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const igcseSubjects = [
@@ -57,6 +57,18 @@ const igcseModularPastPaperSubjects = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleWorksheetsClick = (e: React.MouseEvent, closeMobile = false) => {
+    e.preventDefault();
+    if (closeMobile) setIsOpen(false);
+    if (location.pathname === "/") {
+      document.getElementById("worksheets")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      navigate("/#worksheets");
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
@@ -279,13 +291,14 @@ const Navbar = () => {
               Instructors
             </a>
 
-            {/* Blog */}
-            <Link
-              to="/blog"
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+            {/* Worksheets */}
+            <a
+              href="/#worksheets"
+              onClick={(e) => handleWorksheetsClick(e)}
+              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors cursor-pointer"
             >
-              Blog
-            </Link>
+              Worksheets
+            </a>
 
             {/* Contact */}
             <a
@@ -410,13 +423,13 @@ const Navbar = () => {
               >
                 Instructors
               </a>
-              <Link
-                to="/blog"
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
-                onClick={() => setIsOpen(false)}
+              <a
+                href="/#worksheets"
+                onClick={(e) => handleWorksheetsClick(e, true)}
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2 cursor-pointer"
               >
-                Blog
-              </Link>
+                Worksheets
+              </a>
               <a
                 href="#contact"
                 className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors py-2"
