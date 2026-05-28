@@ -29,10 +29,10 @@ const getYearFolder = (year: string): string => {
   // Handle formats like "2019 - Jun", "2019 - Jun R", "June 2019", etc.
   const normalized = year.toLowerCase();
 
-  if (normalized.includes("2024") && normalized.includes("nov")) {
-    return "2024-nov";
-  }
   if (normalized.includes("2024") && normalized.includes("jun")) {
+    if (normalized.includes("r")) {
+      return "2024-jun-r";
+    }
     return "2024-jun";
   }
   if (normalized.includes("2019") && normalized.includes("jun")) {
@@ -41,8 +41,73 @@ const getYearFolder = (year: string): string => {
     }
     return "2019-jun";
   }
-  // Add more mappings as papers are uploaded
-  return "";
+  
+  if (normalized.includes("2024") && normalized.includes("nov")) {
+    return "2024-nov";
+  }
+
+   if (normalized.includes("2023") && normalized.includes("nov")) {
+    return "2023-nov";
+  }
+
+  if (normalized.includes("2023") && normalized.includes("jun")) {
+    if (normalized.includes("r")) {
+      return "2023-jun-r";
+    }
+    return "2023-jun";
+  }
+
+  if (normalized.includes("2023") && normalized.includes("jan")) {
+    if (normalized.includes("r")) {
+      return "2023-jan-r";
+    }
+    return "2023-jan";
+  }
+
+  if (normalized.includes("2022") && normalized.includes("jan")) {
+    if (normalized.includes("r")) {
+      return "2022-jan-r";
+    }
+    return "2022-jan";
+  }
+
+  if (normalized.includes("2022") && normalized.includes("jun")) {
+    if (normalized.includes("r")) {
+      return "2022-jun-r";
+    }
+    return "2022-jun";
+  }
+
+  if (normalized.includes("2021") && normalized.includes("nov")) {
+    return "2021-nov";
+  }
+
+  if (normalized.includes("2021") && normalized.includes("jan")) {
+    if (normalized.includes("r")) {
+      return "2021-jan-r";
+    }
+    return "2021-jan";
+  }
+
+  if (normalized.includes("2021") && normalized.includes("jun")) {
+    return "2021-jun";
+  }
+
+  if (normalized.includes("2020") && normalized.includes("jan")) {
+    if (normalized.includes("r")) {
+      return "2020-jan-r";
+    }
+    return "2020-jan";
+  }
+
+  if (normalized.includes("2020") && normalized.includes("nov")) {
+    if (normalized.includes("r")) {
+      return "2020-nov-r";
+    }
+    return "2020-nov";
+  }
+
+  
 };
 
 // Map paper names to file prefixes
@@ -70,6 +135,219 @@ const externalPaperUrls: Record<string, { qp?: string; ms?: string }> = {
   "igcse/physics/2024-nov/paper1": {
     ms: "https://url-shortener.me/GJLP",
   },
+
+  // IGCSE Physics Papers: 
+// IGCSE Physics 2024 June Paper 1  
+  "igcse/physics/2024-jun/paper1": {
+    qp: "https://shorturl.at/tjucK",
+    ms: "https://url-shortener.me/GJIA",
+  },
+// IGCSE Physics 2024 June Paper 1R
+  "igcse/physics/2024-jun-r/paper1": {
+    qp: "https://url-shortener.me/GJDA",
+    ms: "https://url-shortener.me/GJIA",
+  },
+// IGCSE Physics 2024 June Paper 2
+ "igcse/physics/2024-jun/paper2": {
+    qp: "https://url-shortener.me/GJKO",
+    ms: "https://url-shortener.me/GJKT",
+  },
+
+// IGCSE Physics 2024 June Paper 2R
+ "igcse/physics/2024-jun-r/paper2": {
+    qp: "https://url-shortener.me/GJL4",
+    ms: "https://url-shortener.me/GJL8",
+  },
+
+
+// IGCSE Physics 2024 Nov Paper 1
+ "igcse/physics/2024-nov/paper1": {
+    qp: "https://url-shortener.me/GJLC",
+    ms: "https://url-shortener.me/GJLD",
+  },
+
+// IGCSE Physics 2024 Nov Paper 2
+ "igcse/physics/2024-nov/paper2": {
+    qp: "https://url-shortener.me/GJLK",
+    ms: "https://url-shortener.me/GJLP",
+  },
+
+// IGCSE Physics 2023 Nov Paper 1
+ "igcse/physics/2023-nov/paper1": {
+    qp: "https://url-shortener.me/GJT0",
+    ms: "https://url-shortener.me/GJT3",
+  },
+
+
+// IGCSE Physics 2023 Nov Paper 2
+ "igcse/physics/2023-nov/paper2": {
+    qp: "https://url-shortener.me/GJT7",
+    ms: "https://url-shortener.me/GJT8",
+  },
+
+// IGCSE Physics 2023 Jun Paper 1
+ "igcse/physics/2023-jun/paper1": {
+    qp: "https://url-shortener.me/GKCX",
+    ms: "https://url-shortener.me/GJTD",
+  },
+
+// IGCSE Physics 2023 Jun Paper 1R
+ "igcse/physics/2023-jun-r/paper1": {
+    qp: "https://url-shortener.me/GJTK",
+    ms: "https://url-shortener.me/GJTL",
+  },
+
+
+// IGCSE Physics 2023 Jun Paper 2
+ "igcse/physics/2023-jun/paper2": {
+    qp: "https://url-shortener.me/GJU1",
+    ms: "https://url-shortener.me/GJU3",
+  },
+
+// IGCSE Physics 2023 Jun Paper 2R
+ "igcse/physics/2023-jun-r/paper2": {
+    qp: "https://url-shortener.me/GJUV",
+    ms: "https://url-shortener.me/GJUY",
+  },
+
+// IGCSE Physics 2023 Jan Paper 1
+ "igcse/physics/2023-jan/paper1": {
+    qp: "https://url-shortener.me/GK5J",
+    ms: "https://url-shortener.me/GK5N",
+  },
+
+// IGCSE Physics 2023 Jan Paper 1R
+ "igcse/physics/2023-jan-r/paper1": {
+    qp: "https://url-shortener.me/GK61",
+    ms: "https://url-shortener.me/GK66",
+  },
+
+// IGCSE Physics 2023 Jan Paper 2
+ "igcse/physics/2023-jan/paper2": {
+    qp: "https://url-shortener.me/GK6A",
+    ms: "https://url-shortener.me/GK6C",
+  },
+
+// IGCSE Physics 2023 Jan Paper 2R
+"igcse/physics/2023-jan-r/paper2": {
+    qp: "https://url-shortener.me/GK6I",
+    ms: "https://url-shortener.me/GK6N",
+  },
+
+// IGCSE Physics 2022 Jun Paper 1
+ "igcse/physics/2022-jun/paper1": {
+    qp: "https://url-shortener.me/GKBK",
+    ms: "https://url-shortener.me/GKBP",
+  },
+
+// IGCSE Physics 2022 Jun Paper 1R
+ "igcse/physics/2022-jun-r/paper1": {
+    qp: "https://url-shortener.me/GKBU",
+    ms: "https://url-shortener.me/GKBY",
+  },
+
+
+// IGCSE Physics 2022 Jun Paper 2
+ "igcse/physics/2022-jun/paper2": {
+    qp: "https://url-shortener.me/GKC3",
+    ms: "https://url-shortener.me/GKC8",
+  },
+
+
+// IGCSE Physics 2022 Jun Paper 2R
+ "igcse/physics/2022-jun-r/paper2": {
+    qp: "https://url-shortener.me/GKCC",
+    ms: "https://url-shortener.me/GKCG",
+  },
+
+
+// IGCSE Physics 2022 Jan Paper 1
+ "igcse/physics/2022-jan/paper1": {
+    qp: "https://url-shortener.me/GKGK",
+    ms: "https://url-shortener.me/GKH3",
+  },
+
+// IGCSE Physics 2022 Jan Paper 1R
+ "igcse/physics/2022-jan-r/paper1": {
+    qp: "https://shorturl.at/6BCR2",
+    ms: "https://shorturl.at/KpXfY",
+  },
+
+// IGCSE Physics 2022 Jan Paper 2
+ "igcse/physics/2022-jan/paper2": {
+    qp: "https://url-shortener.me/GKHE",
+    ms: "https://url-shortener.me/GKHG",
+  },
+
+// IGCSE Physics 2022 Jan Paper 2R
+ "igcse/physics/2022-jan-r/paper2": {
+    qp: "https://url-shortener.me/GKHI",
+    ms: "https://url-shortener.me/GKHL",
+  },
+
+
+// IGCSE Physics 2021 Nov Paper 1
+ "igcse/physics/2021-nov/paper1": {
+    qp: "https://url-shortener.me/GKI1",
+    ms: "https://url-shortener.me/GKI3",
+  },
+
+// IGCSE Physics 2021 Nov Paper 2
+ "igcse/physics/2021-nov/paper2": {
+    qp: "https://url-shortener.me/GKI6",
+    ms: "https://url-shortener.me/GKI7",
+  },
+
+// IGCSE Physics 2021 Jun Paper 1
+ "igcse/physics/2021-jun/paper1": {
+    qp: "https://url-shortener.me/GKI8",
+    ms: "https://url-shortener.me/GKIA",
+  },
+
+// IGCSE Physics 2021 Jun Paper 2
+ "igcse/physics/2021-jun/paper2": {
+    qp: "https://url-shortener.me/GKIC",
+    ms: "https://url-shortener.me/GKIF",
+  },
+
+// IGCSE Physics 2021 Jan Paper 1
+ "igcse/physics/2021-jan/paper1": {
+    qp: "https://url-shortener.me/GKII",
+    ms: "https://url-shortener.me/GKIJ",
+  },
+
+// IGCSE Physics 2021 Jan Paper 1R
+ "igcse/physics/2021-jan-r/paper1": {
+    qp: "https://url-shortener.me/GKIK",
+    ms: "https://url-shortener.me/GKIL",
+  },
+
+
+// IGCSE Physics 2021 Jan Paper 2
+ "igcse/physics/2021-jan/paper2": {
+    qp: "https://url-shortener.me/GKIO",
+    ms: "https://url-shortener.me/GKIQ",
+  },
+
+
+// IGCSE Physics 2021 Jan Paper 2R
+"igcse/physics/2021-jan-r/paper2": {
+    qp: "https://url-shortener.me/GKIS",
+    ms: "https://url-shortener.me/GKIT",
+  },
+
+// IGCSE Physics 2020 Nov Paper 1
+// IGCSE Physics 2020 Nov Paper 1R
+// IGCSE Physics 2020 Nov Paper 2
+// IGCSE Physics 2020 Nov Paper 2R
+
+
+// IGCSE Physics 2020 Jan Paper 1
+// IGCSE Physics 2020 Jan Paper 1R
+// IGCSE Physics 2020 Jan Paper 2
+// IGCSE Physics 2020 Jan Paper 2R
+
+
 };
 
 // Check if a paper has available PDFs
