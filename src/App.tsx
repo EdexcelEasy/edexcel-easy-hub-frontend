@@ -14,6 +14,7 @@ import IGCSEPastPaperDetail from "./pages/IGCSEPastPaperDetail";
 import IALPastPapers from "./pages/IALPastPapers";
 import IALPastPaperDetail from "./pages/IALPastPaperDetail";
 import Pricing from "./pages/Pricing";
+import BuyCourses from "./pages/BuyCourses";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
@@ -39,6 +40,7 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/buy-courses" element={<BuyCourses />} />
           <Route path="/igcse-subjects" element={<IGCSESubjects />} />
           <Route path="/igcse/:subject" element={<IGCSESubjectDetail />} />
           <Route path="/ial-subjects" element={<IALSubjects />} />
