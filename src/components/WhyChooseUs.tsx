@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const features = [
   {
     icon: BookOpen,
-    title: "Subjects",
-    description: "Get simplified specification, worksheets, notes and more.",
-    link: "#subjects",
+    title: "Buy Courses",
+    description: "Enroll in IGCSE & IAL exam preparation courses for expert guidance.",
+    link: "/buy-courses",
   },
   {
     icon: FileText,
