@@ -20,7 +20,7 @@ const heroActions = [
   },
   {
     label: "Resources",
-    href: "#resources",
+    href: "/resources",
     className: "bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-0 shadow-[0_12px_28px_rgba(16,185,129,0.2)] hover:from-emerald-400 hover:to-teal-400",
   },
   {

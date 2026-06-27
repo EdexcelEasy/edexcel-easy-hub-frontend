@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ADMIN_API_URL } from "@/lib/admin-api";
 
-const levels = [
+type SubjectCategory = {
+  id: string;
+  title: string;
+  slug: string;
+  description: string | null;
+};
+
+const fallbackLevels = [
   {
     icon: GraduationCap,
     title: "IGCSE",
@@ -22,6 +31,37 @@ const levels = [
 ];
 
 const Subjects = () => {
+  const [categories, setCategories] = useState<SubjectCategory[]>([]);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      try {
+        const response = await fetch(`${ADMIN_API_URL}/api/subjects/categories`);
+        const payload = await response.json().catch(() => ({}));
+        if (response.ok) setCategories(payload.data || []);
+      } catch {
+        setCategories([]);
+      }
+    };
+
+    void loadCategories();
+  }, []);
+
+  const levels =
+    categories.length > 0
+      ? categories.map((category, index) => ({
+          icon: index % 2 === 0 ? GraduationCap : BookOpen,
+          title: category.title,
+          description: category.description || "Explore subjects, units, and syllabus topics.",
+          link: `/${category.slug}-subjects`,
+          tone: index % 2 === 0 ? "from-sky-100 to-cyan-50" : "from-amber-100 to-orange-50",
+          iconTone:
+            index % 2 === 0
+              ? "bg-sky-100 text-sky-700 border-sky-200"
+              : "bg-amber-100 text-amber-700 border-amber-200",
+        }))
+      : fallbackLevels;
+
   return (
     <section id="subjects" className="min-h-screen py-24 relative overflow-hidden flex items-center scroll-mt-16">
       <div className="absolute inset-0 bg-pattern-dots bg-pattern-fade pointer-events-none" />
