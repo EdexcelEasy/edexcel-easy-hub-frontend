@@ -8,30 +8,38 @@ const features = [
     title: "Buy Courses",
     description: "Enroll in IGCSE & IAL exam preparation courses for expert guidance.",
     link: "/buy-courses",
+    tone: "from-sky-100 to-cyan-50",
+    iconTone: "bg-sky-100 text-sky-700 border-sky-200",
   },
   {
     icon: FileText,
     title: "Past Papers",
     description: "Get all the Past Papers & Mark Schemes all in one place.",
     link: "#past-papers",
+    tone: "from-emerald-100 to-teal-50",
+    iconTone: "bg-emerald-100 text-emerald-700 border-emerald-200",
   },
   {
     icon: Zap,
     title: "Cheatsheets & Important Questions",
     description: "Get formulas, definitions, diagrams and important questions all in one place.",
     link: "/cheatsheets",
+    tone: "from-amber-100 to-orange-50",
+    iconTone: "bg-amber-100 text-amber-700 border-amber-200",
   },
   {
     icon: Mail,
     title: "Inbox for Pricing",
     description: "Get the price and fees for our classes and paid work.",
     link: "/pricing",
+    tone: "from-rose-100 to-pink-50",
+    iconTone: "bg-rose-100 text-rose-700 border-rose-200",
   },
 ];
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-20 bg-muted/30 relative overflow-hidden">
+    <section id="resources" className="py-20 bg-gradient-to-br from-white via-amber-50 to-cyan-50 relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 bg-pattern-grid bg-pattern-fade pointer-events-none" />
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -42,14 +50,15 @@ const WhyChooseUs = () => {
           className="text-center mb-16"
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1E3A8A] text-white font-medium text-sm mb-6">
+          <div className="section-kicker mb-6">
             <CheckCircle className="w-4 h-4" />
             Why Choose Us
           </div>
           
           {/* Heading */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold italic text-[#1E3A8A] mb-6">
-            Everything You Need to Succeed
+            Everything You Need to{" "}
+            <span className="text-gradient-primary">Succeed</span>
           </h2>
           
           {/* Subtitle */}
@@ -59,7 +68,7 @@ const WhyChooseUs = () => {
         </motion.div>
 
         {/* Feature Cards */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {features.map((feature, index) => {
             const isExternal = feature.link.startsWith("#");
             const Wrapper = isExternal ? "a" : Link;
@@ -72,20 +81,20 @@ const WhyChooseUs = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -6, scale: 1.02 }}
-                  className="relative bg-card rounded-xl p-3 md:p-4 border border-border overflow-hidden group hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-colors cursor-pointer h-full"
+                  className={`relative bg-gradient-to-br ${feature.tone} rounded-xl p-4 border border-white/70 overflow-hidden group hover:border-primary/40 hover:shadow-[0_14px_36px_rgba(14,165,233,0.18)] transition-all cursor-pointer h-full colorful-card`}
                 >
-                  <div className="absolute top-0 right-0 w-12 h-12 md:w-16 md:h-16 bg-muted/50 rounded-bl-[60px] -z-0 group-hover:bg-[#FACC15]/30 transition-colors" />
+                  <div className="absolute top-0 right-0 w-14 h-14 md:w-16 md:h-16 bg-white/55 rounded-bl-[60px] -z-0 group-hover:bg-white/75 transition-colors" />
                   <motion.div
                     whileHover={{ rotate: -8, scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
-                    className="relative z-10 w-8 h-8 md:w-10 md:h-10 rounded-lg border-2 border-[#1E3A8A]/20 flex items-center justify-center mb-2 md:mb-3 bg-background group-hover:border-[#1E3A8A]"
+                    className={`relative z-10 w-9 h-9 md:w-10 md:h-10 rounded-lg border-2 flex items-center justify-center mb-3 shadow-sm ${feature.iconTone}`}
                   >
-                    <feature.icon className="w-4 h-4 md:w-5 md:h-5 text-[#1E3A8A]" />
+                    <feature.icon className="w-4 h-4 md:w-5 md:h-5" />
                   </motion.div>
-                  <h3 className="relative z-10 font-heading font-bold text-xs md:text-sm lg:text-base text-[#1E3A8A] mb-1">
+                  <h3 className="relative z-10 font-heading font-bold text-sm lg:text-base text-[#1E3A8A] mb-1">
                     {feature.title}
                   </h3>
-                  <p className="relative z-10 text-muted-foreground text-[10px] md:text-xs lg:text-sm leading-tight">
+                  <p className="relative z-10 text-muted-foreground text-xs lg:text-sm leading-snug">
                     {feature.description}
                   </p>
                 </motion.div>
