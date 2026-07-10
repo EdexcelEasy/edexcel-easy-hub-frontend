@@ -3,6 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import {
+  fetchPastPaperCurricula,
+  fetchPastPaperSubjects,
+  getPastPaperCurriculumPath,
+  getPastPaperSubjectPath,
+  type PastPaperCurriculum,
+  type PastPaperSubject,
+} from "@/lib/past-papers";
 
 const igcseSubjects = [
   { name: "Chemistry", slug: "chemistry" },
@@ -24,39 +32,15 @@ const ialSubjects = [
   { name: "Biology", slug: "biology" },
 ];
 
-// Subjects with past papers available
-const igcsePastPaperSubjects = [
-  { name: "Physics", slug: "physics" },
-  { name: "Chemistry", slug: "chemistry" },
-  { name: "Mathematics B", slug: "mathematics-b" },
-  { name: "Mathematics A", slug: "mathematics-a" },
-  { name: "Further Pure Mathematics", slug: "further-pure-mathematics" },
-  { name: "Biology", slug: "biology" },
-  { name: "Human Biology", slug: "human-biology" },
-  { name: "ICT", slug: "ict" },
-  { name: "Computer Science", slug: "computer-science" },
-];
-
-const ialPastPaperSubjects = [
-  { name: "Physics", slug: "physics" },
-  { name: "Mathematics", slug: "mathematics" },
-  { name: "Biology", slug: "biology" },
-  { name: "IT", slug: "it" },
-];
-
-const igcseModularPastPaperSubjects = [
-  { name: "Mathematics A", slug: "mathematics-a" },
-  { name: "Biology", slug: "biology" },
-  { name: "Chemistry", slug: "chemistry" },
-  { name: "Physics", slug: "physics" },
-  { name: "Science (Double Awards)", slug: "science-double-awards" },
-  { name: "English Language B", slug: "english-language-b" },
-  { name: "Accounting", slug: "accounting" },
-];
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [pastPaperSubjects, setPastPaperSubjects] = useState<Record<string, PastPaperSubject[]>>({
+    igcse: [],
+    ial: [],
+    "igcse-modular": [],
+  });
+  const [pastPaperCurricula, setPastPaperCurricula] = useState<PastPaperCurriculum[]>([]);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -70,6 +54,19 @@ const Navbar = () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    const loadPastPaperSubjects = async () => {
+      const curricula = await fetchPastPaperCurricula();
+      const subjectEntries = await Promise.all(
+        curricula.map(async (curriculum) => [curriculum.slug, await fetchPastPaperSubjects(curriculum.slug)] as const),
+      );
+      setPastPaperCurricula(curricula);
+      setPastPaperSubjects(Object.fromEntries(subjectEntries));
+    };
+
+    void loadPastPaperSubjects();
+  }, []);
 
   const handleWorksheetsClick = (e: React.MouseEvent, closeMobile = false) => {
     e.preventDefault();
@@ -212,74 +209,34 @@ const Navbar = () => {
                     className="absolute top-full left-0 mt-2 w-72 max-h-[70vh] bg-card border border-border rounded-xl shadow-lg z-50 overflow-y-auto"
                   >
                     <div className="p-4">
-                      {/* IGCSE Section */}
-                      <div className="mb-4">
-                        <Link
-                          to="/igcse-past-papers"
-                          className="block font-heading font-bold text-[#1E3A8A] mb-2 hover:text-primary"
-                        >
-                          IGCSE
-                        </Link>
-                        <div className="pl-3 space-y-1">
-                          {igcsePastPaperSubjects.map((subject) => (
-                            <Link
-                              key={subject.slug}
-                              to={`/igcse-past-papers/${subject.slug}`}
-                              className="block text-sm text-muted-foreground hover:text-[#1E3A8A] hover:underline transition-all py-1"
-                            >
-                              {subject.name}
-                            </Link>
-                          ))}
+                      <Link
+                        to="/past-papers"
+                        className="block font-heading font-bold text-[#1E3A8A] mb-3 hover:text-primary"
+                      >
+                        All Past Papers
+                      </Link>
+                      {pastPaperCurricula.map((curriculum, index) => (
+                        <div key={curriculum.slug}>
+                          {index > 0 && <div className="border-t border-border my-3" />}
+                          <Link
+                            to={getPastPaperCurriculumPath(curriculum.slug)}
+                            className="block font-heading font-bold text-[#1E3A8A] mb-2 hover:text-primary"
+                          >
+                            {curriculum.title}
+                          </Link>
+                          <div className="pl-3 space-y-1">
+                            {(pastPaperSubjects[curriculum.slug] || []).map((subject) => (
+                              <Link
+                                key={subject.slug}
+                                to={getPastPaperSubjectPath(curriculum.slug, subject.slug)}
+                                className="block text-sm text-muted-foreground hover:text-[#1E3A8A] hover:underline transition-all py-1"
+                              >
+                                {subject.name}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-
-                      {/* Divider */}
-                      <div className="border-t border-border my-3" />
-
-                      {/* IAL Section */}
-                      <div>
-                        <Link
-                          to="/ial-past-papers"
-                          className="block font-heading font-bold text-[#1E3A8A] mb-2 hover:text-primary"
-                        >
-                          IAL
-                        </Link>
-                        <div className="pl-3 space-y-1">
-                          {ialPastPaperSubjects.map((subject) => (
-                            <Link
-                              key={subject.slug}
-                              to={`/ial-past-papers/${subject.slug}`}
-                              className="block text-sm text-muted-foreground hover:text-[#1E3A8A] hover:underline transition-all py-1"
-                            >
-                              {subject.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Divider */}
-                      <div className="border-t border-border my-3" />
-
-                      {/* IGCSE Modular Section */}
-                      <div>
-                        <Link
-                          to="/igcse-modular-past-papers"
-                          className="block font-heading font-bold text-[#1E3A8A] mb-2 hover:text-primary"
-                        >
-                          IGCSE Modular
-                        </Link>
-                        <div className="pl-3 space-y-1">
-                          {igcseModularPastPaperSubjects.map((subject) => (
-                            <Link
-                              key={subject.slug}
-                              to={`/igcse-modular-past-papers/${subject.slug}`}
-                              className="block text-sm text-muted-foreground hover:text-[#1E3A8A] hover:underline transition-all py-1"
-                            >
-                              {subject.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </motion.div>
                 )}
@@ -376,47 +333,37 @@ const Navbar = () => {
 
               {/* Mobile Past Papers */}
               <div className="py-2">
-                <span className="text-sm font-medium text-foreground/80">Past Papers</span>
+                <Link
+                  to="/past-papers"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-sm font-medium text-foreground/80"
+                >
+                  Past Papers
+                </Link>
                 <div className="pl-4 mt-2 space-y-2">
-                  <Link to="/igcse-past-papers" onClick={() => setIsOpen(false)} className="block text-sm font-bold text-[#1E3A8A]">IGCSE</Link>
-                  <div className="pl-3 space-y-1">
-                    {igcsePastPaperSubjects.map((subject) => (
+                  {pastPaperCurricula.map((curriculum) => (
+                    <div key={curriculum.slug}>
                       <Link
-                        key={subject.slug}
-                        to={`/igcse-past-papers/${subject.slug}`}
+                        to={getPastPaperCurriculumPath(curriculum.slug)}
                         onClick={() => setIsOpen(false)}
-                        className="block text-sm text-muted-foreground hover:text-[#1E3A8A]"
+                        className="block text-sm font-bold text-[#1E3A8A]"
                       >
-                        {subject.name}
+                        {curriculum.title}
                       </Link>
-                    ))}
-                  </div>
-                  <Link to="/ial-past-papers" onClick={() => setIsOpen(false)} className="block text-sm font-bold text-[#1E3A8A]">IAL</Link>
-                  <div className="pl-3 space-y-1">
-                    {ialPastPaperSubjects.map((subject) => (
-                      <Link
-                        key={subject.slug}
-                        to={`/ial-past-papers/${subject.slug}`}
-                        onClick={() => setIsOpen(false)}
-                        className="block text-sm text-muted-foreground hover:text-[#1E3A8A]"
-                      >
-                        {subject.name}
-                      </Link>
-                    ))}
-                  </div>
-                  <Link to="/igcse-modular-past-papers" onClick={() => setIsOpen(false)} className="block text-sm font-bold text-[#1E3A8A] mt-2">IGCSE Modular</Link>
-                  <div className="pl-3 space-y-1">
-                    {igcseModularPastPaperSubjects.map((subject) => (
-                      <Link
-                        key={subject.slug}
-                        to={`/igcse-modular-past-papers/${subject.slug}`}
-                        onClick={() => setIsOpen(false)}
-                        className="block text-sm text-muted-foreground hover:text-[#1E3A8A]"
-                      >
-                        {subject.name}
-                      </Link>
-                    ))}
-                  </div>
+                      <div className="pl-3 space-y-1">
+                        {(pastPaperSubjects[curriculum.slug] || []).map((subject) => (
+                          <Link
+                            key={subject.slug}
+                            to={getPastPaperSubjectPath(curriculum.slug, subject.slug)}
+                            onClick={() => setIsOpen(false)}
+                            className="block text-sm text-muted-foreground hover:text-[#1E3A8A]"
+                          >
+                            {subject.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
 

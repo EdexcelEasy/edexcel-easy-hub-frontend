@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Lock } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -108,10 +108,6 @@ const SubjectResourceDetail = () => {
                       <div>
                         <h2 className="font-heading text-lg font-bold text-[#1E3A8A]">{item.title}</h2>
                         <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
-                        <p className={`mt-3 flex items-center gap-2 text-xs font-semibold ${item.access_type === "paid" ? "text-red-600" : "text-emerald-600"}`}>
-                          <Lock className="h-3.5 w-3.5" />
-                          {item.access_type === "paid" ? "Paid Only" : "Free"}
-                        </p>
                       </div>
                       {href && (
                         <Button asChild>

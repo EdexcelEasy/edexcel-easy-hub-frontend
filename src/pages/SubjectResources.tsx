@@ -114,10 +114,8 @@ const SubjectResources = () => {
                 const labelText =
                   resource.status === "coming_soon"
                     ? "Coming Soon"
-                    : resource.access_type === "paid"
-                    ? "Paid Only"
                     : "Click for more";
-                const labelColor = resource.access_type === "paid" ? "text-red-600" : "text-[#FACC15]";
+                const labelColor = resource.status === "coming_soon" ? "text-red-600" : "text-[#FACC15]";
                 const card = (
                   <div className="group relative bg-card rounded-xl border-2 border-[#1E3A8A] overflow-hidden hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all h-full">
                     <div className={`h-2 bg-gradient-to-r ${colorMap[resource.color] || colorMap.blue}`} />

@@ -107,7 +107,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (pathname.startsWith("/api/admin/")) {
-      await requireAdmin(req);
+      req.adminSession = await requireAdmin(req);
     }
 
     if (req.method === "GET" && pathname === "/api/admin/users") {
@@ -116,6 +116,10 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === "POST" && pathname === "/api/admin/users") {
       return await createAdminUser(req, res);
+    }
+
+    if (req.method === "DELETE" && pathname.startsWith("/api/admin/users/")) {
+      return await deleteAdminUser(req, res, pathname);
     }
 
     if (req.method === "GET" && pathname === "/api/admin/subject-data") {
@@ -370,6 +374,21 @@ async function createContent(req, res) {
   const body = await readJson(req);
   const payload = sanitizeContentPayload(body);
 
+  if (payload.type === "past-paper") {
+    const existing = await findExistingPastPaper(payload);
+    if (existing) {
+      const { data, error } = await supabase
+        .from("site_content")
+        .update(payload)
+        .eq("id", existing.id)
+        .select("*")
+        .single();
+
+      if (error) throw error;
+      return sendJson(res, 200, { data, updatedExisting: true });
+    }
+  }
+
   const { data, error } = await supabase
     .from("site_content")
     .insert(payload)
@@ -510,6 +529,53 @@ async function createAdminUser(req, res) {
 
   if (error) throw error;
   return sendJson(res, 201, { data });
+}
+
+async function deleteAdminUser(req, res, pathname) {
+  const [, , , , id] = pathname.split("/");
+  if (!id) {
+    const error = new Error("Admin user id is required");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  if (req.adminSession?.id === id) {
+    const error = new Error("You cannot delete your own admin account while logged in.");
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const { data: admin, error: lookupError } = await supabase
+    .from("admin_users")
+    .select("id,email,active")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (lookupError) throw lookupError;
+  if (!admin) {
+    const error = new Error("Admin user not found");
+    error.statusCode = 404;
+    throw error;
+  }
+
+  if (admin.active) {
+    const { count, error: countError } = await supabase
+      .from("admin_users")
+      .select("id", { count: "exact", head: true })
+      .eq("active", true);
+
+    if (countError) throw countError;
+    if (Number(count || 0) <= 1) {
+      const error = new Error("Cannot delete the final active admin account.");
+      error.statusCode = 400;
+      throw error;
+    }
+  }
+
+  const { error } = await supabase.from("admin_users").delete().eq("id", id);
+  if (error) throw error;
+
+  return sendJson(res, 200, { data: admin });
 }
 
 async function getSubjectAdminData(_req, res) {
@@ -908,6 +974,41 @@ function sanitizeContentPayload(body, options = {}) {
   return payload;
 }
 
+async function findExistingPastPaper(payload) {
+  const curriculum = optionalString(payload.curriculum);
+  const subject = optionalString(payload.subject);
+  const examSession = optionalString(payload.exam_session);
+  const paperCode = optionalString(payload.paper_code);
+  const unit = optionalString(payload.unit);
+
+  if (!curriculum || !subject || !examSession || (!paperCode && !unit)) return null;
+  const curriculumSlug = slugify(curriculum);
+  const subjectSlug = slugify(subject);
+
+  const { data, error } = await supabase
+    .from("site_content")
+    .select("id,curriculum,subject,paper_code,unit")
+    .eq("type", "past-paper")
+    .eq("exam_session", examSession);
+
+  if (error) throw error;
+  return (data || []).find((item) => {
+    if (slugify(item.curriculum) !== curriculumSlug || slugify(item.subject) !== subjectSlug) {
+      return false;
+    }
+    const existingPaperCode = optionalString(item.paper_code);
+    const existingUnit = optionalString(item.unit);
+    const existingPaperKey = slugify(existingPaperCode || existingUnit);
+    const requestedPaperKey = slugify(paperCode || unit);
+    if (paperCode) {
+      return existingPaperKey === requestedPaperKey;
+    }
+    return (
+      unit && existingPaperKey === requestedPaperKey
+    );
+  }) || null;
+}
+
 function sanitizeSubjectCategoryPayload(body, options = {}) {
   const payload = pickPayload(body, ["title", "slug", "description", "kicker", "sort_order", "published"]);
   if (!options.partial) payload.title = requireString(payload.title, "Title");
@@ -1205,6 +1306,7 @@ function sendFile(res, filePath, contentType) {
 function formatError(error) {
   if (!error) return "Server error";
   if (typeof error === "string") return error;
+  if (error.code === "23505") return formatUniqueConstraintError(error);
   if (error.message) return error.message;
   if (error.error_description) return error.error_description;
   if (error.details) return error.details;
@@ -1213,6 +1315,17 @@ function formatError(error) {
   } catch {
     return "Server error";
   }
+}
+
+function formatUniqueConstraintError(error) {
+  const constraintMessages = {
+    subjects_slug_key: "A subject with this slug already exists. Use a different title or category.",
+    subject_categories_slug_key: "A subject category with this slug already exists. Use a different category title.",
+    subject_resources_subject_id_slug_key: "This subject already has a resource with this slug. Use a different resource title.",
+    site_content_type_slug_key: "Content with this type and slug already exists. Use a different title or slug.",
+  };
+
+  return constraintMessages[error.constraint] || "A record with this unique value already exists.";
 }
 
 function stripTrailingSlash(pathname) {

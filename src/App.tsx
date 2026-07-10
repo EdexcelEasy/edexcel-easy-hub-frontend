@@ -18,6 +18,9 @@ import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import PaperOptions from "./pages/PaperOptions";
+import PastPapersIndex from "./pages/PastPapersIndex";
+import PastPaperCurriculum from "./pages/PastPaperCurriculum";
+import PastPaperSubject from "./pages/PastPaperSubject";
 import ResourcesIndex from "./pages/ResourcesIndex";
 import SubjectResources from "./pages/SubjectResources";
 import SubjectResourceDetail from "./pages/SubjectResourceDetail";
@@ -49,8 +52,12 @@ const App = () => (
           <Route path="/igcse-past-papers" element={<IGCSEPastPapers />} />
           <Route path="/igcse-past-papers/:subject" element={<IGCSEPastPaperDetail />} />
           <Route path="/igcse-modular-past-papers" element={<IGCSEModularPastPapers />} />
+          <Route path="/igcse-modular-past-papers/:subject" element={<IGCSEPastPaperDetail curriculum="igcse-modular" />} />
           <Route path="/ial-past-papers" element={<IALPastPapers />} />
           <Route path="/ial-past-papers/:subject" element={<IALPastPaperDetail />} />
+          <Route path="/past-papers" element={<PastPapersIndex />} />
+          <Route path="/past-papers/:curriculum" element={<PastPaperCurriculum />} />
+          <Route path="/past-papers/:curriculum/:subject" element={<PastPaperSubject />} />
           <Route path="/cheatsheets" element={<Cheatsheets />} />
           <Route path="/cheatsheets/:category" element={<CheatsheetSubjects />} />
           <Route path="/pricing" element={<Pricing />} />

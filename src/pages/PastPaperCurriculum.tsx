@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, FileText } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { fetchPastPaperSubjects, type PastPaperSubject } from "@/lib/past-papers";
+import { fetchPastPaperSubjects, formatCurriculumName, type PastPaperSubject } from "@/lib/past-papers";
 
-const IGCSEPastPapers = () => {
+const PastPaperCurriculum = () => {
+  const { curriculum } = useParams<{ curriculum: string }>();
   const [subjects, setSubjects] = useState<PastPaperSubject[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const curriculumSlug = curriculum || "";
+  const curriculumName = formatCurriculumName(curriculumSlug);
 
   useEffect(() => {
     const loadSubjects = async () => {
+      if (!curriculumSlug) return;
       setLoading(true);
       setError("");
       try {
-        setSubjects(await fetchPastPaperSubjects("igcse"));
+        setSubjects(await fetchPastPaperSubjects(curriculumSlug));
       } catch (err) {
         setError(err instanceof Error ? err.message : "Could not load past papers.");
       } finally {
@@ -26,7 +30,7 @@ const IGCSEPastPapers = () => {
     };
 
     void loadSubjects();
-  }, []);
+  }, [curriculumSlug]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -43,13 +47,13 @@ const IGCSEPastPapers = () => {
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center mb-16">
             <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-medium text-sm mb-4">
-              IGCSE Past Papers
+              {curriculumName} Past Papers
             </span>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[#1E3A8A] mb-4">
-              IGCSE Past <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">Papers</span>
+              {curriculumName} Past <span className="inline-block px-3 py-1 border-2 border-[#FACC15] rounded-lg">Papers</span>
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              Access past examination papers and mark schemes for all IGCSE subjects.
+              Access past examination papers and mark schemes for {curriculumName} subjects.
             </p>
           </motion.div>
 
@@ -59,10 +63,10 @@ const IGCSEPastPapers = () => {
             ) : error ? (
               <p className="rounded-xl border border-destructive/30 bg-destructive/5 p-6 text-center text-destructive">{error}</p>
             ) : subjects.length === 0 ? (
-              <p className="rounded-xl border bg-card p-6 text-center text-muted-foreground">No IGCSE past papers have been added yet.</p>
+              <p className="rounded-xl border bg-card p-6 text-center text-muted-foreground">No past papers have been added yet.</p>
             ) : (
               subjects.map((subject, index) => (
-                <Link key={subject.slug} to={`/igcse-past-papers/${subject.slug}`}>
+                <Link key={subject.slug} to={`/past-papers/${curriculumSlug}/${subject.slug}`}>
                   <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4, delay: index * 0.05 }}>
                     <div className="flex items-center gap-4 bg-card rounded-xl p-4 border border-border hover:border-[#1E3A8A] hover:shadow-[0_8px_30px_rgba(250,204,21,0.3)] transition-all cursor-pointer group">
                       <span className="text-muted-foreground font-medium text-sm w-6">{index + 1})</span>
@@ -84,4 +88,4 @@ const IGCSEPastPapers = () => {
   );
 };
 
-export default IGCSEPastPapers;
+export default PastPaperCurriculum;

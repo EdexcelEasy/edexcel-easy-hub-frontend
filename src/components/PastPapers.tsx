@@ -1,41 +1,37 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, BookOpen, Layers } from "lucide-react";
+import { BookOpen, GraduationCap, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
+import { fetchPastPaperCurricula, getPastPaperCurriculumPath, type PastPaperCurriculum } from "@/lib/past-papers";
 
-const levels = [
-  {
-    icon: GraduationCap,
-    title: "IGCSE",
-    description: "Past papers and mark schemes for International GCSE examinations.",
-    href: "/igcse-past-papers",
-    firstExam: "Jan 2019",
-    latestExam: "Jan 2026",
-    tone: "from-sky-100 to-blue-50",
-    iconTone: "bg-sky-100 text-sky-700 border-sky-200",
-  },
-  {
-    icon: Layers,
-    title: "IGCSE Modular",
-    description: "Past papers and mark schemes for IGCSE Modular examinations.",
-    href: "/igcse-modular-past-papers",
-    firstExam: "Jun 2025",
-    latestExam: "Nov 2025",
-    tone: "from-rose-100 to-pink-50",
-    iconTone: "bg-rose-100 text-rose-700 border-rose-200",
-  },
-  {
-    icon: BookOpen,
-    title: "IAL",
-    description: "Past papers and mark schemes for International Advanced Level examinations.",
-    href: "/ial-past-papers",
-    firstExam: "Jan 2019",
-    latestExam: "Jan 2026",
-    tone: "from-emerald-100 to-teal-50",
-    iconTone: "bg-emerald-100 text-emerald-700 border-emerald-200",
-  },
+const curriculumStyles = [
+  { icon: GraduationCap, tone: "from-sky-100 to-blue-50", iconTone: "bg-sky-100 text-sky-700 border-sky-200" },
+  { icon: Layers, tone: "from-rose-100 to-pink-50", iconTone: "bg-rose-100 text-rose-700 border-rose-200" },
+  { icon: BookOpen, tone: "from-emerald-100 to-teal-50", iconTone: "bg-emerald-100 text-emerald-700 border-emerald-200" },
 ];
 
+function getCurriculumDescription(curriculum: PastPaperCurriculum) {
+  if (curriculum.slug === "igcse") return "Past papers and mark schemes for International GCSE examinations.";
+  if (curriculum.slug === "igcse-modular") return "Past papers and mark schemes for IGCSE Modular examinations.";
+  if (curriculum.slug === "ial") return "Past papers and mark schemes for International Advanced Level examinations.";
+  return `Past papers and mark schemes for ${curriculum.title}.`;
+}
+
 const PastPapers = () => {
+  const [curricula, setCurricula] = useState<PastPaperCurriculum[]>([]);
+
+  useEffect(() => {
+    const loadCurricula = async () => {
+      try {
+        setCurricula(await fetchPastPaperCurricula());
+      } catch {
+        setCurricula([]);
+      }
+    };
+
+    void loadCurricula();
+  }, []);
+
   return (
     <section id="past-papers" className="min-h-screen py-24 bg-gradient-to-br from-sky-50 via-white to-amber-50 relative overflow-hidden flex items-center scroll-mt-16">
       <div className="absolute inset-0 bg-pattern-diagonal pointer-events-none" />
@@ -62,16 +58,24 @@ const PastPapers = () => {
         </motion.div>
 
         {/* Level Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {levels.map((level, index) => (
-            <Link key={level.title} to={level.href} className="h-full">
+        {curricula.length === 0 ? (
+          <p className="mx-auto max-w-2xl rounded-xl border bg-white/80 p-6 text-center text-muted-foreground">
+            No past papers have been added yet.
+          </p>
+        ) : (
+        <div className="grid justify-center gap-8 sm:grid-cols-[repeat(auto-fit,minmax(280px,360px))] max-w-6xl mx-auto">
+          {curricula.map((curriculum, index) => {
+            const style = curriculumStyles[index % curriculumStyles.length];
+            const Icon = style.icon;
+            return (
+            <Link key={curriculum.slug} to={getPastPaperCurriculumPath(curriculum.slug)} className="h-full">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -8, scale: 1.03 }}
-                className={`relative bg-gradient-to-br ${level.tone} rounded-2xl p-7 md:p-8 border border-white/70 overflow-hidden group hover:border-primary/40 hover:shadow-[0_18px_44px_rgba(250,204,21,0.24)] transition-all cursor-pointer h-full colorful-card`}
+                className={`relative bg-gradient-to-br ${style.tone} rounded-2xl p-7 md:p-8 border border-white/70 overflow-hidden group hover:border-primary/40 hover:shadow-[0_18px_44px_rgba(250,204,21,0.24)] transition-all cursor-pointer h-full colorful-card`}
               >
                 {/* Background Shape */}
                 <div className="absolute top-0 right-0 w-24 h-24 md:w-28 md:h-28 bg-white/55 rounded-bl-[110px] -z-0 group-hover:bg-white/75 transition-colors" />
@@ -80,28 +84,24 @@ const PastPapers = () => {
                 <motion.div
                   whileHover={{ rotate: -8, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className={`relative z-10 w-14 h-14 md:w-16 md:h-16 rounded-xl border-2 flex items-center justify-center mb-5 shadow-sm ${level.iconTone}`}
+                  className={`relative z-10 w-14 h-14 md:w-16 md:h-16 rounded-xl border-2 flex items-center justify-center mb-5 shadow-sm ${style.iconTone}`}
                 >
-                  <level.icon className="w-7 h-7 md:w-8 md:h-8" />
+                  <Icon className="w-7 h-7 md:w-8 md:h-8" />
                 </motion.div>
                 
                 {/* Content */}
                 <h3 className="relative z-10 font-heading font-bold text-2xl md:text-3xl text-[#1E3A8A] mb-4">
-                  {level.title}
+                  {curriculum.title}
                 </h3>
                 <p className="relative z-10 text-muted-foreground text-base md:text-lg leading-relaxed">
-                  {level.description}
+                  {getCurriculumDescription(curriculum)}
                 </p>
-                {level.firstExam && level.latestExam && (
-                  <div className="relative z-10 mt-5 pt-5 border-t border-border space-y-2">
-                    <p className="text-sm text-muted-foreground"><span className="font-semibold text-foreground">First Exam:</span> {level.firstExam}</p>
-                    <p className="text-sm text-muted-foreground"><span className="font-semibold text-foreground">Latest Exam:</span> {level.latestExam}</p>
-                  </div>
-                )}
               </motion.div>
             </Link>
-          ))}
+          );
+          })}
         </div>
+        )}
       </div>
     </section>
   );

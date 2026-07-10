@@ -14,23 +14,24 @@ import {
   type PastPaperRecord,
 } from "@/lib/past-papers";
 
-const IGCSEPastPaperDetail = ({ curriculum = "igcse" }: { curriculum?: string }) => {
-  const { subject } = useParams<{ subject: string }>();
+const PastPaperSubject = () => {
+  const { curriculum, subject } = useParams<{ curriculum: string; subject: string }>();
   const [papers, setPapers] = useState<PastPaperRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const subjectName = formatSubjectName(subject || "");
-  const curriculumName = formatCurriculumName(curriculum);
-  const backPath = curriculum === "igcse-modular" ? "/igcse-modular-past-papers" : "/igcse-past-papers";
+  const curriculumSlug = curriculum || "";
+  const subjectSlug = subject || "";
+  const curriculumName = formatCurriculumName(curriculumSlug);
+  const subjectName = formatSubjectName(subjectSlug);
   const units = useMemo(() => getPaperUnits(papers), [papers]);
 
   useEffect(() => {
     const loadPapers = async () => {
-      if (!subject) return;
+      if (!curriculumSlug || !subjectSlug) return;
       setLoading(true);
       setError("");
       try {
-        setPapers(await fetchPastPapers(curriculum, subject));
+        setPapers(await fetchPastPapers(curriculumSlug, subjectSlug));
       } catch (err) {
         setError(err instanceof Error ? err.message : "Could not load papers.");
       } finally {
@@ -39,7 +40,7 @@ const IGCSEPastPaperDetail = ({ curriculum = "igcse" }: { curriculum?: string })
     };
 
     void loadPapers();
-  }, [curriculum, subject]);
+  }, [curriculumSlug, subjectSlug]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -47,7 +48,7 @@ const IGCSEPastPaperDetail = ({ curriculum = "igcse" }: { curriculum?: string })
 
       <main className="pt-24 pb-20">
         <div className="container mx-auto px-4">
-          <Link to={backPath}>
+          <Link to={`/past-papers/${curriculumSlug}`}>
             <Button variant="ghost" className="mb-8 text-primary hover:text-primary/80">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to {curriculumName} Past Papers
@@ -77,13 +78,7 @@ const IGCSEPastPaperDetail = ({ curriculum = "igcse" }: { curriculum?: string })
               {units.map((unit, unitIndex) => {
                 const sessions = getPaperSessions(papers, unit.code);
                 return (
-                  <motion.div
-                    key={unit.code}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: unitIndex * 0.08 }}
-                    className="bg-card rounded-xl p-6 border-2 border-[#1E3A8A]"
-                  >
+                  <motion.div key={unit.code} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: unitIndex * 0.08 }} className="bg-card rounded-xl p-6 border-2 border-[#1E3A8A]">
                     <h2 className="font-heading font-bold text-2xl text-[#1E3A8A] mb-6 flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-[#1E3A8A]/10 flex items-center justify-center">
                         <FileText className="w-5 h-5 text-[#1E3A8A]" />
@@ -92,13 +87,8 @@ const IGCSEPastPaperDetail = ({ curriculum = "igcse" }: { curriculum?: string })
                     </h2>
                     <div className="space-y-2">
                       {sessions.map((session, index) => (
-                        <Link key={`${unit.code}-${session}`} to={`/${curriculum}/${subject}/${encodeURIComponent(unit.name)}/${encodeURIComponent(session)}`}>
-                          <motion.div
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.3, delay: index * 0.03 }}
-                            className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group"
-                          >
+                        <Link key={`${unit.code}-${session}`} to={`/${curriculumSlug}/${subjectSlug}/${encodeURIComponent(unit.name)}/${encodeURIComponent(session)}`}>
+                          <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: index * 0.03 }} className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-[#1E3A8A] hover:bg-muted/30 transition-all cursor-pointer group">
                             <span className="text-muted-foreground text-sm w-6">{index + 1}.</span>
                             <span className="font-medium text-foreground group-hover:text-[#1E3A8A] transition-colors">{session}</span>
                           </motion.div>
@@ -118,4 +108,4 @@ const IGCSEPastPaperDetail = ({ curriculum = "igcse" }: { curriculum?: string })
   );
 };
 
-export default IGCSEPastPaperDetail;
+export default PastPaperSubject;

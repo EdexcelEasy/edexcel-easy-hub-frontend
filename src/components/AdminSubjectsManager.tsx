@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { BookOpen, ChevronDown, ChevronRight, Edit, ImageIcon, Layers3, ListPlus, Plus, RefreshCw, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -123,7 +123,6 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
   const [resourceDescription, setResourceDescription] = useState("");
   const [resourceIcon, setResourceIcon] = useState("file");
   const [resourceColor, setResourceColor] = useState("blue");
-  const [resourceAccessType, setResourceAccessType] = useState<"free" | "paid">("free");
   const [resourceStatus, setResourceStatus] = useState<"available" | "coming_soon">("available");
   const [resourceItemResourceId, setResourceItemResourceId] = useState("");
   const [resourceItemTitle, setResourceItemTitle] = useState("");
@@ -139,6 +138,7 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
   const [collapsedCategories, setCollapsedCategories] = useState<Record<string, boolean>>({});
   const [collapsedSubjects, setCollapsedSubjects] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(false);
+  const initializedCollapsedState = useRef(false);
 
   const selectedSubjectUnits = useMemo(
     () => data.units.filter((unit) => unit.subject_id === unitSubjectId),
@@ -174,7 +174,13 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
     onError("");
     try {
       const payload = await request("/api/admin/subject-data");
-      setData(payload.data || { categories: [], subjects: [], units: [], topics: [], resources: [], resourceItems: [] });
+      const nextData = payload.data || { categories: [], subjects: [], units: [], topics: [], resources: [], resourceItems: [] };
+      setData(nextData);
+      if (!initializedCollapsedState.current) {
+        setCollapsedCategories(Object.fromEntries(nextData.categories.map((category: SubjectCategory) => [category.id, true])));
+        setCollapsedSubjects(Object.fromEntries(nextData.subjects.map((subject: Subject) => [subject.id, true])));
+        initializedCollapsedState.current = true;
+      }
     } catch (error) {
       onError(error instanceof Error ? error.message : "Could not load subject data.");
     } finally {
@@ -209,13 +215,14 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
     onError("");
     try {
       const title = subjectTitle;
+      const selectedCategory = data.categories.find((category) => category.id === subjectCategoryId);
       const logoUrl = subjectLogoFile ? await uploadSubjectLogo(subjectLogoFile, title) : subjectLogoUrl;
       await request(editingSubjectId ? `/api/admin/subjects/${editingSubjectId}` : "/api/admin/subjects", {
         method: editingSubjectId ? "PUT" : "POST",
         body: JSON.stringify({
           category_id: subjectCategoryId,
           title,
-          slug: title,
+          slug: buildSubjectSlug(title, selectedCategory),
           description: subjectDescription,
           logo_url: logoUrl,
           heading: subjectHeading || title,
@@ -292,7 +299,7 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
           description: resourceDescription,
           icon: resourceIcon,
           color: resourceColor,
-          access_type: resourceAccessType,
+          access_type: "free",
           status: resourceStatus,
         }),
       });
@@ -371,7 +378,6 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
     setResourceDescription(resource.description || "");
     setResourceIcon(resource.icon);
     setResourceColor(resource.color);
-    setResourceAccessType(resource.access_type);
     setResourceStatus(resource.status);
   };
 
@@ -488,7 +494,6 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
     setResourceDescription("");
     setResourceIcon("file");
     setResourceColor("blue");
-    setResourceAccessType("free");
     setResourceStatus("available");
   };
 
@@ -519,7 +524,7 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
           </h3>
           <p className="text-sm text-muted-foreground">
             {resourceMode
-              ? "Create free or paid resources and attach files or links for each subject."
+              ? "Create resources and attach files or links for each subject."
               : "Create categories, subjects, units, and subtopics for the public subject pages."}
           </p>
         </div>
@@ -740,15 +745,6 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
                   </SelectContent>
                 </Select>
               </AdminField>
-              <AdminField label="Access">
-                <Select value={resourceAccessType} onValueChange={(value: "free" | "paid") => setResourceAccessType(value)}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="free">Free</SelectItem>
-                    <SelectItem value="paid">Paid</SelectItem>
-                  </SelectContent>
-                </Select>
-              </AdminField>
               <AdminField label="Status">
                 <Select value={resourceStatus} onValueChange={(value: "available" | "coming_soon") => setResourceStatus(value)}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
@@ -858,17 +854,19 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
                     <p className="mt-1 text-sm text-muted-foreground">{category.description}</p>
                   </div>
                 </div>
-                <ActionButtons
-                  onEdit={() => editCategory(category)}
-                  onDelete={() =>
-                    setDeleteTarget({
-                      path: `/api/admin/subject-categories/${category.id}`,
-                      label: category.title,
-                      note: "This will delete every subject, unit, and topic inside this category.",
-                    })
-                  }
-                  disabled={loading}
-                />
+                {!resourceMode && (
+                  <ActionButtons
+                    onEdit={() => editCategory(category)}
+                    onDelete={() =>
+                      setDeleteTarget({
+                        path: `/api/admin/subject-categories/${category.id}`,
+                        label: category.title,
+                        note: "This will delete every subject, unit, and topic inside this category.",
+                      })
+                    }
+                    disabled={loading}
+                  />
+                )}
               </div>
 
               {!collapsedCategories[category.id] && (
@@ -899,17 +897,19 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
                             <p className="mt-1 text-xs text-muted-foreground">{subject.description}</p>
                           </div>
                         </div>
-                        <ActionButtons
-                          onEdit={() => editSubject(subject)}
-                          onDelete={() =>
-                            setDeleteTarget({
-                              path: `/api/admin/subjects/${subject.id}`,
-                              label: subject.title,
-                              note: "This will delete every unit and topic inside this subject.",
-                            })
-                          }
-                          disabled={loading}
-                        />
+                        {!resourceMode && (
+                          <ActionButtons
+                            onEdit={() => editSubject(subject)}
+                            onDelete={() =>
+                              setDeleteTarget({
+                                path: `/api/admin/subjects/${subject.id}`,
+                                label: subject.title,
+                                note: "This will delete every unit and topic inside this subject.",
+                              })
+                            }
+                            disabled={loading}
+                          />
+                        )}
                       </div>
 
                       {!collapsedSubjects[subject.id] && (
@@ -1002,7 +1002,7 @@ const AdminSubjectsManager = ({ token, onStatus, onError, mode = "subjects" }: P
                                     {resource.title} <span className="text-xs font-normal text-muted-foreground">/{resource.slug}</span>
                                   </p>
                                   <p className="mt-1 text-xs text-muted-foreground">
-                                    {resource.access_type === "paid" ? "Paid" : "Free"} • {resource.status === "coming_soon" ? "Coming Soon" : "Available"}
+                                    {resource.status === "coming_soon" ? "Coming Soon" : "Available"}
                                   </p>
                                 </div>
                                 <ActionButtons
@@ -1133,6 +1133,10 @@ function getResourceLabel(
   const subject = subjects.find((item) => item.id === resource.subject_id);
   const category = categories.find((item) => item.id === subject?.category_id);
   return `${category?.title || "Category"} -> ${subject?.title || "Subject"} -> ${resource.title}`;
+}
+
+function buildSubjectSlug(title: string, category?: SubjectCategory) {
+  return category?.slug ? `${category.slug} ${title}` : title;
 }
 
 export default AdminSubjectsManager;
